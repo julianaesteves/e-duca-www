@@ -1,0 +1,55 @@
+.container-header {
+  background-color: #550084;
+  width: 100%;
+  height: auto;
+  padding: 80px;
+  border-bottom-left-radius: 108% 38%;
+  border-bottom-right-radius: 40% 22%;
+}
+
+.container-header h1 {
+  color: #fff433;
+  font-style: normal;
+  width: auto;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.container-header h6 {
+  width: auto;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+
+.subtitle {
+  color: #fff;
+  font-weight: 700;
+}
+
+.container-header p {
+  color: #fff;
+}
+
+p span {
+  color: #33c3df;
+  font-weight: 700;
+}
+
+.img-header {
+  position: absolute;
+  top: 0;
+  left: 680px;
+  height: auto;
+  width: max-content;
+}
+
+#image {
+  width: 600px;
+  height: auto;
+  /* image-rendering: pixelated; */
+}
