@@ -1,5 +1,5 @@
 <h1 align="center">
-  e-duca
+<img alt="Logotipo Educa" src="https://user-images.githubusercontent.com/89034213/189702040-f6247403-97d5-4b26-8a90-0c9174756491.png"
 </h1>
 
 ## 📃 Sumário
@@ -8,16 +8,18 @@
 - [O que tem na aplicação](#-O-que-tem-na-aplicação)
 - [Como rodar a aplicação localmente](#-Como-rodar-a-aplicação-localmente)
 - [Links úteis](#-Links-úteis)
------
 
+##
 ## 🔮 Sobre a aplicação
 
 A e-duca é a aplicação de apoio no estudo de exatas para alunos no terceiro ano do Ensino Médio. Basicamente o(a) usuário(a) acessa a aplicação na web, faz o seu cadastro e, tem acesso à diversos conteúdos selecionados e previamente inseridos na aplicação por professores especializados.
 
+##
 ## 🛠 Funcionamento
 
 As aplicação é hospedada em _???????_. O front-end se comunica com a API das aplicação desenvolvida em _Java_ pelo time de back-end da e-duca.
 
+##
 ## 🔩 O que tem na aplicação
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -36,7 +38,8 @@ Entre outras bibliotecas que são mais específicas, pode-se listar:
 - [React Hook Form](https://react-hook-form.com/)
 - [AOS](https://michalsnik.github.io/aos/)
 
-## 🪄 Como rodar a aplicação localmente
+##
+## 🧩 Como rodar a aplicação localmente
 
 1. Clone o repositório:
 
@@ -73,9 +76,9 @@ npm start
 A aplicação estará disponível localmente em
 `http://localhost:3000`
 
-
 > Vale notar que há um script muito útil para realizar uma "limpeza" na aplicação e reinstalar as dependências. Esse script remove os caches e diretórios `node_modules` e faz a reinstalação de tudo. O script é `yarn reinstall`
 
+##
 ## 🔗 Links úteis
 
 - [Repositório e-duca API](https://github.com/julianaesteves/e-duca-api)
