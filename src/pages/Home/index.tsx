@@ -23,6 +23,7 @@ export function Home() {
             solucionamos a busca por materiais de qualidade <br />
             reunindo-o todos em uma só plataforma.
           </p>
+          teste
         </h6>
         <div className="img-header">
           <img id="image" src={img} alt="space galax" />
