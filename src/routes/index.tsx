@@ -7,16 +7,16 @@ import { SignUp } from '../pages/SignUp';
 
 export const RoutesApp = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/Contact" element={<Contact />} />
-          <Route path="/Collaborate" element={<Collaborate />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/SignUp" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
-    </>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/contato" element={<Contact />} />
+        <Route path="/colabore" element={<Collaborate />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<SignUp />} />
+      </Routes>
+    </BrowserRouter>
+
   );
 };

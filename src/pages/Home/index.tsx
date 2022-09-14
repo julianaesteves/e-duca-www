@@ -1,18 +1,17 @@
-import './styleHome.css';
+import style from "./home.module.scss"
 import Header from '../../components/Header';
 import img from '../../assets/img/galax.png';
-import { Footer } from '../../components/Footer';
 
 export function Home() {
   return (
     <>
       <Header />
-      <section className="container-header">
+      <section className={style.container}>
         <h1>
           A plataforma que faz o <br /> aprendizado decolar
         </h1>
         <h6>
-          <p className="subtitle">
+          <p className={style.subtitle}>
             Com conteúdos especializados na área de exatas
           </p>
           <p>
@@ -23,9 +22,8 @@ export function Home() {
             solucionamos a busca por materiais de qualidade <br />
             reunindo-o todos em uma só plataforma.
           </p>
-          teste
         </h6>
-        <div className="img-header">
+        <div className="imgHeader">
           <img id="image" src={img} alt="space galax" />
         </div>
       </section>

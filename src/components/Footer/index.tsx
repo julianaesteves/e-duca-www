@@ -1,9 +1,9 @@
-import './styleFooter.css';
+import style from "./footer.module.scss"
 
-export function Footer() {
+export default function Footer() {
   return (
-    <div className="footer">
-      <span className="textFooter">
+    <div className={style.footer}>
+      <span>
         ©2022 e-duca <br />
         Todos os direitos reservados.
       </span>

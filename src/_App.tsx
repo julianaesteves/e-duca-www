@@ -1,5 +1,6 @@
 import { RoutesApp } from './routes';
-import './styles/styleGlobal.css';
+import "./styles/global/reset.css";
+import "./styles/global/typography.css";
 
 function App() {
   return (
