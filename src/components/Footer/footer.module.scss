@@ -6,9 +6,9 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-}
 
-.textFooter {
-  color: #fff;
-  font-size: 0.8rem;
+  span {
+    color: $white;
+    font-size: 0.8rem;
+  }
 }

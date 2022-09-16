@@ -2,26 +2,26 @@ export const MenuItems = [
   {
     title: 'Inicio',
     url: '/',
-    cName: 'nav-links',
+    className: 'links',
   },
   {
     title: 'Contato',
     url: '/Contact',
-    cName: 'nav-links',
+    className: 'links',
   },
   {
     title: 'Colabore aqui',
     url: '/Collaborate',
-    cName: 'nav-links',
+    className: 'links',
   },
   {
     title: 'Login',
     url: '/Login',
-    cName: 'nav-links',
+    className: 'links',
   },
   {
     title: 'Cadastrar-se',
     url: '/SignUp',
-    cName: 'nav-links',
+    className: 'links',
   },
 ];
