@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from '../pages/Home';
 import { Contact } from '../pages/Contact';
 import { Collaborate } from '../pages/Collaborate';
@@ -7,8 +7,7 @@ import { SignUp } from '../pages/SignUp';
 
 export const RoutesApp = () => {
   return (
-
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contato" element={<Contact />} />
@@ -16,7 +15,7 @@ export const RoutesApp = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/cadastro" element={<SignUp />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
 
   );
 };

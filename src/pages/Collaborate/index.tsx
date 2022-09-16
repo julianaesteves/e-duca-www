@@ -5,6 +5,7 @@ export function Collaborate() {
   return (
     <>
       <Header />
+      COLABORE AQUI
     </>
   );
 }

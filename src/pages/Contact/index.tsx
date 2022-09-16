@@ -5,6 +5,7 @@ export function Contact() {
   return (
     <>
       <Header />
+      CONTATO
     </>
   );
 }

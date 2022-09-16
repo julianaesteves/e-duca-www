@@ -1,12 +1,12 @@
-import style from "./home.module.scss"
+// import style from "./home.module.scss"
 import Header from '../../components/Header';
-import img from '../../assets/img/galax.png';
+// import img from '../../assets/img/galax.png';
 
 export function Home() {
   return (
     <>
       <Header />
-      <section className={style.container}>
+      {/* <section className={style.container}>
         <h1>
           A plataforma que faz o <br /> aprendizado decolar
         </h1>
@@ -26,7 +26,7 @@ export function Home() {
         <div className="imgHeader">
           <img id="image" src={img} alt="space galax" />
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { RoutesApp } from './routes';
+import { RoutesApp } from './utils/routes';
 import "./styles/global/reset.css";
 import "./styles/global/typography.css";
 

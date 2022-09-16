@@ -5,6 +5,7 @@ export function SignUp() {
   return (
     <>
       <Header />
+      CADASTRE-SE
     </>
   );
 }
