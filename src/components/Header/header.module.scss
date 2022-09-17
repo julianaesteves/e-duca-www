@@ -6,6 +6,7 @@
   align-items: center;
   background-color: $purple-800;
   height: 80px;
+  padding: 20px 0px;
 
   li {
     color: $yellow-400;
@@ -27,7 +28,7 @@
 
    img {
     position: relative;
-    height: 80px;
+    height: 60px;
     cursor: pointer;
     padding: 0px 32px 0px 88px;
     
