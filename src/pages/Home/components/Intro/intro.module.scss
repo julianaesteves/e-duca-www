@@ -1,12 +1,14 @@
 @import '../../../../styles/sass/main.scss';
 
 .container {
-    height: auto;
-    display: grid;
-    grid-template-columns: repeat(2, 2fr);
+  display: grid;
+  gap: 200px 0px;
+  grid-template-columns: repeat(2, 2fr);
+  margin-bottom: 200px;
+
 
   img {
-    height: 450px;
+    height: auto;
   }
 
   li{
@@ -23,12 +25,12 @@
 
     img{
         height: auto;
-        padding-right: 12px; 
+        padding-right: $text; 
     }
 
     h3 {
-        color: #D70091;
-        font-size: 32px;
+        color: $pink-500;
+        font-size: $subtitle;
     }
 
   }
@@ -42,11 +44,11 @@
 
     img{
         height: auto;
-        padding-right: 12px;    
+        padding-right: $text;    
     }
 
     h3 {
-        color: #1524A7;
+        color: $blue-600;
         font-size: 32px;
     }
   }
