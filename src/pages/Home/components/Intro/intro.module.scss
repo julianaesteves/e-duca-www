@@ -1,0 +1,61 @@
+@import '../../../../styles/sass/main.scss';
+
+.container {
+  display: grid;
+  gap: 200px 0px;
+  grid-template-columns: repeat(2, 2fr);
+  margin-bottom: 200px;
+
+
+  img {
+    height: auto;
+  }
+
+  li{
+    padding-bottom: 12px;
+    list-style-type: disc;
+  }
+
+.introStudent{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: flex-start;
+    padding-right: 80px;
+
+    img{
+        height: auto;
+        padding-right: $text; 
+    }
+
+    h3 {
+        color: $pink-500;
+        font-size: $subtitle;
+    }
+
+  }
+
+.introTeacher{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    padding-left: 80px;
+
+    img{
+        height: auto;
+        padding-right: $text;    
+    }
+
+    h3 {
+        color: $blue-600;
+        font-size: 32px;
+    }
+  }
+
+}
+    
+h2 {
+    font-size: 40px;
+    padding: 40px 0px 80px 80px;
+}
