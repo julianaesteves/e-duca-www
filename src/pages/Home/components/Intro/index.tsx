@@ -7,7 +7,7 @@ import iconTrophy from '../../../../assets/img/trophy.png';
 export default function Intro() {
   return (
     <>
-      <h2>Como funciona?</h2>
+      <h2 className={style.title}>Como funciona?</h2>
       <section className={style.container}>
         <img src={imgStudents} alt="Student" />
         <div className={style.introStudent}>
