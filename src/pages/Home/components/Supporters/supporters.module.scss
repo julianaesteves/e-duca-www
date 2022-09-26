@@ -1,0 +1,27 @@
+@import '../../../../styles/sass/main.scss';
+.title{
+    display: flex;
+    font-size: $title;
+    justify-content: center;
+    margin-bottom: 130px;
+}
+.container{
+    display: flex;
+     justify-content: space-evenly;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 120px;
+    margin-bottom: 200px;
+
+    button{
+        background-color: $yellow-500;
+        border-radius: 50px;
+        border: none;
+        font-weight: bold;
+        height: 60px;
+        width: 340px;
+        font-size: $text;
+        }
+}
