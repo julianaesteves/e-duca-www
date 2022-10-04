@@ -1,1 +1,152 @@
+@import "../../styles/sass/main.scss";
+ 
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    min-height: 100vh;
+    background-color: #45006B;
+    padding: 0 160px;
+    justify-items: center;
+
+    h1{
+        font-size: 48px;
+        color: #FFF200;
+        text-align: center;
+
+    }
+
+    .intro{
+       text-align: center;
+
+        img{
+            height: 550px;        
+        }
+
+        h3{
+            color: #f5f5f5;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+
+        }
+    
+        a{
+            color: #FF33DF;
+            font-size: 24px;
+            font-weight: 400;
+        }
+    }
+
+
+    .containerForm{
+        background-color: #fff;
+        display: grid;
+        padding: 60px;
+        border-radius: 96px;
+        text-indent: 8px;
+
+
+        input{
+            background-color: #E5E5E5;
+            border-radius: 30px;
+            width: 310px;
+            height: 35px;
+            font-size: 14px;
+            border: none;
+            margin-bottom: 40px;
+            text-indent: 12px;
+    
+        }
+    
+        label{
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 35px;
+
+        }
+    
+        p{
+            font-size: 10px;
+            line-height: 0.2rem;
+            margin-bottom: inherit;
+        }
+
+        span{
+            font-size: 12px;
+            font-weight: 600;
+            margin: -30px 0px 45px 0px;
+
+
+            a{
+                color: #1524A7;
+                margin: 0 1px;
+
+            }
+        }
+    }
+
+   
+}
+
+.containerOption{
+    display: grid;
+    grid-template-rows: repeat(2, 0fr);
+    justify-items: center;
+
+
+ 
+
+    .btnStudent{
+        color: #f5f5f5;
+        border-radius: 30px;
+        border: #4A7DFF 2px solid;
+        width: 210px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    
+    }
+
+    .btnTeacher{
+        color: #550084;
+        background-color: #4A7DFF;
+        border-radius: 30px;
+        border: #4A7DFF 2px solid;
+        width: 210px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: 600;
+        margin: 10px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+    }
+
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

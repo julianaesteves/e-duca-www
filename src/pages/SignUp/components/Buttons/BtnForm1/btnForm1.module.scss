@@ -1,0 +1,17 @@
+@import "../../../../../styles/sass/main.scss";
+
+.btn{
+    color: #BA3EFF;
+    background-color: #fff;
+    border: solid 2px#9813E1;
+    border-radius: 30px;
+    width: 310px;
+    height: 35px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
