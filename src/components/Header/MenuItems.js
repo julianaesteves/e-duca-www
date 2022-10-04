@@ -17,6 +17,6 @@ export const MenuItems = [
   },
   {
     title: 'Cadastrar-se',
-    url: '/cadastro',
+    url: '/cadastro/professor/etapa1',
   },
 ];
