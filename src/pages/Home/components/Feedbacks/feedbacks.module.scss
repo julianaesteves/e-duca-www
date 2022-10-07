@@ -1,0 +1,23 @@
+@import '../../../../styles/sass/main.scss';
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
+.title{
+    display: flex;
+    font-size: $title;
+    justify-content: center;
+    margin-bottom: 130px;
+}
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h2{
+        color: $yellow-400;
+        font-size: $bigText;
+        font-weight: 500;
+    }
+}
+
+    
