@@ -3,12 +3,6 @@ import style from './feedbacks.module.scss'
 import React, { Component } from "react";
 import Slider from "react-slick";
 
-
-
-
-
-
-
 export default class Feedbacks extends Component {
     render() {
       const settings = {
