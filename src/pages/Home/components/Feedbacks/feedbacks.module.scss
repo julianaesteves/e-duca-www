@@ -1,23 +1,51 @@
 @import '../../../../styles/sass/main.scss';
-@import "~slick-carousel/slick/slick.css"; 
-@import "~slick-carousel/slick/slick-theme.css";
 
-.title{
+.feedbacks {
+  padding: 200px 88px 0 88px;
+
+  .title {
     display: flex;
     font-size: $title;
     justify-content: center;
     margin-bottom: 130px;
-}
-.cards{
+  }
+
+  .cards {
     display: flex;
-    align-items: center;
+    gap: 24px;
     justify-content: center;
-
-    h2{
-        color: $yellow-400;
-        font-size: $bigText;
-        font-weight: 500;
+    align-items: center;
+  }
+  .card {
+    height: 335px;
+    width: 331px;
+    background-color: $purple-800;
+    border: none;
+    border-radius: 30px;
+    padding: 20px;
+    p {
+      color: #dededf;
+      margin-top: 24px;
     }
+    .titleCard {
+      display: flex;
+      flex-direction: row;
+      .circle {
+        background: #dededf;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        margin-top: 20px;
+      }
+      h2 {
+        font-size: $bigText;
+        margin: 20px 0 0 20px;
+      }
+      h3 {
+        font-weight: 500;
+        margin: 8px 0 0 20px;
+      }
+      color: $yellow-400;
+    }
+  }
 }
-
-    
