@@ -1,0 +1,21 @@
+@import '../../styles/sass/main.scss';
+.divError{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    p{
+        font-size: $subtitle;
+        font-weight: bold;
+    }
+    button{
+        background-color: $pink-400;
+        color: $white;
+        font-size: $text;
+        height: 60px;
+        width: 337px;
+        cursor: pointer;
+        border: none;
+        border-radius: 30px;
+        margin-bottom: 88px;
+    }
+}
