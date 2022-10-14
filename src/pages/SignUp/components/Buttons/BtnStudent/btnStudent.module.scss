@@ -1,14 +1,15 @@
-@import "../../../../../styles/sass/main.scss";
+@import '../../../../../styles/sass/main.scss';
 
-.btn{
-    color: #f5f5f5;
-    border-radius: 30px;
-    border: #ff4af9 2px solid;
-    width: 210px;
-    height: 35px;
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.btn {
+  color: $yellow-300;
+  border-radius: 30px;
+  background-color: $pink-500;
+  border: $pink-500 2px solid;
+  width: 210px;
+  height: 35px;
+  font-size: $text;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

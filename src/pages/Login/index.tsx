@@ -1,20 +1,15 @@
 import style from './login.module.scss';
 import { Link } from 'react-router-dom';
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { FormActions, useForm } from '../../utils/contexts/FormContext';
 import img from '../../assets/img/image08.png';
 import { Header } from '../SignUp/components/Header';
 import { BtnForm2 } from '../SignUp/components/Buttons/BtnForm2';
+import { Modal } from '../../components/Modal';
 
 export const Login = () => {
   const { state, dispatch } = useForm();
-
-  useEffect(() => {
-    dispatch({
-      type: FormActions.setCurrentStep,
-      payload: 2,
-    });
-  }, []);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
@@ -47,9 +42,9 @@ export const Login = () => {
         <div className={style.intro}>
           <img src={img} alt="" />
           <h3>Ainda não possui uma conta?</h3>
-          <Link to={'/'}>
+          <div onClick={() => setIsModalVisible(true)}>
             <a>Cadastra-se</a>
-          </Link>
+          </div>
         </div>
         <div>
           <h1>Login</h1>
@@ -77,6 +72,12 @@ export const Login = () => {
             <BtnForm2 onClick={handleNextStep}>Entrar</BtnForm2>
           </div>
         </div>
+        {isModalVisible ? (
+          <Modal
+            isOpen={isModalVisible}
+            onClose={() => setIsModalVisible(false)}
+          ></Modal>
+        ) : null}
       </div>
     </>
   );
