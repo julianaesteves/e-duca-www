@@ -12,6 +12,7 @@
     color: $yellow-400;
     padding: 8px;
     font-weight: 600;
+    cursor: pointer;
 
     &:hover {
       background-color: $purple-300;
@@ -26,12 +27,12 @@
     height: 60px;
   }
 
-   img {
+  .logo {
     position: relative;
     height: 60px;
     cursor: pointer;
     padding: 0px 32px 0px 88px;
-    
+
     @include mobile {
       z-index: 1;
       padding: 0;

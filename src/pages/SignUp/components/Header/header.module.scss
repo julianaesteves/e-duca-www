@@ -1,13 +1,12 @@
-@import "../../../../styles/sass/main.scss";
+@import '../../../../styles/sass/main.scss';
 
-.header{
-   width: 100%;
-   background-color: #45006B;
+.header {
+  width: 100%;
+  background-color: $purple-800;
 
-   .logo {
-       position: relative;
-       height: 60px;
-       padding: 10px 30px 2px 30px;
-   }
-
+  .logo {
+    position: relative;
+    height: 60px;
+    padding: 10px 30px 2px 30px;
+  }
 }
