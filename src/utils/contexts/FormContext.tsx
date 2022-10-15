@@ -2,9 +2,10 @@
 import { createContext, ReactNode, useContext, useReducer } from 'react';
 
 type State = {
-  currentStep: number;
   name: string;
-  birthDate: 'dd/mm/aaaa';
+  lastName: string;
+  currentStep: number;
+  birthDate: string;
   occupation: string;
   carrerTime: string;
   email: string;
@@ -24,8 +25,9 @@ type FormProviderProps = {
 };
 
 const initialData = {
-  currentStep: 0,
   name: '',
+  lastName: '',
+  currentStep: 0,
   birthDate: '',
   occupation: '',
   carrerTime: '',
@@ -39,8 +41,9 @@ const FormContext = createContext<ContextType | undefined>(undefined);
 
 // Reducer
 export enum FormActions {
-  setCurrentStep,
   setName,
+  setLastName,
+  setCurrentStep,
   setBirthDate,
   setOccupation,
   setCarrerTime,
@@ -50,10 +53,12 @@ export enum FormActions {
 }
 const formReducer = (state: State, action: Action) => {
   switch (action.type) {
-    case FormActions.setCurrentStep:
-      return { ...state, currentStep: action.payload };
     case FormActions.setName:
       return { ...state, name: action.payload };
+    case FormActions.setLastName:
+      return { ...state, lastName: action.payload };
+    case FormActions.setCurrentStep:
+      return { ...state, currentStep: action.payload };
     case FormActions.setBirthDate:
       return { ...state, birthDate: action.payload };
     case FormActions.setOccupation:
