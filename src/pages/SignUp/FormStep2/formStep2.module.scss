@@ -1,47 +1,41 @@
-@import "../../../styles/sass/main.scss";
+@import '../../../styles/sass/main.scss';
 
+.container {
+  display: flex;
+  flex-direction: column;
 
-.container{ 
-    display: flex;
-    flex-direction: column;
+  input {
+    background-color: $Grey;
+    border-radius: 30px;
+    width: 310px;
+    height: 35px;
+    font-size: $placeholder;
+    border: none;
+    margin-bottom: 30px;
+    text-indent: 12px;
+  }
 
-    input{
-        background-color: #E5E5E5;
-        border-radius: 30px;
-        width: 310px;
-        height: 35px;
-        font-size: 14px;
-        border: none;
-        margin-bottom: 30px;
-        text-indent: 12px;
+  label {
+    font-size: $label;
+    font-weight: 600;
+    line-height: 35px;
+    text-indent: 8px;
+  }
 
+  .cCheck {
+    display: grid;
+    grid-template-columns: 0fr 1fr;
+    align-items: start;
+    font-size: 10px;
+
+    p {
+      line-height: 0.2rem;
+      margin-bottom: inherit;
     }
 
-    label{
-        font-size: 16px;
-        font-weight: 600;
-        line-height: 35px;
-        text-indent: 8px;
-    
+    a {
+      color: $blue-600;
+      line-height: 2;
     }
-
-    .cCheck{
-      display: grid;
-      grid-template-columns: 0fr 1fr;
-      align-items: start;
-      font-size: 10px;
-
-      p{
-        line-height: 0.2rem;
-        margin-bottom: inherit;
-
-      }
-
-      a{
-        color: #1524A7;
-        line-height: 2;
-      }
-
-    }
-
+  }
 }

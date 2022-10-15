@@ -1,8 +1,10 @@
-import style from './BtnTeacher.module.scss';
+import { Link } from 'react-router-dom';
+import style from './btnTeacher.module.scss';
 
-type Props = {
-  children: String;
-};
-export const BtnTeacher = ({ children }: Props) => {
-  return <div className={style.btn}>{children}</div>;
+export const BtnTeacher = () => {
+  return (
+    <Link to={'/cadastro/professor/etapa1'} className={style.btn}>
+      <a>Professor</a>
+    </Link>
+  );
 };

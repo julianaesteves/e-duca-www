@@ -29,6 +29,12 @@ export const FormStudent = () => {
       payload: e.target.value,
     });
   };
+  const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    dispatch({
+      type: FormActions.setName,
+      payload: e.target.value,
+    });
+  };
   const handleBirthDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setBirthDate,
@@ -58,12 +64,19 @@ export const FormStudent = () => {
     <>
       <Theme img={img}>
         <div className={style.container}>
-          <label>Nome Completo:</label>
+          <label>Nome:</label>
           <input
             value={state.name}
             type="text"
-            placeholder="nome e sobrenome"
+            placeholder="Nome"
             onChange={handleNameChange}
+          />
+          <label>Sobrenome:</label>
+          <input
+            value={state.lastName}
+            type="text"
+            placeholder="Sobrenome"
+            onChange={handleLastNameChange}
           />
           <label>Data de Nascimento:</label>
           <input
