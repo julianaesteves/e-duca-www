@@ -7,21 +7,21 @@ import sptech from '../../../../assets/img/Ellipse6.png';
 
 export default function Supporters() {
     return (
-        <>
-            <h2 className={style.title}>Apoiadores do projeto e-duca   </h2>
-            <section className={style.container}>
+        <section className={style.container}>
+            <h2 className={style.title}>Apoiadores do projeto e-duca</h2>
+            <div className={style.innerContainer}>
                 <img src={redV} alt="RedVentures logo" />
                 <img src={accenture} alt="Accenture logo" />
                 <img src={deloite} alt="Deloite logo" />
                 <img src={safra} alt="Safra logo" />
                 <img src={sptech} alt="SPTech logo" />
 
-            </section>
+            </div>
             <div className={style.btn}>
                 <button>Seja um apoiador!</button>
             </div>
 
 
-        </>
+        </section>
     )
 }
