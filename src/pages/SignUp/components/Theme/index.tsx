@@ -1,14 +1,15 @@
 import style from './theme.module.scss';
-import { Link } from 'react-router-dom';
 import { ReactNode } from 'react';
 import { Header } from '../Header';
+import { Button } from '../../../../components/Button';
 
 type Props = {
   children: ReactNode;
   img: any;
+  isActive?: boolean;
 };
 
-export const Theme = ({ children, img }: Props) => {
+export const Theme = ({ children, img, isActive }: Props) => {
   return (
     <>
       <Header />
@@ -19,13 +20,23 @@ export const Theme = ({ children, img }: Props) => {
         <div className={style.containerOption}>
           <h1>Cadastrar-se como</h1>
 
-          <Link to={'/cadastro/estudante'} className={style.btnStudent}>
-            <a>Estudante</a>
-          </Link>
-          <Link to={'/cadastro/professor/etapa1'} className={style.btnTeacher}>
-            <a>Professor</a>
-          </Link>
-          <img src={img} alt="" />
+          <Button
+            path="/cadastro/estudante"
+            title="Estudante"
+            className={`${style.btnStudent} ${
+              isActive ? 'active' : 'inactive'
+            }`}
+          />
+
+          <Button
+            path="/cadastro/professor/etapa1"
+            title="Professor"
+            className={`${style.btnTeacher} ${
+              isActive ? 'active' : 'inactive'
+            }`}
+          />
+
+          <img src={img} />
         </div>
       </div>
     </>

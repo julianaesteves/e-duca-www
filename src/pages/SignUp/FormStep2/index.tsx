@@ -1,15 +1,13 @@
 import style from './formStep2.module.scss';
 import { Theme } from '../components/Theme';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChangeEvent, useEffect } from 'react';
 import { FormActions, useForm } from '../../../utils/contexts/FormContext';
-import { BtnForm1 } from '../components/Buttons/BtnForm1';
-import { BtnForm2 } from '../components/Buttons/BtnForm2';
 import { CheckCircleOutline, RadioButtonUnchecked } from '@mui/icons-material';
 import img from '../../../assets/img/image11.png';
+import { Button } from '../../../components/Button';
 
 export const FormStep2 = () => {
-  const navigator = useNavigate();
   const { state, dispatch } = useForm();
 
   useEffect(() => {
@@ -18,10 +16,6 @@ export const FormStep2 = () => {
       payload: 2,
     });
   }, []);
-
-  const handleBack = () => {
-    navigator('/cadastro/professor/etapa1');
-  };
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
@@ -89,8 +83,17 @@ export const FormStep2 = () => {
             </div>
           </div>
 
-          <BtnForm1 onClick={handleBack}>Voltar</BtnForm1>
-          <BtnForm2 onClick={handleNextStep}>Finalizar cadastro</BtnForm2>
+          <Button
+            className={style.btnLogin}
+            title="Voltar"
+            path="/cadastro/professor/etapa1"
+          />
+
+          <Button
+            className={style.btnNext}
+            title="Finalizar cadastro"
+            onClick={handleNextStep}
+          />
         </div>
       </Theme>
     </>

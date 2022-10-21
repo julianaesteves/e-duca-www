@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useForm, FormActions } from '../../../utils/contexts/FormContext';
 import { Theme } from '../components/Theme';
 import { ChangeEvent, useEffect } from 'react';
-import { BtnForm1 } from '../components/Buttons/BtnForm1';
-import { BtnForm2 } from '../components/Buttons/BtnForm2';
 import img from '../../../assets/img/image10.png';
+import { Button } from '../../../components/Button';
 
 export const FormStep1 = () => {
   const navigator = useNavigate();
@@ -18,10 +17,6 @@ export const FormStep1 = () => {
     });
   }, []);
 
-  const handleLogin = () => {
-    navigator('/Login');
-  };
-
   const handleNextStep = () => {
     if (state.name !== '') {
       navigator('/cadastro/professor/etapa2');
@@ -29,7 +24,6 @@ export const FormStep1 = () => {
       alert('Olá, Certifique se todos os campos estão preenchido corretamente');
     }
   };
-
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -49,7 +43,7 @@ export const FormStep1 = () => {
       payload: e.target.value,
     });
   };
-  
+
   const handleOccupationChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setOccupation,
@@ -101,8 +95,17 @@ export const FormStep1 = () => {
             onChange={handleCarrerTimenChange}
           />
 
-          <BtnForm1 onClick={handleLogin}>Ir para login</BtnForm1>
-          <BtnForm2 onClick={handleNextStep}>Continuar</BtnForm2>
+          <Button
+            className={style.btnLogin}
+            title="Ir para login"
+            path="/login"
+          />
+
+          <Button
+            className={style.btnNext}
+            title="Continuar"
+            onClick={handleNextStep}
+          />
         </div>
       </Theme>
     </>

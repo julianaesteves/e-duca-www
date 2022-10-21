@@ -1,15 +1,12 @@
-@import '../../../../../styles/sass/main.scss';
+@import '../../styles/sass/main.scss';
 
 .btn {
-  color: $yellow-300;
-  background-color: $blue-300;
   border-radius: 30px;
-  border: $blue-300 2px solid;
-  width: 210px;
   height: 35px;
   font-size: $text;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
 }

@@ -21,4 +21,19 @@
     line-height: 35px;
     text-indent: 8px;
   }
+
+  .btnLogin {
+    color: $purple-100;
+    background-color: $white;
+    border: solid 2px $purple-300;
+    width: 310px;
+    margin: 10px 0;
+  }
+
+  .btnNext {
+    color: $black;
+    background-color: $yellow-400;
+    border: solid 2px $yellow-400;
+    width: 310px;
+  }
 }

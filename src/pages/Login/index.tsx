@@ -4,8 +4,8 @@ import { ChangeEvent, useState } from 'react';
 import { FormActions, useForm } from '../../utils/contexts/FormContext';
 import img from '../../assets/img/image08.png';
 import { Header } from '../SignUp/components/Header';
-import { BtnForm2 } from '../SignUp/components/Buttons/BtnForm2';
 import { Modal } from '../../components/Modal';
+import { Button } from '../../components/Button';
 
 export const Login = () => {
   const { state, dispatch } = useForm();
@@ -69,7 +69,11 @@ export const Login = () => {
                 <a>Recuperar senha</a>
               </Link>
             </span>
-            <BtnForm2 onClick={handleNextStep}>Entrar</BtnForm2>
+            <Button
+              className={style.btnEnter}
+              title="Entrar"
+              onClick={handleNextStep}
+            ></Button>
           </div>
         </div>
         {isModalVisible ? (
