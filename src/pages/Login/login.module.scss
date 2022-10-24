@@ -70,5 +70,12 @@
         margin: 0 1px;
       }
     }
+
+    .btnEnter {
+      color: $black;
+      background-color: $yellow-400;
+      border: solid 2px $yellow-400;
+      width: 310px;
+    }
   }
 }

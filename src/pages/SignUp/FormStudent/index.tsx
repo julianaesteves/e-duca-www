@@ -1,19 +1,12 @@
 import style from './formStudent.module.scss';
-import { useNavigate } from 'react-router-dom';
 import { Theme } from '../components/Theme';
-import { BtnForm1 } from '../components/Buttons/BtnForm1';
-import { BtnForm2 } from '../components/Buttons/BtnForm2';
 import { FormActions, useForm } from '../../../utils/contexts/FormContext';
 import { ChangeEvent } from 'react';
 import img from '../../../assets/img/image9.png';
+import { Button } from '../../../components/Button';
 
 export const FormStudent = () => {
-  const navigator = useNavigate();
   const { state, dispatch } = useForm();
-
-  const handleLogin = () => {
-    navigator('/Login');
-  };
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
@@ -62,7 +55,7 @@ export const FormStudent = () => {
 
   return (
     <>
-      <Theme img={img}>
+      <Theme img={img} isActive>
         <div className={style.container}>
           <label>Nome:</label>
           <input
@@ -105,8 +98,17 @@ export const FormStudent = () => {
             placeholder="8 caracteres (letras, números)"
             onChange={handleCPasswordChange}
           />
-          <BtnForm1 onClick={handleLogin}>Ir para login</BtnForm1>
-          <BtnForm2 onClick={handleNextStep}>Finalizar cadastro</BtnForm2>
+          <Button
+            className={style.btnLogin}
+            path="/login"
+            title="Ir para login"
+          />
+
+          <Button
+            className={style.btnNext}
+            title="Finalizar cadastro"
+            onClick={handleNextStep}
+          />
         </div>
       </Theme>
     </>

@@ -25,7 +25,7 @@ export default function Header() {
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
-              {index === 4 ? (
+              {index === 3 ? (
                 <a onClick={() => setIsModalVisible(true)}>{item.title}</a>
               ) : (
                 <Link to={item.url}>{item.title}</Link>

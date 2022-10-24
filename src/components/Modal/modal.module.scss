@@ -42,6 +42,20 @@
       align-items: center;
       justify-items: center;
 
+      .btnStudent {
+        color: $yellow-300;
+        background-color: $pink-500;
+        border: $pink-500 2px solid;
+        width: 210px;
+      }
+
+      .btnTeacher {
+        color: $yellow-300;
+        background-color: $blue-300;
+        border: $blue-300 2px solid;
+        width: 210px;
+      }
+
       .image {
         height: 300px;
       }

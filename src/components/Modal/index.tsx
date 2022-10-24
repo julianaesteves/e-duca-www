@@ -1,11 +1,9 @@
 import style from './modal.module.scss';
 import student from '../../assets/img/image9.png';
 import teacher from '../../assets/img/image10.png';
-import { BtnStudent } from '../../pages/SignUp/components/Buttons/BtnStudent';
-import { BtnTeacher } from '../../pages/SignUp/components/Buttons/BtnTeacher';
 import { Link } from 'react-router-dom';
 import React from 'react';
-
+import { Button } from '../Button';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -41,8 +39,16 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
               src={teacher}
               alt="teacher reference image"
             />
-            <BtnStudent />
-            <BtnTeacher />
+            <Button
+              className={style.btnStudent}
+              path="/cadastro/estudante"
+              title="Estudante"
+            />
+            <Button
+              className={style.btnTeacher}
+              path="/cadastro/professor/etapa1"
+              title="Professor"
+            />
           </div>
           <h3>Já tenho uma conta!</h3>
           <Link className={style.link} to={'/login'}>

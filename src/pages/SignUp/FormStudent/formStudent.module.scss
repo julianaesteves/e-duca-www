@@ -21,16 +21,19 @@
     line-height: 35px;
     text-indent: 8px;
   }
-}
 
-.containerOption {
-  display: grid;
-  grid-template-rows: repeat(2, 0fr);
-  justify-items: center;
+  .btnLogin {
+    color: $purple-100;
+    background-color: $white;
+    border: solid 2px $purple-300;
+    width: 310px;
+    margin: 10px 0;
+  }
 
-  h1 {
-    color: $yellow-300;
-    font-size: $subtitle;
-    font-weight: 600;
+  .btnNext {
+    color: $black;
+    background-color: $yellow-400;
+    border: solid 2px $yellow-400;
+    width: 310px;
   }
 }
