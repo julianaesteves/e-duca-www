@@ -1,5 +1,5 @@
 import style from './formStep1.module.scss';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useForm, FormActions } from '../../../utils/contexts/FormContext';
 import { Theme } from '../components/Theme';
 import { ChangeEvent, useEffect } from 'react';
@@ -7,7 +7,7 @@ import img from '../../../assets/img/image10.png';
 import { Button } from '../../../components/Button';
 
 export const FormStep1 = () => {
-  const navigator = useNavigate();
+  // const navigator = useNavigate();
   const { state, dispatch } = useForm();
 
   useEffect(() => {
@@ -17,13 +17,14 @@ export const FormStep1 = () => {
     });
   }, []);
 
-  const handleNextStep = () => {
-    if (state.name !== '') {
-      navigator('/cadastro/professor/etapa2');
-    } else {
-      alert('Olá, Certifique se todos os campos estão preenchido corretamente');
-    }
-  };
+  // const handleNextStep = () => {
+  //   if (state.name !== '') {
+  //     navigator('/cadastro/professor/etapa2');
+  //     console.log(state)
+  //   } else {
+  //     alert('Olá, Certifique se todos os campos estão preenchido corretamente');
+  //   }
+  // };
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
@@ -33,7 +34,7 @@ export const FormStep1 = () => {
   };
   const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: FormActions.setName,
+      type: FormActions.setLastName,
       payload: e.target.value,
     });
   };
@@ -104,7 +105,7 @@ export const FormStep1 = () => {
           <Button
             className={style.btnNext}
             title="Continuar"
-            onClick={handleNextStep}
+            path={"/cadastro/professor/etapa2"}
           />
         </div>
       </Theme>
