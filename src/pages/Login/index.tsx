@@ -5,6 +5,7 @@ import { FormActions, useForm } from '../../utils/contexts/FormContext';
 import img from '../../assets/img/image08.png';
 import { Header } from '../SignUp/components/Header';
 import { Modal } from '../../components/Modal';
+import { SignUp } from '../SignUp/components/SignUp';
 import { Button } from '../../components/Button';
 
 export const Login = () => {
@@ -80,7 +81,9 @@ export const Login = () => {
           <Modal
             isOpen={isModalVisible}
             onClose={() => setIsModalVisible(false)}
-          ></Modal>
+          >
+            <SignUp onClose={() => setIsModalVisible(false)} />
+          </Modal>
         ) : null}
       </div>
     </>
