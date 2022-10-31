@@ -1,70 +1,63 @@
 @import '../../../styles/sass/main.scss';
 
 .container {
-    display: flex;
-    width: 685px;
+  display: flex;
+  width: 685px;
+  height: 93px;
+  border-radius: 20px;
+  background-color: $white;
+  border: #0019fd 2px solid;
+
+  &:hover {
+    background-color: #d7e9ff;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+
+  .circle {
+    background: #dededf;
+    border-radius: 50%;
+    width: 63px;
+    height: 63px;
+    margin-top: 15px;
+  }
+
+  .cylinder {
+    width: 15px;
     height: 93px;
-    border-radius: 20px;
-    background-color: $white;
-    border: #0019FD 2px solid;
+    border-radius: 46px;
+    background-color: #0019fd;
+    margin-right: 20px;
+    margin-left: -1px;
+  }
 
-    &:hover{
-        background-color: #D7E9FF;
-        transition: 0.5s;
-        cursor: pointer;
-    }
-    
+  .titleCard {
+    flex-direction: column;
+    margin-left: 24px;
 
-    .circle {
-
-        background: #dededf;
-        border-radius: 50%;
-        width: 63px;
-        height: 63px;
-        margin-top: 15px;
+    span {
+      display: flex;
+      font-size: $bigText;
+      margin-top: 10px;
+      font-weight: bolder;
     }
 
-    .cylinder {
-        width: 21px;
-        height: 93px;
-        border-radius: 46px;
-        background-color: #0019FD;
-        margin-right: 20px;
-        margin-left: -1px;
+    p {
+      font-size: $text;
+      color: $blue-300;
+      margin-left: 8px;
+      font-weight: bold;
     }
-
-    .titleCard {
-        flex-direction: column;
-        margin-left: 24px;
-        
-        span{
-            display: flex;
-            font-size: $bigText;
-            margin-top: 10px;
-            font-weight: bolder;
-        }
-
-        p{
-            font-size: $text;
-            color: $blue-300;
-            margin-left: 8px;
-            font-weight: bold;
-        }
+  }
+  .date {
+    display: flex;
+    flex-direction: column;
+    margin-left: 160px;
+    p {
+      font-size: 10px;
+      color: #b1b1b1;
+      font-weight: bold;
+      margin-top: 16px;
     }
-    .date{
-       display: flex;
-       flex-direction: column;
-       margin-left: 160px;
-        p{ 
-        font-size: 10px;
-        color: #B1B1B1;
-        font-weight: bold;
-        margin-top: 16px;
-    }
-    
-   
-    }
-    
-
-
+  }
 }

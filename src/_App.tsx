@@ -6,14 +6,11 @@ import { FormProvider } from '../src/utils/contexts/FormContext';
 function App() {
   return (
     <>
-<FormProvider>
-<RoutesApp />
-</FormProvider>
+      <FormProvider>
+        <RoutesApp />
+      </FormProvider>
     </>
   );
 }
 
 export default App;
-//<FormProvider>
-//<RoutesApp />
-//</FormProvider>
