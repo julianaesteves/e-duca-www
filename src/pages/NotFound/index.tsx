@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import style from './error.module.scss';
 import imageError from "../../assets/img/errorImg.png";
 import { useNavigate } from 'react-router-dom';
-
+import {Button} from '../../components/Button';
 export default function Error(){
     const navigate = useNavigate();
     return(
@@ -13,10 +13,11 @@ export default function Error(){
         <div className={style.divError} >
         <img src={imageError} alt="Imagem de erro" />
         <p>Ops! Parece que a página que você está procurando não existe.</p>
-        <button onClick={() => navigate(-1)} >Voltar para a página inicial</button>
+       <Button className={style.btn} onClick={() => navigate(-1)} title="Voltar para a página inicial" />
         </div>
         <FooterHome/>
         <Footer/>
         </>
     )
 }
+//<button onClick={() => navigate(-1)} >Voltar para a página inicial</button>
