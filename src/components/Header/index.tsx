@@ -4,6 +4,7 @@ import style from './header.module.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal } from '../Modal';
+import { SignUp } from '../../pages/SignUp/components/SignUp';
 
 export default function Header() {
   const [clicked, setClicked] = useState<boolean>(false);
@@ -37,7 +38,9 @@ export default function Header() {
           <Modal
             isOpen={isModalVisible}
             onClose={() => setIsModalVisible(false)}
-          ></Modal>
+          >
+            <SignUp onClose={() => setIsModalVisible(false)} />
+          </Modal>
         ) : null}
       </div>
     </section>
