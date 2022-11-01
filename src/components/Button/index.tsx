@@ -6,12 +6,14 @@ type Props = {
   className: any;
   path?: any;
   title: string;
+  onChange?: any;
+
 };
 
-export const Button = ({ onClick, className, path, title }: Props) => {
+export const Button = ({ onClick, className, path, title, onChange }: Props) => {
   return (
     <Link to={path ?? ''}>
-      <button className={`${style.btn} ${className}`} onClick={onClick}>
+      <button className={`${style.btn} ${className}`} onClick={onClick} onChange={onChange}>
         {title}
       </button>
     </Link>
