@@ -2,14 +2,13 @@ import style from './theme.module.scss';
 import { ReactNode } from 'react';
 import { Header } from '../Header';
 import { Button } from '../../../../components/Button';
-
 type Props = {
   children: ReactNode;
-  img: any;
-  isActive?: boolean;
+  img: string;
+  isTeacher: boolean;
 };
 
-export const Theme = ({ children, img, isActive }: Props) => {
+export const Theme = ({ children, img, isTeacher }: Props) => {
   return (
     <>
       <Header />
@@ -23,17 +22,13 @@ export const Theme = ({ children, img, isActive }: Props) => {
           <Button
             path="/cadastro/estudante"
             title="Estudante"
-            className={`${style.btnStudent} ${
-              isActive ? 'active' : 'inactive'
-            }`}
+            className={`${isTeacher ? `${style.btnStudent}` : `${style.btnStudentSelected}`}`}
           />
 
           <Button
             path="/cadastro/professor/etapa1"
             title="Professor"
-            className={`${style.btnTeacher} ${
-              isActive ? 'active' : 'inactive'
-            }`}
+            className={`${isTeacher ? `${style.btnTeacherSelected}` : `${style.btnTeacher}`}`}
           />
 
           <img src={img} />

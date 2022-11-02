@@ -66,7 +66,7 @@ export const FormStep2 = () => {
 
   return (
     <>
-      <Theme img={img}>
+      <Theme img={img} isTeacher>
         <div className={style.container}>
           <label>E-mail:</label>
           <input
