@@ -6,9 +6,20 @@ import { FormActions, useForm } from '../../../utils/contexts/FormContext';
 import { CheckCircleOutline, RadioButtonUnchecked } from '@mui/icons-material';
 import img from '../../../assets/img/image11.png';
 import { Button } from '../../../components/Button';
+import axios from 'axios';
 
 export const FormStep2 = () => {
   const { state, dispatch } = useForm();
+
+  const data = {
+    nome: state.name,
+    sobrenome: state.lastName,
+    email: state.email,
+    dataNasc: state.birthDate,
+    senha: state.password,
+    inicioAtuacao: state.carrerTime,
+    areaAtuacao: state.occupation
+  }
 
   useEffect(() => {
     dispatch({
@@ -19,6 +30,13 @@ export const FormStep2 = () => {
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
+      axios.post("http://localhost:8080/api/usuarios/professores", data)
+      .then(function (response) {
+        console.log(response.status);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       console.log(state);
     } else {
       alert(

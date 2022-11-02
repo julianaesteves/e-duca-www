@@ -4,12 +4,28 @@ import { FormActions, useForm } from '../../../utils/contexts/FormContext';
 import { ChangeEvent } from 'react';
 import img from '../../../assets/img/image9.png';
 import { Button } from '../../../components/Button';
+import axios from 'axios';
 
 export const FormStudent = () => {
   const { state, dispatch } = useForm();
 
+  const data = {
+    nome: state.name,
+    sobrenome: state.lastName,
+    email: state.email,
+    dataNasc: state.birthDate,
+    senha: state.password
+  }
+  
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
+      axios.post("http://localhost:8080/api/usuarios/estudantes", data)
+      .then(function (response) {
+        console.log(response.status);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
       console.log(state);
     } else {
       alert(`Olá, Certifique se todos os campos estão preenchido corretamente`);
@@ -24,7 +40,7 @@ export const FormStudent = () => {
   };
   const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
-      type: FormActions.setName,
+      type: FormActions.setLastName,
       payload: e.target.value,
     });
   };

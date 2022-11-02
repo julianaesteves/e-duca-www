@@ -7,13 +7,27 @@ import { Header } from '../SignUp/components/Header';
 import { Modal } from '../../components/Modal';
 import { SignUp } from '../SignUp/components/SignUp';
 import { Button } from '../../components/Button';
+import axios from 'axios';
 
 export const Login = () => {
   const { state, dispatch } = useForm();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const data = {
+    email: state.email,
+    senha: state.password
+  }
+
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
+      axios.post("http://localhost:8080/auth", data)
+      .then(function (response) {
+        console.log(response.status);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+
       console.log(state);
     } else {
       alert(
