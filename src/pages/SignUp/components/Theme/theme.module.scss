@@ -4,7 +4,7 @@
   display: grid;
   grid-template-columns: repeat(2, 2fr);
   min-height: 100vh;
-  background-color: $purple-800;
+  background-color: $purple-900;
   padding: 20px 160px 20px 160px;
   justify-items: center;
 
@@ -45,25 +45,25 @@
   }
 
   .btnTeacher {
-    color: $purple-800;
-    background-color: $blue-300;
-    border: $blue-300 2px solid;
+    color: $white;
+    border: $purple-100 2px solid;
     width: 230px;
     margin: 10px 0;
+}
+
+  .btnStudentSelected {
+    width: 230px;
+    background-color: $purple-100;
+    color: $purple-900;
   }
 
-  .btnStudent:active {
-    color: $purple-800;
-    background-color: #ba3eff;
-    border: #ba3eff 2px solid;
+  .btnTeacherSelected {
+    width: 230px;
+    background-color: $blue-300;
+    color: $purple-900;
+    margin: 10px 0;
   }
-
-  .btnTeacher:active {
-    color: $white;
-    border: #ba3eff 2px solid;
-    background-color: transparent;
-  }
-
+  
   img {
     height: 500px;
   }

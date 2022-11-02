@@ -16,16 +16,16 @@ export const FormStudent = () => {
     dataNasc: state.birthDate,
     senha: state.password
   }
-  
+
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
       axios.post("http://localhost:8080/api/usuarios/estudantes", data)
-      .then(function (response) {
-        console.log(response.status);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        .then(function (response) {
+          console.log(response.status);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       console.log(state);
     } else {
       alert(`Olá, Certifique se todos os campos estão preenchido corretamente`);
@@ -71,7 +71,7 @@ export const FormStudent = () => {
 
   return (
     <>
-      <Theme img={img} isActive>
+      <Theme img={img} isTeacher={false}>
         <div className={style.container}>
           <label>Nome:</label>
           <input
