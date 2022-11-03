@@ -1,14 +1,13 @@
-import { RoutesApp } from './utils/routes';
+//import { RoutesApp } from './utils/routes';
 import './styles/global/reset.css';
 import './styles/global/typography.css';
-import { FormProvider } from '../src/utils/contexts/FormContext';
+//import { FormProvider } from '../src/utils/contexts/FormContext';
+import  Overview from './pages/components/Overview';
 
 function App() {
   return (
     <>
-      <FormProvider>
-        <RoutesApp />
-      </FormProvider>
+      <Overview />
     </>
   );
 }
