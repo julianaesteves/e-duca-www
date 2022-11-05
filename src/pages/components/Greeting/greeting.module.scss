@@ -1,0 +1,44 @@
+@import '../../../styles/sass/main.scss';
+
+.container {
+    margin-top: 200px;
+    height: 187px;
+    width: 900px;
+    display: flex;
+    background-color: #C9BBFF;
+    border-radius: 96px;
+    padding: 10px;
+
+
+    .align {
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    span {
+        font-size: $subtitle;
+        font-weight: bold;
+    }
+
+    .title {
+        font-size: $subtitle;
+        margin-bottom: 0%;
+        margin-left: 54px;
+
+    }
+
+    .subtitle {
+        font-size: $bigText;
+        margin-left: 54px;
+
+    }
+
+    .imageGreeting {
+        position: absolute;
+        margin-left: 650px;
+        bottom: 300px;
+    }
+
+
+}
