@@ -1,16 +1,18 @@
-import style from './registerContent.module.scss';
+import style from '../RegisterContent/registerContent.module.scss';
 import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { Select } from '../../../components/Select';
 import { useState } from 'react';
-import { SelectType } from './SelectType';
-import { SelectAbility } from './SelectAbility';
+import { SelectType } from '../RegisterContent/SelectType';
+import { SelectAbility } from '../RegisterContent/SelectAbility';
+import { UpdateSuccess } from './UpdateSuccess';
+import { Modal } from '../../../components/Modal';
 
 type Props = {
   onClose?: () => void;
 };
 
-export const RegisterContent = ({ onClose }: Props) => {
+export const UpdateContent = ({ onClose }: Props) => {
   const [ability, setAbility] = useState(0);
   const [type, setType] = useState(0);
 
@@ -20,8 +22,10 @@ export const RegisterContent = ({ onClose }: Props) => {
   const [article, setArticle] = useState();
   const [url, setUrl] = useState();
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const handleRegister = () => {
-    console.log(RegisterContent);
+    console.log();
   };
 
   return (
@@ -97,9 +101,21 @@ export const RegisterContent = ({ onClose }: Props) => {
         <Button className={style.btnBack} title="Voltar" onClick={onClose} />
         <Button
           className={style.btnRegister}
-          title="Cadastrar"
-          onClick={handleRegister}
+          title="Atualizar"
+          onChange={handleRegister}
+          onClick={() => setIsModalVisible(true)}
         />
+        
+        {isModalVisible ? (  
+          <>
+            <Modal
+              isOpen={isModalVisible}
+              onClose={() => setIsModalVisible(false) }
+            >
+              <UpdateSuccess onClose={() => setIsModalVisible(false)}  />
+            </Modal>
+          </>
+        ) : null}
       </div>
     </div>
   );
