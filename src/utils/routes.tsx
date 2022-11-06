@@ -6,6 +6,7 @@ import { FormStep1 } from '../pages/SignUp/FormStep1';
 import { FormStep2 } from '../pages/SignUp/FormStep2';
 import { FormStudent } from '../pages/SignUp/FormStudent';
 import NotFound from "../pages/NotFound"
+import { Student } from '../pages/Student';
 
 export const RoutesApp = () => {
   return (
@@ -18,6 +19,7 @@ export const RoutesApp = () => {
         <Route path="/cadastro/estudante" element={<FormStudent />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/professor" element={<Teacher />} />
+        <Route path="/estudante" element={<Student />} />
       </Routes>
     </Router>
   );
