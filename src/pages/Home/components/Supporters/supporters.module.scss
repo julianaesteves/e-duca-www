@@ -1,10 +1,14 @@
 @import '../../../../styles/sass/main.scss';
 .container {
-    padding: 200px 40px;
+  padding: 200px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
-    @include mobile {
-      padding: 100px 16px;
-    }
+  @include mobile {
+    padding: 100px 16px;
+  }
   .title {
     display: flex;
     font-size: $title;
@@ -18,11 +22,11 @@
   }
   .innerContainer {
     display: flex;
-    justify-content: space-evenly;
+    gap: 32px;
+ 
 
     @include mobile {
-        flex-wrap: wrap;
-        gap: 32px;
+      flex-wrap: wrap;
     }
     img {
       @include mobile {
@@ -31,19 +35,39 @@
       }
     }
   }
-  .btn {
+  .supporter {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     margin-top: 120px;
+    background-color: $yellow-500;
+    border-radius: 70px;
+    border: none;
+    font-weight: bold;
+    font-size: $text;
+    padding: 20px 0 20px 0;
+    gap: 20px;
+    width: 400px;
 
-    button {
-      background-color: $yellow-500;
-      border-radius: 50px;
-      border: none;
-      font-weight: bold;
-      height: 60px;
-      width: 340px;
-      font-size: $text;
+    .ipt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 380px;
+
+      input {
+        width: 300px;
+      }
     }
+
+    img {
+      height: 40px;
+    }
+  }
+  p {
+    font-size: 12px;
+    text-align: center;
+    color: $pink-500;
   }
 }
