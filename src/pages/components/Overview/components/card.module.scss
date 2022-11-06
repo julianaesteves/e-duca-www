@@ -5,8 +5,8 @@
   grid-template-columns: 1fr 2fr;
   padding: 0 10px;
   border-radius: 100px;
-  background-color: #8cd7f8;
-  color: #252525;
+  background-color: $blue-200;
+  color: $black;
   width: 230px;
   height: 106px;
   align-content: center;
@@ -16,17 +16,17 @@
     height: -webkit-fill-available;
 
     span {
-      font-size: 24px;
+      font-size: $bigText;
       font-weight: 700;
     }
 
     h4 {
-      font-size: 24px;
+      font-size: $bigText;
       font-weight: 700;
     }
 
     p {
-      font-size: 16px;
+      font-size: $text;
       font-weight: 400;
       margin-top: -1px;
     }

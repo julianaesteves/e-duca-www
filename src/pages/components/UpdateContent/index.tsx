@@ -24,7 +24,7 @@ export const UpdateContent = ({ onClose }: Props) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const handleRegister = () => {
+  const handleUpdateContent= () => {
     console.log();
   };
 
@@ -102,7 +102,7 @@ export const UpdateContent = ({ onClose }: Props) => {
         <Button
           className={style.btnRegister}
           title="Atualizar"
-          onChange={handleRegister}
+          onChange={handleUpdateContent}
           onClick={() => setIsModalVisible(true)}
         />
         

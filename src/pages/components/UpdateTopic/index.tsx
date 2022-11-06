@@ -1,4 +1,4 @@
-import style from './registerQuestion.module.scss';
+import style from './updateTopic.module.scss';
 import { Input } from '../../../components/Input';
 import { Button } from '../../../components/Button';
 import { useState } from 'react';
@@ -7,11 +7,11 @@ type Props = {
   onClose?: () => void;
 };
 
-export const RegisterQuestion = ({ onClose }: Props) => {
+export const UpdateTopic = ({ onClose }: Props) => {
   const [subject, setSubject] = useState();
   const [description, setDescription] = useState();
 
-  const registerQuestion = () => {
+  const updateTopic = () => {
     console.log();
   };
 
@@ -34,8 +34,8 @@ export const RegisterQuestion = ({ onClose }: Props) => {
         <Button className={style.btnBack} title="Voltar" onClick={onClose} />
         <Button
           className={style.btnRegister}
-          title="Cadastrar"
-          onClick={registerQuestion}
+          title="Atualizar"
+          onClick={updateTopic}
         />
       </div>
     </div>

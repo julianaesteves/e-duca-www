@@ -5,7 +5,7 @@ type Props = {
 };
 
 export const DeleteTopic = ({ onClose }: Props) => {
-  const handleDeleteTopic = () => {
+  const deleteTopic = () => {
     console.log();
   };
 
@@ -18,7 +18,7 @@ export const DeleteTopic = ({ onClose }: Props) => {
         <Button
           className={style.btnDelete}
           title="Sim, deletar"
-          onClick={handleDeleteTopic}
+          onClick={deleteTopic}
         />
       </div>
     </div>

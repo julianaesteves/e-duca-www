@@ -20,8 +20,8 @@ export const RegisterContent = ({ onClose }: Props) => {
   const [article, setArticle] = useState();
   const [url, setUrl] = useState();
 
-  const handleRegister = () => {
-    console.log(RegisterContent);
+  const registerContent = () => {
+    console.log();
   };
 
   return (
@@ -71,7 +71,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       ) : type === 2 ? (
         <Input
           text="Artigo:"
-          type="number"
+          type="file"
           placeholder="exemplo"
           value={article}
           onChange={(e: any) => setArticle(e.target.value)}
@@ -98,7 +98,7 @@ export const RegisterContent = ({ onClose }: Props) => {
         <Button
           className={style.btnRegister}
           title="Cadastrar"
-          onClick={handleRegister}
+          onClick={registerContent}
         />
       </div>
     </div>

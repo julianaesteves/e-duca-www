@@ -4,8 +4,8 @@ type Props = {
   text?: string;
   placeholder?: string;
   type: any;
-  value: any;
-  onChange: any;
+  value?: any;
+  onChange?: any;
   onBlur?: any;
 };
 

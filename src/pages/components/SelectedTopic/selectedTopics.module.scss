@@ -1,0 +1,96 @@
+@import '../../../styles/sass/main.scss';
+.box {
+  cursor: auto;
+  height: 707px;
+  width: 995px;
+
+  .row {
+    background-color: $white;
+    border-radius: 95px 95px 0px 0px;
+
+    .card {
+      height: 133px;
+      border-radius: 95px;
+      background-color: $pink-200;
+      border: solid 2px $pink-300;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-gap: 230px;
+      padding: 40px 60px;
+
+      h1 {
+        font-size: $subtitle;
+        font-weight: 600;
+        line-height: 0;
+      }
+
+      h6 {
+        font-size: $x_small_label;
+        font-weight: 300;
+      }
+
+      p {
+        font-size: $text;
+        font-weight: 300;
+        margin-bottom: 60px;
+      }
+
+      div {
+        display: grid;
+        align-content: space-between;
+        .btnAdd {
+          color: $white;
+          background-color: $pink-300;
+          border: solid 2px $pink-300;
+          border-radius: 30px;
+          height: 35px;
+          width: 200px;
+          font-size: $text;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .col {
+    background-color: $white;
+    height: 330px;
+    overflow-x: hidden;
+    padding: 30px 60px;
+
+    textarea {
+      background-color: $white;
+      width: 100%;
+      height: 75px;
+      font-size: $placeholder;
+      border: none;
+      text-indent: 12px;
+      resize: none;
+      border-bottom: ridge;
+    }
+
+    label {
+      font-size: $label;
+      font-weight: 700;
+      line-height: 35px;
+      text-indent: 8px;
+    }
+  }
+
+  .footer {
+    display: flex;
+    background-color: $white;
+    border-radius: 0px 0px 95px 95px;
+    height: 98px;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .btn {
+      width: 200px;
+      margin: 19px 73px;
+      font-size: 18px;
+      border: solid 2px $purple-800;
+    }
+  }
+}
