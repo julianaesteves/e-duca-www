@@ -1,5 +1,4 @@
-export const SelectAbility = [
-
+export const SelectHability = [
   {
     title: 'Habilidade 1'
   },
@@ -8,6 +7,5 @@ export const SelectAbility = [
   },
   {
     title: 'Habilidade 3'
-  },
-
-];
+  }
+]

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from '../pages/Home';
 import { Login } from '../pages/Login';
+import { Teacher } from '../pages/Teacher';
 import { FormStep1 } from '../pages/SignUp/FormStep1';
 import { FormStep2 } from '../pages/SignUp/FormStep2';
 import { FormStudent } from '../pages/SignUp/FormStudent';
@@ -16,6 +17,7 @@ export const RoutesApp = () => {
         <Route path="/cadastro/professor/etapa2" element={<FormStep2 />} />
         <Route path="/cadastro/estudante" element={<FormStudent />} />
         <Route path="/*" element={<NotFound />} />
+        <Route path="/professor" element={<Teacher />} />
       </Routes>
     </Router>
   );

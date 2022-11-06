@@ -1,14 +1,15 @@
-@import '../../../styles/sass/main.scss';
+@import '../../../../styles/sass/main.scss';
 
 .container {
-  background-color: $white;
   display: flex;
-  padding: 40px;
   flex-direction: column;
+  padding: 24px;
 
   h1 {
+    padding-left: 24px;
     font-size: $text;
-    font-weight: 300;
+    font-weight: 600;
+    opacity: 0.5;
   }
 
   .cOverviem {
@@ -22,11 +23,6 @@
       color: $black;
       width: 279px;
       cursor: pointer;
-
-      p{
-        margin-top: -33px;
-
-      }
     }
   }
 }

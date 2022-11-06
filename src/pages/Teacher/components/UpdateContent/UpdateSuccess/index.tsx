@@ -1,9 +1,9 @@
-import style from './updateSuccess.module.scss';
-import image from '../../../../assets/img/update.svg';
-import { Button } from '../../../../components/Button';
+import style from './updateSuccess.module.scss'
+import image from '../../../../assets/img/update.svg'
+import { Button } from '../../../../../components/Button'
 type Props = {
-  onClose?: () => void;
-};
+  onClose?: () => void
+}
 
 export const UpdateSuccess = ({ onClose }: Props) => {
   return (
@@ -14,5 +14,5 @@ export const UpdateSuccess = ({ onClose }: Props) => {
       </div>
       <Button className={style.btn} title="Fechar" onClick={onClose} />
     </div>
-  );
-};
+  )
+}

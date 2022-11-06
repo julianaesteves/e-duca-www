@@ -1,5 +1,5 @@
 import style from './deleteContent.module.scss';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../../components/Button';
 type Props = {
   onClose?: () => void;
 };

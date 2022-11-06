@@ -1,50 +1,54 @@
-import style from './registerContent.module.scss';
-import { Input } from '../../../components/Input';
-import { Button } from '../../../components/Button';
-import { Select } from '../../../components/Select';
-import { useState } from 'react';
-import { SelectType } from './SelectType';
-import { SelectAbility } from './SelectAbility';
+import style from '../RegisterContent/registerContent.module.scss'
+import { Input } from '../../../../components/Input'
+import { Button } from '../../../../components/Button'
+import { Select } from '../../../../components/Select'
+import { useState } from 'react'
+import { SelectType } from '../RegisterContent/SelectType'
+import { SelectHability } from '../RegisterContent/SelectHability'
+import { UpdateSuccess } from './UpdateSuccess'
+import { Modal } from '../../../../components/Modal'
 
 type Props = {
-  onClose?: () => void;
-};
+  onClose?: () => void
+}
 
-export const RegisterContent = ({ onClose }: Props) => {
-  const [ability, setAbility] = useState(0);
-  const [type, setType] = useState(0);
+export const UpdateContent = ({ onClose }: Props) => {
+  const [hability, setHability] = useState(0)
+  const [type, setType] = useState(0)
 
-  const [titulo, setTitulo] = useState();
-  const [workload, setworkload] = useState();
-  const [texto, setTexto] = useState();
-  const [article, setArticle] = useState();
-  const [url, setUrl] = useState();
+  const [title, setTitle] = useState()
+  const [workload, setworkload] = useState()
+  const [texto, setTexto] = useState()
+  const [article, setArticle] = useState()
+  const [url, setUrl] = useState()
 
-  const registerContent = () => {
-    console.log();
-  };
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
+  const handleUpdateContent = () => {
+    console.log()
+  }
 
   return (
     <div className={style.box}>
       <Input
-        text="Titulo:"
+        text="Title:"
         type="text"
         placeholder="exemplo"
-        value={titulo}
-        onChange={(e: any) => setTitulo(e.target.value)}
+        value={title}
+        onChange={(e: any) => setTitle(e.target.value)}
       />
       <div className={style.cSelect}>
         <Select
           text="Habilidade"
-          value={ability}
-          onChange={(e: any) => setAbility(e.target.value)}
+          value={hability}
+          onChange={(e: any) => setHability(e.target.value)}
         >
-          {SelectAbility.map((item, index) => {
+          {SelectHability.map((item, index) => {
             return (
               <>
                 <option key={index}>{item.title}</option>;
               </>
-            );
+            )
           })}
         </Select>
 
@@ -71,7 +75,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       ) : type === 2 ? (
         <Input
           text="Artigo:"
-          type="file"
+          type="number"
           placeholder="exemplo"
           value={article}
           onChange={(e: any) => setArticle(e.target.value)}
@@ -97,10 +101,22 @@ export const RegisterContent = ({ onClose }: Props) => {
         <Button className={style.btnBack} title="Voltar" onClick={onClose} />
         <Button
           className={style.btnRegister}
-          title="Cadastrar"
-          onClick={registerContent}
+          title="Atualizar"
+          onChange={handleUpdateContent}
+          onClick={() => setIsModalVisible(true)}
         />
+
+        {isModalVisible ? (
+          <>
+            <Modal
+              isOpen={isModalVisible}
+              onClose={() => setIsModalVisible(false)}
+            >
+              <UpdateSuccess onClose={() => setIsModalVisible(false)} />
+            </Modal>
+          </>
+        ) : null}
       </div>
     </div>
-  );
-};
+  )
+}
