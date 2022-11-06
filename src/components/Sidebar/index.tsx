@@ -1,8 +1,8 @@
 import style from './sidebar.module.scss';
-import Logo from '../../../assets/img/logo.png';
+import Logo from '../../assets/img/logo.png';
 import { Perfil } from './Perfil';
 import Menu from './Menu';
-import perfil from '../../../assets/img/perfilTeacher.svg';
+import perfil from '../../assets/img/perfilTeacher.svg';
 
 export default function Sidebar() {
   return (

@@ -1,8 +1,8 @@
 import { Greeting } from '../../components/Greeting'
 import img from '../../assets/img/greetingTeacher.svg'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../../components/Sidebar'
 import style from './teacher.module.scss'
-import { ContentCard } from '../components/ContentCard'
+import { ContentCard } from '../../components/ContentCard'
 import Overview from './components/Overview'
 
 export const Teacher = () => {

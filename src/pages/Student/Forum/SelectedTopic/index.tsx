@@ -1,5 +1,5 @@
 import style from './selectedTopics.module.scss';
-import { Button } from '../../../components/Button';
+import { Button } from '../../../../components/Button';
 import { useState } from 'react';
 type Props = {
   onClose?: () => void;
