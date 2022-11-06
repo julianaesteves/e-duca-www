@@ -25,7 +25,7 @@ export default function Pillar() {
 
         <section className={style.container}>
             <div className={style.contentGrid}>
-            <div className={style.contentGrid__image}>
+                <div className={style.contentGrid__image}>
                     <img src={imgContent} alt="Contents" />
                     <h3>Conteúdos verificados</h3>
                 </div>
@@ -40,7 +40,7 @@ export default function Pillar() {
                 </div>
             </div>
 
-            
+
             <div className={style.contentGrid__image}>
                 <img src={imgSymb} alt="Symbiosis" />
                 <h3>Simbiose</h3>
