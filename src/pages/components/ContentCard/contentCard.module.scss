@@ -1,12 +1,17 @@
 @import '../../../styles/sass/main.scss';
 
-.container {
+.card {
+  gap: 16px;
+  padding: 9px;
+  box-sizing: border-box;
   display: flex;
-  width: 685px;
+  align-items: center;
+  width: 800px;
+  margin-left: 24px;
   height: 93px;
   border-radius: 20px;
-  background-color: $white;
   border: #0019fd 2px solid;
+  border-left: #0019fd 12px solid;
 
   &:hover {
     background-color: #d7e9ff;
@@ -19,45 +24,33 @@
     border-radius: 50%;
     width: 63px;
     height: 63px;
-    margin-top: 15px;
   }
 
-  .cylinder {
-    width: 15px;
-    height: 93px;
-    border-radius: 46px;
-    background-color: #0019fd;
-    margin-right: 20px;
-    margin-left: -1px;
-  }
-
-  .titleCard {
-    flex-direction: column;
-    margin-left: 24px;
-
-    span {
-      display: flex;
-      font-size: $bigText;
-      margin-top: 10px;
-      font-weight: bolder;
-    }
-
-    p {
+  .content {
+    .highlight {
       font-size: $text;
       color: $blue-300;
-      margin-left: 8px;
       font-weight: bold;
     }
-  }
-  .date {
     display: flex;
     flex-direction: column;
-    margin-left: 160px;
-    p {
-      font-size: 10px;
-      color: #b1b1b1;
-      font-weight: bold;
-      margin-top: 16px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 650px;
+
+      h2 {
+        font-size: $bigText;
+        font-weight: bolder;
+        margin: 0;
+      }
+      span {
+        font-size: 10px;
+        color: #b1b1b1;
+        font-weight: bold;
+      }
     }
   }
 }

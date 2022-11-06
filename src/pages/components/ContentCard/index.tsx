@@ -1,25 +1,23 @@
-import style from './contentCard.module.scss';
+import style from './contentCard.module.scss'
 
-type  Props={
-title:string;
-ability:string;
-date:string;
+type Props = {
+  title: string
+  hability: string
+  date: string
 }
 
-export const ContentCard=({title,ability,date}:Props)=> {
+export const ContentCard = ({ title, hability, date }: Props) => {
   return (
-    <div className={style.container}>
-      <div className={style.cylinder}></div>
+    <div className={style.card}>
       <div className={style.circle}></div>
 
-      <div className={style.titleCard}>
-        <span>{title}</span>
-        <p>{ability}</p>
-      </div>
-
-      <div className={style.date}>
-        <p>Postada em {date}</p>
+      <div className={style.content}>
+        <div className={style.title}>
+          <h2>{title}</h2>
+          <span>Postada em {date}</span>
+        </div>
+        <span className={style.highlight}>{hability}</span>
       </div>
     </div>
-  );
+  )
 }
