@@ -20,8 +20,8 @@ export const RegisterContent = ({ onClose }: Props) => {
   const [article, setArticle] = useState();
   const [url, setUrl] = useState();
 
-  const handleRegister = () => {
-    console.log(RegisterContent);
+  const registerContent = () => {
+    console.log();
   };
 
   return (
@@ -98,7 +98,7 @@ export const RegisterContent = ({ onClose }: Props) => {
         <Button
           className={style.btnRegister}
           title="Cadastrar"
-          onClick={handleRegister}
+          onClick={registerContent}
         />
       </div>
     </div>
