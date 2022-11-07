@@ -1,50 +1,73 @@
 import style from './registerContent.module.scss'
-import { Input } from '../../../../components/Input'
-import { Button } from '../../../../components/Button'
-import { Select } from '../../../../components/Select'
-import { useState } from 'react'
+import { Input } from '../../../components/Input'
+import { Button } from '../../../components/Button'
+import { Select } from '../../../components/Select'
+import { useState, useEffect } from 'react'
 import { SelectType } from './SelectType'
-import { SelectHability } from './SelectHability'
-import axios from 'axios'
+import PostService from '../../../services/post.service'
 
 type Props = {
   onClose?: () => void
 }
 
 export const RegisterContent = ({ onClose }: Props) => {
+  const [habilities, setHabilities] = useState<any[]>([])
   const [hability, setHability] = useState(0)
   const [type, setType] = useState(0)
   const [title, setTitle] = useState()
   const [workload, setWorkload] = useState()
   const [texto, setTexto] = useState()
-  const [article, setArticle] = useState()
   const [url, setUrl] = useState()
 
   const data = {
     titulo: title,
     tempoEstimado: workload,
+    habilidade: hability,
     texto: texto,
-    artigo: article,
-    url: url,
+    url: url
     // urlVideo: urlVideo
   }
 
+  useEffect(() => {
+    PostService.getHability().then(
+      (response: any) => {
+        setHabilities(response.data.codigo)
+      },
+      (error: any) => {
+        console.log('Caquita no get codigo', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('Deu problema no codigo')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
+  }, [])
+
   const registerContent = () => {
-    axios.post("http://localhost:8080/api/conteudos", data)
-    .then(function (response) {
-      console.log(response.status);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  console.log(data);
-    
+    PostService.registerContent(data).then(
+      (response: any) => {
+        console.log(response.data)
+      },
+      (error: any) => {
+        console.log('Private page', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('Deu problema')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
   }
 
   return (
     <div className={style.box}>
       <Input
-        text="Title:"
+        text="Título:"
         type="text"
         placeholder="exemplo"
         value={title}
@@ -52,19 +75,31 @@ export const RegisterContent = ({ onClose }: Props) => {
       />
       <div className={style.cSelect}>
         <Select
+          placeholder="Selecione uma habilidade"
           text="Habilidade"
-          value={hability}
+          value={habilities}
           onChange={(e: any) => setHability(e.target.value)}
         >
-          {SelectHability.map((item, index) => {
+          {habilities?.map((habilidade) => {
             return (
               <>
-                <option key={index}>{item.title}</option>;
+                <option key={habilidade.idHabilidade}>
+                  {habilidade.codigo}
+                </option>
+                ;
               </>
             )
           })}
         </Select>
-
+        <div>
+          {habilities?.map((habilidade) => {
+            return (
+              <>
+                <span key={habilidade.idHabilidade}>{habilidade.codigo}</span>;
+              </>
+            )
+          })}
+        </div>
         <Select
           text="Tipo"
           value={type}
@@ -86,16 +121,6 @@ export const RegisterContent = ({ onClose }: Props) => {
           onChange={(e: any) => setUrl(e.target.value)}
         />
       ) : type === 2 ? (
-        <>
-        <label>Artigo:</label>
-        <input
-          type="file"
-          placeholder="exemplo"
-          value={article}
-          onChange={(e: any) => setArticle(e.target.value)}
-        />
-        </>
-      ) : type === 3 ? (
         <Input
           text="Texto:"
           type="text"

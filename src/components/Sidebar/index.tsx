@@ -8,9 +8,13 @@ import { MenuItemsStudent } from './Menu/MenuItemsStudent'
 
 type Props = {
   isTeacher?: boolean
+  name: string
+  lastName: string
+  carrerTime?: string
+  occupation?: string
 }
 
-export const Sidebar = ({ isTeacher }: Props) => {
+export const Sidebar = ({ isTeacher, name, occupation, carrerTime, lastName }: Props) => {
   return (
     <>
       <div className={style.container}>
@@ -18,12 +22,12 @@ export const Sidebar = ({ isTeacher }: Props) => {
         {isTeacher ? (
           <Perfil
             photo={perfilTeacher}
-            name="Claudio Roberto"
+            name={`${name} ${lastName}`}
             userType="Professor(a)"
             labOne="Tempo de carreira:"
-            carrerTime="10 anos"
+            carrerTime={`${carrerTime} anos`}
             labtwo="Área de atuação:"
-            occupation="Matemática"
+            occupation={occupation}
           />
         ) : (
           <Perfil

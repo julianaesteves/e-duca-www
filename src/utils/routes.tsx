@@ -8,7 +8,8 @@ import { FormStudent } from '../pages/SignUp/FormStudent'
 import NotFound from '../pages/NotFound'
 import { Student } from '../pages/Student'
 
-export const RoutesApp = () => {
+  export const RoutesApp = () => {
+  
   return (
     <Router>
       <Routes>

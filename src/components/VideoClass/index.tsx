@@ -13,7 +13,7 @@ export const VideoClass = ({ title, name, category }: Props) => {
   return (
     <>
       <div className={style.container}>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <div className={style.innerContainer}>
           <Video video="https://www.youtube.com/embed/ddZHkCUcYRM"></Video>
           <div className={style.containerTitle}>
