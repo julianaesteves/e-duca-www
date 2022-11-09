@@ -9,9 +9,7 @@ export const Reading = ({ title, text }: Props) => {
   return (
     <aside className={style.container}>
       <h1>{title}</h1>
-      <p>
-       {text}
-      </p>
+      <p>{text}</p>
     </aside>
   )
 }
