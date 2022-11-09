@@ -7,7 +7,7 @@ type Props = {
   onClose?: () => void;
 };
 
-export const RegisterQuestion = ({ onClose }: Props) => {
+export const RegisterTopic = ({ onClose }: Props) => {
   const [subject, setSubject] = useState();
   const [description, setDescription] = useState();
 

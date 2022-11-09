@@ -9,9 +9,28 @@
   justify-items: center;
   align-items: center;
 
-
   .logo {
     height: auto;
     width: 170px;
+  }
+  .navigation {
+    height: 100px;
+    width: 100%;
+    color: $white;
+    font-size: $small_label;
+    margin-left: 105px;
+
+    li {
+      padding: 8px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $white;
+        transition: all 0.2s ease-out;
+        border-radius: 30px;
+        color: $black;
+        font-weight: 600;
+      }
+    }
   }
 }
