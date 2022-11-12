@@ -4,7 +4,7 @@ import { Perfil } from './Perfil'
 import perfilTeacher from '../../assets/img/perfilTeacher.svg'
 import perfilStudent from '../../assets/img/perfilStudent.svg'
 import { MenuItemsTeacher } from './MenuItemsTeacher'
-import { MenuItemsStudent } from './MenuItemsStudent'
+import { MenuItemsStudent } from './Menu/MenuItemsStudent'
 
 type Props = {
   isTeacher?: boolean

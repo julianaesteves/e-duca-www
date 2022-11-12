@@ -1,5 +1,9 @@
 export const SelectHability = [
   {
+    id: 0,
+    title: 'Selecione uma habilidade'
+  },
+  {
     title: 'Habilidade 1'
   },
   {

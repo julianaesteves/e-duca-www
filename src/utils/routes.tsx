@@ -1,12 +1,12 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home } from '../pages/Home';
-import { Login } from '../pages/Login';
-import { Teacher } from '../pages/Teacher';
-import { FormStep1 } from '../pages/SignUp/FormStep1';
-import { FormStep2 } from '../pages/SignUp/FormStep2';
-import { FormStudent } from '../pages/SignUp/FormStudent';
-import NotFound from "../pages/NotFound"
-import { Student } from '../pages/Student';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { Home } from '../pages/Home'
+import { Login } from '../pages/Login'
+import { Teacher } from '../pages/Teacher'
+import { FormStep1 } from '../pages/SignUp/FormStep1'
+import { FormStep2 } from '../pages/SignUp/FormStep2'
+import { FormStudent } from '../pages/SignUp/FormStudent'
+import NotFound from '../pages/NotFound'
+import { Student } from '../pages/Student'
 
 export const RoutesApp = () => {
   return (
@@ -22,5 +22,5 @@ export const RoutesApp = () => {
         <Route path="/estudante" element={<Student />} />
       </Routes>
     </Router>
-  );
-};
+  )
+}
