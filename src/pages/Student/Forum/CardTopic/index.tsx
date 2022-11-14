@@ -31,7 +31,7 @@ export const CardTopic = ({
             }`}</span>
           </div>
           <div className={style.date}>
-            <p>Postada em {date}</p>
+            <p>Postada em {date} por Lucas Gestal</p>
             {children}
           </div>
         </div>

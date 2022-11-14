@@ -1,4 +1,4 @@
-@import '../../../styles/sass/main.scss';
+@import '../../../../styles/sass/main.scss';
 .box {
   cursor: auto;
   height: 707px;
@@ -12,7 +12,7 @@
       height: 133px;
       border-radius: 95px;
       background-color: $pink-200;
-      border: solid 2px $pink-300;
+      border: solid 2px $pink-550;
       display: grid;
       grid-template-columns: 2fr 1fr;
       grid-gap: 230px;
@@ -40,8 +40,8 @@
         align-content: space-between;
         .btnAdd {
           color: $white;
-          background-color: $pink-300;
-          border: solid 2px $pink-300;
+          background-color: $pink-550;
+          border: solid 2px $pink-550;
           border-radius: 30px;
           height: 35px;
           width: 200px;

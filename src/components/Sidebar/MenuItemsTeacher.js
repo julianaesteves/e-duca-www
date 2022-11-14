@@ -1,4 +1,4 @@
-export const MenuItems = [
+export const MenuItemsTeacher = [
 
   {
     title: 'Meus conteúdos',

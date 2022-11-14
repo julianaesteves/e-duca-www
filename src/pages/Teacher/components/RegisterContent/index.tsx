@@ -86,13 +86,15 @@ export const RegisterContent = ({ onClose }: Props) => {
           onChange={(e: any) => setUrl(e.target.value)}
         />
       ) : type === 2 ? (
-        <Input
-          text="Artigo:"
+        <>
+        <label>Artigo:</label>
+        <input
           type="file"
           placeholder="exemplo"
           value={article}
           onChange={(e: any) => setArticle(e.target.value)}
         />
+        </>
       ) : type === 3 ? (
         <Input
           text="Texto:"

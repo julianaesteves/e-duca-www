@@ -1,25 +1,18 @@
-@import '../../../styles/sass/main.scss';
+@import '../../../../styles/sass/main.scss';
 
 .container {
   display: flex;
 
-  .cylinder {
-    width: 8px;
-    height: auto;
-    border-radius: 46px;
-    background-color: $pink-600;
-    margin-right: -8px;
-    z-index: 1;
-  }
   .card {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    width: 685px;
-    height: 130px;
+    height: 110px;
+    width: 830px;
     border-radius: 20px;
     background-color: $white;
     border: groove 2px;
     padding: 10px 24px;
+    border-left: #ac0391 12px solid;
 
     .info {
       display: grid;
@@ -46,6 +39,8 @@
     .date {
       display: grid;
       align-content: space-between;
+      justify-items: end;
+
       p {
         font-size: $x_small_label;
         font-weight: 300;

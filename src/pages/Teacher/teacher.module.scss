@@ -1,8 +1,10 @@
+@import '../../styles/sass/main.scss';
+
 .container {
   display: flex;
-  
+  background-color: $white;
+
   .innerContainer {
-   
     max-height: 100vh;
     margin: auto;
     overflow: scroll;
