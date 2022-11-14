@@ -1,20 +1,21 @@
+import { VideoClassTitle } from "./VideoClassTitle";
+import Sidebar from "../Sidebar";
+import { Video } from "./Video"; 
 import style from './videoClass.module.scss'
 
-type Props = {
-  video: string
-}
 
-export const VideoClass = ({ video }: Props) => {
-  return (
-    <div className={style.container}>
-      <iframe
-        src={video}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; 
-gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-    </div>
-  )
+export default function VideoClass(){
+    return(
+        <>
+        
+        <div className={style.align}>
+        <Sidebar/>
+        <div className={style.alignVideo}>
+        <Video video="https://www.youtube.com/embed/JhkRAUdC-dY"></Video>
+        <VideoClassTitle/>
+        </div>
+        </div>
+        
+        </>
+    );
 }

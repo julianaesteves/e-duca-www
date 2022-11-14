@@ -1,10 +1,9 @@
 @import '../../styles/sass/main.scss';
 
-iframe {
-    width: 973px;
-    height: 557px;
-    border-radius: 40px;
-    border: 5px solid #550084;
-
-
+.align{
+    display: flex;
+}
+.alignVideo{
+    margin-left: 56px;
+    margin-top: 108px;
 }
