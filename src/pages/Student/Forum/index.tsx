@@ -1,20 +1,20 @@
+import style from './forum.module.scss'
 import { useState } from 'react'
 import { Button } from '../../../components/Button'
 import { Modal } from '../../../components/Modal'
 import { Sidebar } from '../../../components/Sidebar'
 import { CardTopic } from './CardTopic'
 import { SelectedTopic } from './SelectedTopic'
-import style from './forum.module.scss'
 import { Greeting } from '../../../components/Greeting'
-import img from '../../assets/img/greetingTeacher.svg'
-import iconEdit from '../../assets/img/edit.svg'
-import iconDelet from '../../assets/img/delet.svg'
-import iconVisible from '../../assets/img/visible.svg'
-import iconAdd from '../../assets/img/addSmall.svg'
 import { RegisterTopic } from './RegisterTopic'
 import { UpdateTopic } from './UpdateTopic'
 import { DeleteTopic } from './DeleteTopic'
 import { Card } from '../../Teacher/components/Overview/Card'
+import img from '../../../assets/img/greetingTeacher.svg'
+import iconEdit from '../../../assets/img/edit.svg'
+import iconDelet from '../../../assets/img/delet.svg'
+import iconVisible from '../../../assets/img/visible.svg'
+import iconAdd from '../../../assets/img/addSmall.svg'
 
 export const Forum = () => {
   const [isAnswerModalVisible, setAnswerIsModalVisible] = useState(false)
@@ -35,6 +35,7 @@ export const Forum = () => {
           }
         />
         <div className={style.cOverviem}>
+          
           <Card
             className={style.cardVisible}
             img={iconVisible}
