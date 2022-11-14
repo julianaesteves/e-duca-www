@@ -52,7 +52,7 @@ export const Forum = () => {
           <CardTopic
             title="Título da pergunta"
             description="Início do corpo da pergunta...."
-            date="Postada em 01/01/22 por Lucas Gestal"
+            date="01/01/22"
           >
             <Button
               className={style.btn}
@@ -63,7 +63,7 @@ export const Forum = () => {
           <CardTopic
             title="Título da pergunta"
             description="Início do corpo da pergunta...."
-            date="Postada em 01/01/22 por Lucas Gestal"
+            date="01/01/22"
           >
             <Button
               className={style.btn}
@@ -74,7 +74,7 @@ export const Forum = () => {
           <CardTopic
             title="Título da pergunta"
             description="Início do corpo da pergunta...."
-            date="Postada em 01/01/22 por Lucas Gestal"
+            date="01/01/22"
           >
             <Button
               className={style.btn}
@@ -85,7 +85,7 @@ export const Forum = () => {
           <CardTopic
             title="Título da pergunta"
             description="Início do corpo da pergunta...."
-            date="Postada em 01/01/22 por Lucas Gestal"
+            date="01/01/22"
           >
             <div className={style.col}>
               <img src={iconEdit} onClick={() => setIsEditModalVisible(true)} />
