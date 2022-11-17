@@ -5,17 +5,12 @@ import perfilTeacher from '../../assets/img/perfilTeacher.svg'
 import perfilStudent from '../../assets/img/perfilStudent.svg'
 import { MenuItemsTeacher } from './MenuItemsTeacher'
 import { MenuItemsStudent } from './MenuItemsStudent'
-import { useState } from 'react'
-import { Forum } from '../../pages/Student/Forum'
-import { Student } from '../../pages/Student'
 
 type Props = {
   isTeacher?: boolean
 }
 
 export const Sidebar = ({ isTeacher }: Props) => {
-  const [isRenderPage, setIsRenderPage] = useState(0)
-
   return (
     <>
       <div className={style.container}>
@@ -53,22 +48,10 @@ export const Sidebar = ({ isTeacher }: Props) => {
             </>
           ) : (
             <>
-              {MenuItemsStudent.map((item) => {
+              {MenuItemsStudent.map((item, index) => {
                 return (
                   <>
-                    <button
-                      onChange={(e: any) =>
-                        setIsRenderPage(Number(e.target.value))
-                      }
-                      value={isRenderPage}
-                    >
-                      {item.title}
-                    </button>
-                    {isRenderPage === 1 ? (
-                      <Student />
-                    ) : isRenderPage === 2 ? (
-                      <Forum />
-                    ) : null}
+                    <button key={index}>{item.title}</button>
                   </>
                 )
               })}
