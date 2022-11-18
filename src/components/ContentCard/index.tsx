@@ -4,12 +4,16 @@ type Props = {
   title: string
   hability: string
   date: string
+  img?: string;
+
 }
 
-export const ContentCard = ({ title, hability, date }: Props) => {
+export const ContentCard = ({ title, hability, date, img }: Props) => {
   return (
     <div className={style.card}>
-      <div className={style.circle}></div>
+      <div className={style.circle}>
+      <img src={img} />
+      </div>
 
       <div className={style.content}>
         <div className={style.title}>
