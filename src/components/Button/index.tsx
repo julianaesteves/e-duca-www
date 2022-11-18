@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import style from './button.module.scss';
 
 type Props = {
-  onClick?: () => void;
+  onClick?: any;
   className: any;
   path?: any;
   title: string;

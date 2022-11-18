@@ -1,4 +1,4 @@
-@import '../../../../../styles/sass/main.scss';
+@import '../../../../styles/sass/main.scss';
 
 .card {
   display: flex;
@@ -14,7 +14,6 @@
   .text {
     display: flex;
     flex-direction: column;
-
     .highlight {
       font-size: $bigText;
       font-weight: 700;

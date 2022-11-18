@@ -6,15 +6,11 @@ export const SelectType = [
   },
   {
     id: 1,
-    title: 'Video-aula'
+    title: 'Vídeo-aula'
     
   },
   {
     id: 2,
-    title: 'Artigo'
-  },
-  {
-    id: 3,
     title: 'Texto'
   },
 

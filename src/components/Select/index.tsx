@@ -5,6 +5,7 @@ type Props = {
   value: any;
   onChange: any;
   children?: ReactNode;
+  placeholder?: string
 };
 
 export const Select = ({ text, value, onChange, children }: Props) => {
