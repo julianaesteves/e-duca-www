@@ -31,10 +31,10 @@ export const UpdateContent = ({ onClose }: Props) => {
         console.log(response.data)
       },
       (error: any) => {
-        console.log('Private page', error.response)
+        console.log('UPDATE/PROFESSOR/updateContent: Erro', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('Deu problema')
+          console.log('UPDATE/PROFESSOR/updateContent: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();

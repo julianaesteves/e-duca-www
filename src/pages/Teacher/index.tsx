@@ -1,44 +1,23 @@
-import { Greeting } from '../../components/Greeting'
-import img from '../../assets/img/greetingTeacher.svg'
 import { Sidebar } from '../../components/Sidebar'
-import style from './teacher.module.scss'
-import { ContentCard } from '../../components/ContentCard'
-import Overview from './Overview'
+// import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 // import AuthService from '../../services/auth.service'
 import PostService from '../../services/post.service'
-// import { useNavigate } from 'react-router-dom'
+import style from './teacher.module.scss'
+import { Home } from './Home'
+import { Content } from './Content'
 
 export const Teacher = () => {
-  const [teacherContent, setTeacherContent] = useState<any[]>([])
+  const [chosenComponent, setChosenComponent] = useState(<Home />)
+  const [chosenItem, setChosenItem] = useState()
+  // const navigate = useNavigate()
+
   const [teacher, setTeacher] = useState({
     name: '',
     lastName: '',
     carrerTime: '',
     occupation: ''
   })
-
-  // const navigate = useNavigate();
-
-  // TODO: Jogar esse useEffect para a página de todos os conteúdos
-  // const [content, setContent] = useState<any[]>([])
-  // useEffect(() => {
-  //   PostService.getAllContent().then(
-  //     (response: any) => {
-  //       setContent(response.data)
-  //     },
-  //     (error: any) => {
-  //       console.log('Private page', error.response)
-  //       // Invalid token
-  //       if (error.response && error.response.status === 403) {
-  //         console.log('Deu problema')
-  //         // AuthService.logout();
-  //         // navigate("/login");
-  //         // window.location.reload();
-  //       }
-  //     }
-  //   )
-  // }
 
   useEffect(() => {
     PostService.getTeacher().then(
@@ -51,26 +30,10 @@ export const Teacher = () => {
         })
       },
       (error: any) => {
-        console.log('Caquita no get nome', error.response)
+        console.log('PROFESSOR/getTeacher: Erro ', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('Deu problema no nome')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
-        }
-      }
-    )
-
-    PostService.getTeacherContent().then(
-      (response: any) => {
-        setTeacherContent(response.data.content)
-      },
-      (error: any) => {
-        console.log('Private page', error.response)
-        // Invalid token
-        if (error.response && error.response.status === 403) {
-          console.log('Deu problema no conteudo')
+          console.log('PROFESSOR/getTeacher: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();
@@ -78,6 +41,25 @@ export const Teacher = () => {
       }
     )
   }, [])
+
+  const handleChosenItem = (chosen: any) => {
+    // eslint-disable-next-line @typescript-eslint/no-shadow
+    const chosenItem = chosen.target.innerText
+    setChosenItem(chosenItem)
+    switch (chosenItem) {
+      case 'Meus conteúdos':
+        setChosenComponent(<Home />)
+        break
+      case 'Ver todos': // TODO: criar pagina de todos os conteúdos
+        setChosenComponent(<Content />)
+        break
+      // case 'Avaliações': // TODO: redirecionar para gráfico do power BI
+      //   setChosenComponent(<Configuracoes />)
+      //   break
+      default:
+        setChosenComponent(<Home/>)
+    }
+  }
 
   return (
     <div className={style.container}>
@@ -87,29 +69,10 @@ export const Teacher = () => {
         lastName={teacher.lastName}
         occupation={teacher.occupation}
         carrerTime={teacher.carrerTime}
+        handleChosenItem={handleChosenItem}
+        selectedItem={chosenItem}
       />
-      <div className={style.innerContainer}>
-        <Greeting
-          name={teacher.name}
-          img={img}
-          text={'Pronto para começar uma nova aula?'}
-        />
-        <Overview conteudos={teacherContent.length} avaliacoes={0} />
-        <div className={style.text}>
-          <h2>Meus conteúdos</h2>
-          <span>Ver todos</span>
-        </div>
-        <div className={style.cards}>
-          {teacherContent?.map((post: any) => (
-            <ContentCard
-              key={post.idConteudo}
-              title={post.titulo}
-              hability={post.habilidade.codigo}
-              date={post.dataCriacao}
-            />
-          ))}
-        </div>
-      </div>
+      {chosenComponent}
     </div>
   )
 }

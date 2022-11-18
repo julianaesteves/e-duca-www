@@ -2,7 +2,6 @@ import style from './forum.module.scss'
 import { useEffect, useState } from 'react'
 import { Button } from '../../../components/Button'
 import { Modal } from '../../../components/Modal'
-import { Sidebar } from '../../../components/Sidebar'
 import { CardTopic } from './CardTopic'
 import { SelectedTopic } from './SelectedTopic'
 import { Greeting } from '../../../components/Greeting'
@@ -37,10 +36,10 @@ export const Forum = () => {
         })
       },
       (error: any) => {
-        console.log('Caquita no get nome', error.response)
+        console.log('FORUM/ESTUDANTE/getStudent: Erro', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('Deu problema no nome')
+          console.log('FORUM/ESTUDANTE/getStudent: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();
@@ -51,11 +50,9 @@ export const Forum = () => {
 
   return (
     <div className={style.container}>
-      <Sidebar name={student.name} lastName={student.lastName} />
-
       <div className={style.innerContainer}>
         <Greeting
-          name={'Débora'}
+          name={student.name}
           img={img}
           text={
             'Com dúvidas? Utilize o fórum para se comunicar com outros estudantes'

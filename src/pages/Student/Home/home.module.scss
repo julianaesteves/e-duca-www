@@ -1,0 +1,36 @@
+@import '../../../styles/sass/main.scss';
+
+.container {
+  display: flex;
+  background-color: $white;
+
+  .innerContainer {
+    max-height: 100vh;
+    margin: auto;
+    overflow: scroll;
+
+    &::-webkit-scrollbar {
+      width: 0px;
+      background: transparent;
+      display: none;
+    }
+  }
+
+  .text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px 0 24px;
+
+    span {
+      color: darkblue;
+    }
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 50px;
+  }
+}

@@ -12,9 +12,19 @@ type Props = {
   lastName: string
   carrerTime?: string
   occupation?: string
+  handleChosenItem: any
+  selectedItem: any
 }
 
-export const Sidebar = ({ isTeacher, name, occupation, carrerTime, lastName }: Props) => {
+export const Sidebar = ({
+  isTeacher,
+  name,
+  occupation,
+  carrerTime,
+  lastName,
+  handleChosenItem
+}: // selectedItem
+Props) => {
   return (
     <>
       <div className={style.container}>
@@ -32,7 +42,7 @@ export const Sidebar = ({ isTeacher, name, occupation, carrerTime, lastName }: P
         ) : (
           <Perfil
             photo={perfilStudent}
-            name="Débora Souza"
+            name={`${name} ${lastName}`}
             userType="Aluno(a)"
             labOne="Nivel"
             nivel={1}
@@ -42,20 +52,24 @@ export const Sidebar = ({ isTeacher, name, occupation, carrerTime, lastName }: P
           {isTeacher ? (
             <>
               <h4>Conteúdos</h4>
-              {MenuItemsTeacher.map((item, index) => {
+              {MenuItemsTeacher.map((item) => {
                 return (
                   <>
-                    <button key={index}>{item.title}</button>
+                    <button onClick={(e) => handleChosenItem(e)} key={item.id}>
+                      {item.title}
+                    </button>
                   </>
                 )
               })}
             </>
           ) : (
             <>
-              {MenuItemsStudent.map((item, index) => {
+              {MenuItemsStudent.map((item) => {
                 return (
                   <>
-                    <button key={index}>{item.title}</button>
+                    <button onClick={(e) => handleChosenItem(e)} key={item.id}>
+                      {item.title}
+                    </button>
                   </>
                 )
               })}
