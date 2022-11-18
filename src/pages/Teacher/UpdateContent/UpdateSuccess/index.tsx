@@ -1,6 +1,6 @@
 import style from './updateSuccess.module.scss'
-import image from '../../../../assets/img/update.svg'
-import { Button } from '../../../../../components/Button'
+import image from '../../../assets/img/update.svg'
+import { Button } from '../../../../components/Button'
 type Props = {
   onClose?: () => void
 }

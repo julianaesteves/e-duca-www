@@ -1,5 +1,5 @@
 import style from './forum.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '../../../components/Button'
 import { Modal } from '../../../components/Modal'
 import { Sidebar } from '../../../components/Sidebar'
@@ -9,12 +9,13 @@ import { Greeting } from '../../../components/Greeting'
 import { RegisterTopic } from './RegisterTopic'
 import { UpdateTopic } from './UpdateTopic'
 import { DeleteTopic } from './DeleteTopic'
-import { Card } from '../../Teacher/components/Overview/Card'
+import { Card } from '../../Teacher/Overview/Card'
 import img from '../../../assets/img/greetingTeacher.svg'
 import iconEdit from '../../../assets/img/edit.svg'
 import iconDelet from '../../../assets/img/delet.svg'
 import iconVisible from '../../../assets/img/visible.svg'
 import iconAdd from '../../../assets/img/addSmall.svg'
+import PostService from '../../../services/post.service'
 
 export const Forum = () => {
   const [isAnswerModalVisible, setAnswerIsModalVisible] = useState(false)
@@ -22,9 +23,35 @@ export const Forum = () => {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 
+  const [student, setStudent] = useState({
+    name: '',
+    lastName: ''
+  })
+
+  useEffect(() => {
+    PostService.getStudent().then(
+      (response: any) => {
+        setStudent({
+          name: response.data.nome,
+          lastName: response.data.sobrenome
+        })
+      },
+      (error: any) => {
+        console.log('Caquita no get nome', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('Deu problema no nome')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
+  }, [])
+
   return (
     <div className={style.container}>
-      <Sidebar />
+      <Sidebar name={student.name} lastName={student.lastName} />
 
       <div className={style.innerContainer}>
         <Greeting
@@ -35,7 +62,6 @@ export const Forum = () => {
           }
         />
         <div className={style.cOverviem}>
-          
           <Card
             className={style.cardVisible}
             img={iconVisible}

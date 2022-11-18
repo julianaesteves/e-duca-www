@@ -1,12 +1,12 @@
 import style from './student.module.scss'
-import { Sidebar } from '../../components/Sidebar'
+// import { Sidebar } from '../../components/Sidebar'
 import { ContentCard } from '../../components/ContentCard'
 import { SearchBar } from '../../components/SearchBar'
 
 export const Student = () => {
   return (
     <div className={style.container}>
-      <Sidebar />
+      // <Sidebar />
       <div className={style.innerContainer}>
         <SearchBar placeholder="O que você deseja estudar hoje?" />
         <div className={style.cards}>

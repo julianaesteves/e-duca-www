@@ -1,18 +1,19 @@
 import style from '../RegisterContent/registerContent.module.scss'
-import { Input } from '../../../../components/Input'
-import { Button } from '../../../../components/Button'
-import { Select } from '../../../../components/Select'
+import { Input } from '../../../components/Input'
+import { Button } from '../../../components/Button'
+import { Select } from '../../../components/Select'
 import { useState } from 'react'
 import { SelectType } from '../RegisterContent/SelectType'
-import { SelectHability } from '../RegisterContent/SelectHability'
 import { UpdateSuccess } from './UpdateSuccess'
-import { Modal } from '../../../../components/Modal'
+import { Modal } from '../../../components/Modal'
+import PostService from '../../../services/post.service'
 
 type Props = {
   onClose?: () => void
 }
 
 export const UpdateContent = ({ onClose }: Props) => {
+  const [habilities, setHabilities] = useState<any[]>([])
   const [hability, setHability] = useState(0)
   const [type, setType] = useState(0)
 
@@ -24,8 +25,22 @@ export const UpdateContent = ({ onClose }: Props) => {
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const handleUpdateContent = () => {
-    console.log()
+  const handleUpdateContent = (id: number) => {
+    PostService.updateContent(id).then(
+      (response: any) => {
+        console.log(response.data)
+      },
+      (error: any) => {
+        console.log('Private page', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('Deu problema')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
   }
 
   return (
@@ -43,15 +58,17 @@ export const UpdateContent = ({ onClose }: Props) => {
           value={hability}
           onChange={(e: any) => setHability(e.target.value)}
         >
-          {SelectHability.map((item, index) => {
+          {habilities?.map((habilidade) => {
             return (
               <>
-                <option key={index}>{item.title}</option>;
+                <option key={habilidade.idHabilidade}>
+                  {habilidade.codigo}
+                </option>
+                ;
               </>
             )
           })}
         </Select>
-
         <Select
           text="Tipo"
           value={type}

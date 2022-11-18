@@ -1,13 +1,13 @@
-import style from './deleteContent.module.scss';
-import { Button } from '../../../../components/Button';
+import style from './deleteContent.module.scss'
+import { Button } from '../../../components/Button'
 type Props = {
-  onClose?: () => void;
-};
+  onClose?: () => void
+}
 
 export const DeleteContent = ({ onClose }: Props) => {
   const deleteContent = () => {
-    console.log();
-  };
+    console.log()
+  }
 
   return (
     <div className={style.box}>
@@ -21,5 +21,5 @@ export const DeleteContent = ({ onClose }: Props) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
