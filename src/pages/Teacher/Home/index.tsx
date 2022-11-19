@@ -18,7 +18,6 @@ export const Home = () => {
     occupation: ''
   })
 
-
   useEffect(() => {
     PostService.getTeacher().then(
       (response: any) => {

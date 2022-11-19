@@ -43,23 +43,23 @@ export const Student = () => {
       case 'Página Inicial':
         setChosenComponent(<Home />)
         break
-      case 'Fórum de dúvidas': 
+      case 'Fórum de dúvidas':
         setChosenComponent(<Forum />)
         break
       default:
-        setChosenComponent(<Home/>)
+        setChosenComponent(<Home />)
     }
   }
 
   return (
     <div className={style.container}>
-    <Sidebar
+      <Sidebar
         name={student.name}
         lastName={student.lastName}
         handleChosenItem={handleChosenItem}
         selectedItem={chosenItem}
       />
-      {chosenComponent}
+      <div className={style.innerContainer}>{chosenComponent}</div>
     </div>
   )
 }

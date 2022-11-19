@@ -7,7 +7,7 @@ type Props = {
 
 export const SearchBar = ({ onClick, placeholder }: Props) => {
   return (
-    <div className={style.container} onClick={onClick}>
+    <div className={style.container}>
       <img src={search} onClick={onClick} />
       <input
         name="search"
