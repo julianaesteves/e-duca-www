@@ -2,14 +2,21 @@ import { Greeting } from '../../../components/Greeting'
 import img from '../../../assets/img/greetingTeacher.svg'
 import { ContentCard } from '../../../components/ContentCard'
 import Overview from '../Overview'
+import { Modal } from '../../../components/Modal'
+import iconEdit from '../../../assets/img/edit.svg'
+import iconDelet from '../../../assets/img/delet.svg'
 import { useEffect, useState } from 'react'
 // import AuthService from '../../services/auth.service'
 import PostService from '../../../services/post.service'
 // import { useNavigate } from 'react-router-dom'
 import style from './home.module.scss'
+import { DeleteContent } from '../DeleteContent'
+import { UpdateContent } from '../UpdateContent'
 
 export const Home = () => {
   // const navigate = useNavigate();
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
+  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [teacherContent, setTeacherContent] = useState<any[]>([])
   const [teacher, setTeacher] = useState({
     name: '',
@@ -17,7 +24,6 @@ export const Home = () => {
     carrerTime: '',
     occupation: ''
   })
-
 
   useEffect(() => {
     PostService.getTeacher().then(
@@ -78,10 +84,37 @@ export const Home = () => {
               title={post.titulo}
               hability={post.habilidade.codigo}
               date={post.dataCriacao}
-            />
+            >
+              <div className={style.col}>
+                <img
+                  src={iconEdit}
+                  onClick={() => setIsEditModalVisible(true)}
+                />
+                <img
+                  src={iconDelet}
+                  onClick={() => setIsDeleteModalVisible(true)}
+                />
+              </div>
+            </ContentCard>
           ))}
         </div>
       </div>
+      {isEditModalVisible && (
+        <Modal
+          isOpen={isEditModalVisible}
+          onClose={() => setIsEditModalVisible(false)}
+        >
+          <UpdateContent onClose={() => setIsEditModalVisible(false)} />
+        </Modal>
+      )}
+      {isDeleteModalVisible && (
+        <Modal
+          isOpen={isDeleteModalVisible}
+          onClose={() => setIsDeleteModalVisible(false)}
+        >
+          <DeleteContent onClose={() => setIsDeleteModalVisible(false)} />
+        </Modal>
+      )}
     </div>
   )
 }

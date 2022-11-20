@@ -2,7 +2,7 @@ import style from '../RegisterContent/registerContent.module.scss'
 import { Input } from '../../../components/Input'
 import { Button } from '../../../components/Button'
 import { Select } from '../../../components/Select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { SelectType } from '../RegisterContent/SelectType'
 import { UpdateSuccess } from './UpdateSuccess'
 import { Modal } from '../../../components/Modal'
@@ -13,6 +13,7 @@ type Props = {
 }
 
 export const UpdateContent = ({ onClose }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [habilities, setHabilities] = useState<any[]>([])
   const [hability, setHability] = useState(0)
   const [type, setType] = useState(0)
@@ -20,13 +21,38 @@ export const UpdateContent = ({ onClose }: Props) => {
   const [title, setTitle] = useState()
   const [workload, setworkload] = useState()
   const [texto, setTexto] = useState()
-  const [article, setArticle] = useState()
   const [url, setUrl] = useState()
 
   const [isModalVisible, setIsModalVisible] = useState(false)
 
-  const handleUpdateContent = (id: number) => {
-    PostService.updateContent(id).then(
+  useEffect(() => {
+    PostService.getHability().then(
+      (response: any) => {
+        setHabilities(response.data)
+      },
+      (error: any) => {
+        console.log('TEACHER/UpdateContent/getHability: Erro', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('TEACHER/UpdateContent/getHability: Erro de autenticação')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
+  }, [])
+
+  function handleUpdateContent(id: number) {
+
+    const data = {
+      titulo: title,
+      habilidade:  hability,
+      texto: texto
+
+    }
+
+    PostService.updateContent(id, data).then(
       (response: any) => {
         console.log(response.data)
       },
@@ -46,7 +72,7 @@ export const UpdateContent = ({ onClose }: Props) => {
   return (
     <div className={style.box}>
       <Input
-        text="Title:"
+        text="Título:"
         type="text"
         placeholder="exemplo"
         value={title}
@@ -85,19 +111,12 @@ export const UpdateContent = ({ onClose }: Props) => {
         <Input
           text="URL:"
           type="url"
-          placeholder="ex. https://vidioaula.com/exemplo "
+          placeholder="https://videoaula.com/exemplo "
           value={url}
           onChange={(e: any) => setUrl(e.target.value)}
         />
       ) : type === 2 ? (
-        <Input
-          text="Artigo:"
-          type="number"
-          placeholder="exemplo"
-          value={article}
-          onChange={(e: any) => setArticle(e.target.value)}
-        />
-      ) : type === 3 ? (
+        
         <Input
           text="Texto:"
           type="text"
@@ -108,7 +127,7 @@ export const UpdateContent = ({ onClose }: Props) => {
       ) : null}
 
       <Input
-        text="Carga horária estimada::"
+        text="Carga horária estimada:"
         type="number"
         placeholder="exemplo"
         value={workload}
@@ -119,8 +138,8 @@ export const UpdateContent = ({ onClose }: Props) => {
         <Button
           className={style.btnRegister}
           title="Atualizar"
-          onChange={handleUpdateContent}
-          onClick={() => setIsModalVisible(true)}
+          // onChange={handleUpdateContent}
+          onClick={handleUpdateContent}
         />
 
         {isModalVisible ? (

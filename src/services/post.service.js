@@ -23,8 +23,8 @@ const registerContent = (data) => {
     return axios.post(API_URL + 'api/conteudos', data, { headers: authHeader() })
 }
 
-const updateContent = (id) => {
-    return axios.put(API_URL + `api/conteudos/${id}`, { headers: authHeader() })
+const updateContent = (id, data) => {
+    return axios.put(API_URL + `api/conteudos/${id}`, data,  { headers: authHeader() })
 }
 
 const deleteContent = (id) => {
@@ -32,7 +32,7 @@ const deleteContent = (id) => {
 }
 
 const getHability = () => {
-  return axios.get(API_URL + 'api/habilidades', { headers: authHeader() })
+  return axios.get(API_URL + 'api/habilidades',{ headers: authHeader() })
 }
 
 const postService = {
