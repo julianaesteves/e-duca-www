@@ -12,7 +12,7 @@ type Props = {
 
 export const RegisterContent = ({ onClose }: Props) => {
   const [habilities, setHabilities] = useState<any[]>([])
-  const [hability, setHability] = useState(0)
+  const [hability, setHability] = useState()
   const [type, setType] = useState(0)
   const [title, setTitle] = useState()
   const [workload, setWorkload] = useState()
@@ -22,7 +22,9 @@ export const RegisterContent = ({ onClose }: Props) => {
   const data = {
     titulo: title,
     tempoEstimado: workload,
-    habilidade: hability,
+    habilidade: {
+      codigo: hability
+    },
     texto: texto,
     url: url
     // urlVideo: urlVideo
@@ -31,7 +33,7 @@ export const RegisterContent = ({ onClose }: Props) => {
   useEffect(() => {
     PostService.getHability().then(
       (response: any) => {
-        setHabilities(response.data.codigo)
+        setHabilities(response.data)
       },
       (error: any) => {
         console.log('Caquita no get codigo', error.response)
@@ -91,15 +93,6 @@ export const RegisterContent = ({ onClose }: Props) => {
             )
           })}
         </Select>
-        <div>
-          {habilities?.map((habilidade) => {
-            return (
-              <>
-                <span key={habilidade.idHabilidade}>{habilidade.codigo}</span>;
-              </>
-            )
-          })}
-        </div>
         <Select
           text="Tipo"
           value={type}
