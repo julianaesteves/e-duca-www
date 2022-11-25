@@ -1,13 +1,13 @@
-import style from './formStudent.module.scss';
-import { Theme } from '../components/Theme';
-import { FormActions, useForm } from '../../../utils/contexts/FormContext';
-import { ChangeEvent } from 'react';
-import img from '../../../assets/img/image9.png';
-import { Button } from '../../../components/Button';
-import axios from 'axios';
+import style from './formStudent.module.scss'
+import { Theme } from '../components/Theme'
+import { FormActions, useForm } from '../../../utils/contexts/FormContext'
+import { ChangeEvent } from 'react'
+import img from '../../../assets/img/image09.svg'
+import { Button } from '../../../components/Button'
+import axios from 'axios'
 
 export const FormStudent = () => {
-  const { state, dispatch } = useForm();
+  const { state, dispatch } = useForm()
 
   const data = {
     nome: state.name,
@@ -19,55 +19,56 @@ export const FormStudent = () => {
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
-      axios.post("http://localhost:8080/api/usuarios/estudantes", data)
+      axios
+        .post('http://localhost:8080/api/usuarios/estudantes', data)
         .then(function (response) {
-          console.log(response.status);
+          console.log(response.status)
         })
         .catch(function (error) {
-          console.log(error);
-        });
-      console.log(state);
+          console.log(error)
+        })
+      console.log(state)
     } else {
-      alert(`Olá, Certifique se todos os campos estão preenchido corretamente`);
+      alert(`Olá, Certifique se todos os campos estão preenchido corretamente`)
     }
-  };
+  }
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setName,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handleLastNameChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setLastName,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handleBirthDateChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setBirthDate,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setEmail,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setPassword,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handleCPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setConfirmPassword,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
 
   return (
     <>
@@ -128,5 +129,5 @@ export const FormStudent = () => {
         </div>
       </Theme>
     </>
-  );
-};
+  )
+}

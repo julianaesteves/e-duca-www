@@ -1,8 +1,8 @@
 import style from './signUp.module.scss';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../../components/Button';
-import student from '../../../../assets/img/image9.png';
-import teacher from '../../../../assets/img/image10.png';
+import student from '../../../../assets/img/image09.svg';
+import teacher from '../../../../assets/img/image10.svg';
 
 type Props = {
   onClose?: () => void;

@@ -2,18 +2,18 @@ import style from './login.module.scss'
 import { Link } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
 import { FormActions, useForm } from '../../utils/contexts/FormContext'
-import img from '../../assets/img/image08.png'
+import img from '../../assets/img/image08.svg'
 import { Header } from '../SignUp/components/Header'
 import { Modal } from '../../components/Modal'
 import { SignUp } from '../SignUp/components/SignUp'
 import { Button } from '../../components/Button'
-import  AuthService  from "../../services/auth.service";
-import { useNavigate } from "react-router-dom";
+import AuthService from '../../services/auth.service'
+import { useNavigate } from 'react-router-dom'
 
 export const Login = () => {
   const { state, dispatch } = useForm()
   const [isModalVisible, setIsModalVisible] = useState(false)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const data = {
     email: state.email,
@@ -21,21 +21,21 @@ export const Login = () => {
   }
 
   const handleNextStep = async (e: any) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       await AuthService.login(data).then(
         () => {
-          navigate("/professor");
-          window.location.reload();
+          navigate('/professor')
+          window.location.reload()
         },
         (error: any) => {
-          console.log(error);
+          console.log(error)
         }
-      );
+      )
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   // const apiUrl = 'http://localhost:8080/'
 
@@ -50,7 +50,7 @@ export const Login = () => {
   //     try {
   //       const response = await api.post("/auth", data);
   //       login(response.data.token);
-      
+
   //     }  catch(error) {
   //       console.log(error)
   //     }
