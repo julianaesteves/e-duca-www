@@ -1,7 +1,7 @@
 import style from './pillar.module.scss';
-import imgTeachers from '../../../../assets/img/image14.png';
-import imgSymb from '../../../../assets/img/image12.png';
-import imgContent from '../../../../assets/img/image15.png';
+import imgTeachers from '../../../../assets/img/specialist.svg';
+import imgSymb from '../../../../assets/img/symbiosis.svg';
+import imgContent from '../../../../assets/img/contents.svg';
 
 export default function Pillar() {
     return (

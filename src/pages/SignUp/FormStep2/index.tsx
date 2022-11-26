@@ -1,15 +1,15 @@
-import style from './formStep2.module.scss';
-import { Theme } from '../components/Theme';
-import { Link } from 'react-router-dom';
-import { ChangeEvent, useEffect } from 'react';
-import { FormActions, useForm } from '../../../utils/contexts/FormContext';
-import { CheckCircleOutline, RadioButtonUnchecked } from '@mui/icons-material';
-import img from '../../../assets/img/image11.png';
-import { Button } from '../../../components/Button';
-import axios from 'axios';
+import style from './formStep2.module.scss'
+import { Theme } from '../components/Theme'
+import { Link } from 'react-router-dom'
+import { ChangeEvent, useEffect } from 'react'
+import { FormActions, useForm } from '../../../utils/contexts/FormContext'
+import { CheckCircleOutline, RadioButtonUnchecked } from '@mui/icons-material'
+import img from '../../../assets/img/image11.svg'
+import { Button } from '../../../components/Button'
+import axios from 'axios'
 
 export const FormStep2 = () => {
-  const { state, dispatch } = useForm();
+  const { state, dispatch } = useForm()
 
   const data = {
     nome: state.name,
@@ -24,45 +24,46 @@ export const FormStep2 = () => {
   useEffect(() => {
     dispatch({
       type: FormActions.setCurrentStep,
-      payload: 2,
-    });
-  }, []);
+      payload: 2
+    })
+  }, [])
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
-      axios.post("http://localhost:8080/api/usuarios/professores", data)
-      .then(function (response) {
-        console.log(response.status);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      console.log(state);
+      axios
+        .post('http://localhost:8080/api/usuarios/professores', data)
+        .then(function (response) {
+          console.log(response.status)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      console.log(state)
     } else {
       alert(
         `${state.name}, Certifique se todos os campos estão preenchido corretamente`
-      );
+      )
     }
-  };
+  }
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setEmail,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setPassword,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
   const handleCPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setConfirmPassword,
-      payload: e.target.value,
-    });
-  };
+      payload: e.target.value
+    })
+  }
 
   return (
     <>
@@ -115,5 +116,5 @@ export const FormStep2 = () => {
         </div>
       </Theme>
     </>
-  );
-};
+  )
+}

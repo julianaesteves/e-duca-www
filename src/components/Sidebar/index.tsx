@@ -1,5 +1,5 @@
 import style from './sidebar.module.scss'
-import Logo from '../../assets/img/logo.png'
+import Logo from '../../assets/img/logo.svg'
 import { Perfil } from './Perfil'
 import perfilTeacher from '../../assets/img/perfilTeacher.svg'
 import perfilStudent from '../../assets/img/perfilStudent.svg'

@@ -1,8 +1,8 @@
 import style from './intro.module.scss';
-import imgStudents from '../../../../assets/img/Student.png';
-import imgTeacher from '../../../../assets/img/Teacher.png';
-import iconMedal from '../../../../assets/img/medal.png';
-import iconTrophy from '../../../../assets/img/trophy.png';
+import imgStudents from '../../../../assets/img/student.svg';
+import imgTeacher from '../../../../assets/img/teacher.svg';
+import iconMedal from '../../../../assets/img/medal.svg';
+import iconTrophy from '../../../../assets/img/trophy.svg';
 
 export default function Intro() {
   return (

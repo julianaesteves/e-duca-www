@@ -1,5 +1,5 @@
 import { MenuItems } from './MenuItems';
-import Logo from '../../assets/img/logo.png';
+import Logo from '../../assets/img/logo.svg';
 import style from './header.module.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
