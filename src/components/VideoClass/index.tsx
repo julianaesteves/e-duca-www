@@ -1,21 +1,21 @@
-import { Sidebar } from '../Sidebar'
 import { Video } from './Video'
 import style from './videoClass.module.scss'
 import imgPlay from '../../assets/img/PlayVideo.svg'
+import { CardLikert } from '../CardLikert'
 
-type Props={
-  title:string,
-  name:string,
-  category:string,
+type Props = {
+  title: string
+  name: string
+  category: string
+  video: string
 }
 
-export const VideoClass = ({ title, name, category }: Props) => {
+export const VideoClass = ({ title, name, category, video }: Props) => {
   return (
     <>
       <div className={style.container}>
-        {/* <Sidebar /> */}
         <div className={style.innerContainer}>
-          <Video video="https://www.youtube.com/embed/ddZHkCUcYRM"></Video>
+          <Video video={video}/>
           <div className={style.containerTitle}>
             <div className={style.title}>
               <img src={imgPlay} alt=" image Play video" />
@@ -27,6 +27,8 @@ export const VideoClass = ({ title, name, category }: Props) => {
             <div className={style.category}>{category}</div>
           </div>
         </div>
+
+        <CardLikert />
       </div>
     </>
   )

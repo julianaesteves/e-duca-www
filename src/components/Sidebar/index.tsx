@@ -54,11 +54,9 @@ Props) => {
               <h4>Conteúdos</h4>
               {MenuItemsTeacher.map((item) => {
                 return (
-                  <>
-                    <button onClick={(e) => handleChosenItem(e)} key={item.id}>
-                      {item.title}
-                    </button>
-                  </>
+                  <button onClick={(e) => handleChosenItem(e)} key={item.id}>
+                    {item.title}
+                  </button>
                 )
               })}
             </>
@@ -66,11 +64,9 @@ Props) => {
             <>
               {MenuItemsStudent.map((item) => {
                 return (
-                  <>
-                    <button onClick={(e) => handleChosenItem(e)} key={item.id}>
-                      {item.title}
-                    </button>
-                  </>
+                  <button onClick={(e) => handleChosenItem(e)} key={item.id}>
+                    {item.title}
+                  </button>
                 )
               })}
             </>

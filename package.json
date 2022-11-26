@@ -24,7 +24,7 @@
     "prepare": "husky install",
     "commit": "git-cz",
     "start": "react-scripts start",
-    "build": "tsc",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

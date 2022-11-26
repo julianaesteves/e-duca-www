@@ -19,8 +19,7 @@ export const FormStudent = () => {
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
-      axios
-        .post('http://localhost:8080/api/usuarios/estudantes', data)
+      axios.post("http://localhost:8080/api/usuarios/estudantes/", data)
         .then(function (response) {
           console.log(response.status)
         })
@@ -29,7 +28,7 @@ export const FormStudent = () => {
         })
       console.log(state)
     } else {
-      alert(`Olá, Certifique se todos os campos estão preenchido corretamente`)
+      alert(`Olá, Certifique se todos os campos estão preenchidos corretamente`);
     }
   }
 

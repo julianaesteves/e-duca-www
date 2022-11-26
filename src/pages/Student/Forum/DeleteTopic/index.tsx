@@ -1,13 +1,31 @@
 import style from './deleteTopic.module.scss';
 import { Button } from '../../../../components/Button';
+import PostService from '../../../../services/post.service'
 type Props = {
   onClose?: () => void;
+  topicId?: number
 };
 
-export const DeleteTopic = ({ onClose }: Props) => {
+export const DeleteTopic = ({ onClose, topicId }: Props) => {
+  console.log(topicId)
+  
   const deleteTopic = () => {
-    console.log();
-  };
+    PostService.deleteTopic(topicId).then(
+      (response: any) => {
+        console.log(response.data)
+      },
+      (error: any) => {
+        console.log('DELETE/STUDENT/deleteTopic: Erro', error.response)
+        // Invalid token
+        if (error.response && error.response.status === 403) {
+          console.log('DELETE/STUDENT/deleteTopic: Erro de autenticação')
+          // AuthService.logout();
+          // navigate("/login");
+          // window.location.reload();
+        }
+      }
+    )
+  }
 
   return (
     <div className={style.box}>

@@ -6,10 +6,11 @@ import style from './content.module.scss'
 
 export const Content = () => {
   const [content, setContent] = useState<any[]>([])
+
   useEffect(() => {
     PostService.getAllContent().then(
       (response: any) => {
-        setContent(response.data)
+        setContent(response.data.content)
       },
       (error: any) => {
         console.log('CONTENT/PROFESSOR/getAllContent: Erro', error.response)
@@ -23,14 +24,15 @@ export const Content = () => {
       }
     )
   }, [])
-  
+
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
         <SearchBar placeholder="O que você deseja estudar hoje?" />
         <div className={style.cards}>
-        {content?.map((post: any) => (
+          {content?.map((post: any) => (
             <ContentCard
+              contentId={post.idConteudo}
               key={post.idConteudo}
               title={post.titulo}
               hability={post.habilidade.codigo}

@@ -6,7 +6,7 @@ type Props = {
   h4?: string
   text: string
   value?: number
-  onClick?: () => void
+  onClick?: any
 }
 
 export const Card = ({ className, img, h4, text, value, onClick }: Props) => {
