@@ -3,9 +3,15 @@ import { SearchBar } from '../../../components/SearchBar'
 import { useEffect, useState } from 'react'
 import PostService from '../../../services/post.service'
 import style from './content.module.scss'
+import { Reading } from '../../../components/Reading'
+import { Button } from '../../../components/Button'
+import { VideoClass } from '../../../components/VideoClass'
 
 export const Content = () => {
   const [content, setContent] = useState<any[]>([])
+  const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
+  const [contentClicked, setContentClicked] = useState<any>({})
+  const [isVideo, setIsVideo] = useState<boolean>(false)
 
   useEffect(() => {
     PostService.getAllContent().then(
@@ -14,33 +20,76 @@ export const Content = () => {
       },
       (error: any) => {
         console.log('CONTENT/PROFESSOR/getAllContent: Erro', error.response)
-        // Invalid token
+
         if (error.response && error.response.status === 403) {
           console.log('CONTENT/PROFESSOR/getAllContent: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
   }, [])
 
+  function handleContentClick(post: any) {
+    console.log(post)
+    setContentClicked({
+      titulo: post.titulo,
+      video: post.urlVideo,
+      nome: post.usuario.nome,
+      sobrenome: post.usuario.sobrenome,
+      categoria: post.habilidade.codigo,
+      texto: post.texto
+    })
+
+    if (post.urlVideo != null) {
+      setIsVideo(true)
+    }
+    setIsContentClicked(true)
+  }
+
   return (
     <div className={style.container}>
-      <div className={style.innerContainer}>
-        <SearchBar placeholder="O que você deseja estudar hoje?" />
-        <div className={style.cards}>
-          {content?.map((post: any) => (
-            <ContentCard
-              contentId={post.idConteudo}
-              key={post.idConteudo}
-              title={post.titulo}
-              hability={post.habilidade.codigo}
-              date={post.dataCriacao}
+      {isContentClicked ? (
+        <>
+          {isVideo ? (
+            <VideoClass
+              name={contentClicked.nome}
+              lastName={contentClicked.sobrenome}
+              category={contentClicked.categoria}
+              video={contentClicked.video}
+              title={contentClicked.titulo}
             />
-          ))}
+          ) : (
+            <Reading
+              title={contentClicked.titulo}
+              text={contentClicked.texto}
+            />
+          )}
+          <Button
+            title="Voltar"
+            // TODO: arrumar a estilização do botão
+            className={'batatinha'}
+            onClick={() => {
+              setIsContentClicked(false)
+              setIsVideo(false)
+            }}
+          />
+        </>
+      ) : (
+        <div className={style.innerContainer}>
+          <SearchBar placeholder="Buscar conteúdo" />
+          <div className={style.cards}>
+            {content?.map((post: any) => (
+              <ContentCard
+                contentId={post.idConteudo}
+                key={post.idConteudo}
+                title={post.titulo}
+                hability={post.habilidade.codigo}
+                date={post.dataCriacao}
+                onClick={() => handleContentClick(post)}
+              />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }

@@ -6,11 +6,12 @@ import { CardLikert } from '../CardLikert'
 type Props = {
   title: string
   name: string
+  lastName: string
   category: string
   video: string
 }
 
-export const VideoClass = ({ title, name, category, video }: Props) => {
+export const VideoClass = ({ title, name, category, video, lastName }: Props) => {
   return (
     <>
       <div className={style.container}>
@@ -22,7 +23,7 @@ export const VideoClass = ({ title, name, category, video }: Props) => {
               <h1>{title}</h1>
             </div>
             <p>
-              Postado por <span>{name}</span>
+              Postado por <span>Professor {name} {lastName}</span>
             </p>
             <div className={style.category}>{category}</div>
           </div>

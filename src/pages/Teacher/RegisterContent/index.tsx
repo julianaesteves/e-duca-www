@@ -26,8 +26,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       codigo: hability
     },
     texto: texto,
-    url: `https://www.youtube.com/embed/${videoId}`
-    // urlVideo: urlVideo
+    urlVideo: `https://www.youtube.com/embed/${videoId}`
   }
 
   useEffect(() => {
@@ -36,13 +35,11 @@ export const RegisterContent = ({ onClose }: Props) => {
         setHabilities(response.data)
       },
       (error: any) => {
-        console.log('Caquita no get codigo', error.response)
-        // Invalid token
+        console.log('RegisterContent/TEACHER/getHability: Erro', error.response)
         if (error.response && error.response.status === 403) {
-          console.log('Deu problema no codigo')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
+          console.log(
+            'RegisterContent/TEACHER/getHability: Erro de autenticação'
+          )
         }
       }
     )
@@ -54,13 +51,14 @@ export const RegisterContent = ({ onClose }: Props) => {
         console.log(response.data)
       },
       (error: any) => {
-        console.log('Private page', error.response)
-        // Invalid token
+        console.log(
+          'RegisterContent/TEACHER/registerContent: Erro',
+          error.response
+        )
         if (error.response && error.response.status === 403) {
-          console.log('Deu problema')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
+          console.log(
+            'RegisterContent/TEACHER/registerContent: Erro de autenticação'
+          )
         }
       }
     )
@@ -82,9 +80,7 @@ export const RegisterContent = ({ onClose }: Props) => {
           value={habilities}
           onChange={(e: any) => setHability(e.target.value)}
         >
-          <option>
-            Selecione uma habilidade
-          </option>
+          <option>Selecione uma habilidade</option>
 
           {habilities?.map((habilidade) => {
             return (
