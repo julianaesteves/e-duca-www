@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     const user = AuthService.getCurrentUser();
-
+// TODO: Validar usuario se professor ou aluno
     if (user) {
       setCurrentUser(user);
     }

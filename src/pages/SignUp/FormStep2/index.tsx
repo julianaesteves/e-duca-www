@@ -30,15 +30,14 @@ export const FormStep2 = () => {
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
-      axios
-        .post('http://localhost:8080/api/usuarios/professores', data)
-        .then(function (response) {
-          console.log(response.status)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
-      console.log(state)
+      axios.post("http://localhost:8080/api/usuarios/professores/", data)
+      .then(function (response) {
+        console.log(response.status);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+      console.log(state);
     } else {
       alert(
         `${state.name}, Certifique se todos os campos estão preenchido corretamente`

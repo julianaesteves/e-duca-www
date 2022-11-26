@@ -4,11 +4,14 @@ import PostService from '../../../services/post.service'
 
 type Props = {
   onClose?: () => void
+  contentId?: number
 }
 
-export const DeleteContent = ({ onClose }: Props) => {
-  const deleteContent = (id: number) => {
-    PostService.deleteContent(id).then(
+export const DeleteContent = ({ onClose, contentId }: Props) => {
+    console.log(contentId)
+
+  const deleteContent = () => {
+    PostService.deleteContent(contentId).then(
       (response: any) => {
         console.log(response.data)
       },

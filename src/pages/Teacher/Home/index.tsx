@@ -4,7 +4,7 @@ import { ContentCard } from '../../../components/ContentCard'
 import Overview from '../Overview'
 import { Modal } from '../../../components/Modal'
 import iconEdit from '../../../assets/img/edit.svg'
-import iconDelet from '../../../assets/img/delet.svg'
+import iconDelete from '../../../assets/img/delet.svg'
 import { useEffect, useState } from 'react'
 // import AuthService from '../../services/auth.service'
 import PostService from '../../../services/post.service'
@@ -15,6 +15,7 @@ import { UpdateContent } from '../UpdateContent'
 
 export const Home = () => {
   // const navigate = useNavigate();
+  const [currentId, setCurrentId] = useState()
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [teacherContent, setTeacherContent] = useState<any[]>([])
@@ -26,7 +27,7 @@ export const Home = () => {
   })
 
   useEffect(() => {
-    PostService.getTeacher().then(
+    PostService.getUser().then(
       (response: any) => {
         setTeacher({
           name: response.data.nome,
@@ -36,10 +37,10 @@ export const Home = () => {
         })
       },
       (error: any) => {
-        console.log('HOME/Professor/getTeacher: Erro', error.response)
+        console.log('HOME/Professor/getUser: Erro', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('HOME/Professor/getTeacher: Erro de autenticação')
+          console.log('HOME/Professor/getUser: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();
@@ -47,15 +48,15 @@ export const Home = () => {
       }
     )
 
-    PostService.getTeacherContent().then(
+    PostService.getUserContent().then(
       (response: any) => {
         setTeacherContent(response.data.content)
       },
       (error: any) => {
-        console.log('HOME/Professor/getTeacherContent: Erro', error.response)
+        console.log('HOME/Professor/getUserContent: Erro', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('HOME/Professor/getTeacherContent: Erro de autenticação')
+          console.log('HOME/Professor/getUserContent: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();
@@ -64,6 +65,18 @@ export const Home = () => {
     )
   }, [])
 
+  
+  const handleEditClick = (id: any) => {
+    setIsEditModalVisible(true)
+    setCurrentId(id)
+  }
+
+  const handleDeleteClick = (id: any) => {
+    setIsDeleteModalVisible(true)
+    setCurrentId(id)
+  }
+
+  
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
@@ -81,6 +94,7 @@ export const Home = () => {
           {teacherContent?.map((post: any) => (
             <ContentCard
               key={post.idConteudo}
+              contentId={post.idConteudo}
               title={post.titulo}
               hability={post.habilidade.codigo}
               date={post.dataCriacao}
@@ -88,31 +102,37 @@ export const Home = () => {
               <div className={style.col}>
                 <img
                   src={iconEdit}
-                  onClick={() => setIsEditModalVisible(true)}
+                  onClick={() => handleEditClick(post.idConteudo)}
                 />
                 <img
-                  src={iconDelet}
-                  onClick={() => setIsDeleteModalVisible(true)}
+                  src={iconDelete}
+                  onClick={() => handleDeleteClick(post.idConteudo)}
                 />
               </div>
             </ContentCard>
           ))}
         </div>
       </div>
-      {isEditModalVisible && (
-        <Modal
-          isOpen={isEditModalVisible}
-          onClose={() => setIsEditModalVisible(false)}
-        >
-          <UpdateContent onClose={() => setIsEditModalVisible(false)} />
-        </Modal>
-      )}
       {isDeleteModalVisible && (
         <Modal
           isOpen={isDeleteModalVisible}
           onClose={() => setIsDeleteModalVisible(false)}
         >
-          <DeleteContent onClose={() => setIsDeleteModalVisible(false)} />
+          <DeleteContent
+            contentId={currentId}
+            onClose={() => setIsDeleteModalVisible(false)}
+          />
+        </Modal>
+      )}
+      {isEditModalVisible && (
+        <Modal
+          isOpen={isEditModalVisible}
+          onClose={() => setIsEditModalVisible(false)}
+        >
+          <UpdateContent
+            contentId={currentId}
+            onClose={() => setIsEditModalVisible(false)}
+          />
         </Modal>
       )}
     </div>

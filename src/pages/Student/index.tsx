@@ -15,7 +15,7 @@ export const Student = () => {
   })
 
   useEffect(() => {
-    PostService.getStudent().then(
+    PostService.getUser().then(
       (response: any) => {
         setStudent({
           name: response.data.nome,
@@ -23,10 +23,10 @@ export const Student = () => {
         })
       },
       (error: any) => {
-        console.log('ESTUDANTE/getStudent: Erro', error.response)
+        console.log('ESTUDANTE/getUser: Erro', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('ESTUDANTE/getStudent: Erro de autenticação')
+          console.log('ESTUDANTE/getUser: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();

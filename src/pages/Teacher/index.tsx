@@ -20,7 +20,7 @@ export const Teacher = () => {
   })
 
   useEffect(() => {
-    PostService.getTeacher().then(
+    PostService.getUser().then(
       (response: any) => {
         setTeacher({
           name: response.data.nome,
@@ -30,10 +30,10 @@ export const Teacher = () => {
         })
       },
       (error: any) => {
-        console.log('PROFESSOR/getTeacher: Erro ', error.response)
+        console.log('PROFESSOR/getUser: Erro ', error.response)
         // Invalid token
         if (error.response && error.response.status === 403) {
-          console.log('PROFESSOR/getTeacher: Erro de autenticação')
+          console.log('PROFESSOR/getUser: Erro de autenticação')
           // AuthService.logout();
           // navigate("/login");
           // window.location.reload();
@@ -57,7 +57,7 @@ export const Teacher = () => {
       //   setChosenComponent(<Configuracoes />)
       //   break
       default:
-        setChosenComponent(<Home/>)
+        setChosenComponent(<Home />)
     }
   }
 

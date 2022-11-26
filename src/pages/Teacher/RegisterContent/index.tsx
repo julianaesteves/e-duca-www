@@ -17,7 +17,7 @@ export const RegisterContent = ({ onClose }: Props) => {
   const [title, setTitle] = useState()
   const [workload, setWorkload] = useState()
   const [texto, setTexto] = useState()
-  const [url, setUrl] = useState()
+  const [videoId, setVideoId] = useState()
 
   const data = {
     titulo: title,
@@ -26,7 +26,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       codigo: hability
     },
     texto: texto,
-    url: url
+    url: `https://www.youtube.com/embed/${videoId}`
     // urlVideo: urlVideo
   }
 
@@ -71,7 +71,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       <Input
         text="Título:"
         type="text"
-        placeholder="exemplo"
+        placeholder="Exemplo"
         value={title}
         onChange={(e: any) => setTitle(e.target.value)}
       />
@@ -82,6 +82,10 @@ export const RegisterContent = ({ onClose }: Props) => {
           value={habilities}
           onChange={(e: any) => setHability(e.target.value)}
         >
+          <option>
+            Selecione uma habilidade
+          </option>
+
           {habilities?.map((habilidade) => {
             return (
               <>
@@ -107,17 +111,17 @@ export const RegisterContent = ({ onClose }: Props) => {
       </div>
       {type === 1 ? (
         <Input
-          text="URL:"
+          text="Id do vídeo:"
           type="url"
-          placeholder="https://videoaula.com/exemplo"
-          value={url}
-          onChange={(e: any) => setUrl(e.target.value)}
+          placeholder="https://www.youtube.com/IdVideo"
+          value={videoId}
+          onChange={(e: any) => setVideoId(e.target.value)}
         />
       ) : type === 2 ? (
         <Input
           text="Texto:"
           type="text"
-          placeholder="exemplo"
+          placeholder="Exemplo"
           value={texto}
           onChange={(e: any) => setTexto(e.target.value)}
         />
@@ -126,7 +130,7 @@ export const RegisterContent = ({ onClose }: Props) => {
       <Input
         text="Carga horária estimada:"
         type="number"
-        placeholder="exemplo"
+        placeholder="10"
         value={workload}
         onChange={(e: any) => setWorkload(e.target.value)}
       />

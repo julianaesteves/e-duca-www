@@ -2,36 +2,41 @@ import { ReactNode } from 'react'
 import style from './cardTopic.module.scss'
 
 type Props = {
-  title?: string
-  description?: string
-  isAnswer?: boolean
-  fullAnswer?: number
-  date?: string
+  title: string
+  description: string
+  answers: number
+  date: string
   children?: ReactNode
+  onClick?: () => void
+  // name: string 
+  // lastName: string 
 }
 
 export const CardTopic = ({
   title,
   description,
-  isAnswer,
-  fullAnswer,
+  answers,
   date,
-  children
+  children,
+  onClick,
+  // name,
+  // lastName
 }: Props) => {
   return (
     <>
-      <div className={style.container}>
+      <div className={style.container} onClick={onClick}>
         <div className={style.cylinder} />
-        <div className={style.card}>
+        <div className={answers > 0 ? `${style.card}` : `${style.unasweredCard}`}>
           <div className={style.info}>
             <h2>{title}</h2>
             <p>{description}</p>
             <span>{`${
-              isAnswer ? `${fullAnswer}respostas` : 'nenhuma resposta'
+              `${answers} respostas`
             }`}</span>
           </div>
           <div className={style.date}>
-            <p>Postada em {date} por Lucas Gestal</p>
+            <p>Postada em {date} por </p> 
+            {/* TODO: ADICIONAR NOME E SOBRENOME */}
             {children}
           </div>
         </div>

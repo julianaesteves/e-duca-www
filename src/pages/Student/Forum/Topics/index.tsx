@@ -1,36 +1,26 @@
 import style from './forum.module.scss'
 import { useEffect, useState } from 'react'
-import { Modal } from '../../../components/Modal'
-import { CardTopic } from './CardTopic'
-import { SelectedTopic } from './SelectedTopic'
-import { Greeting } from '../../../components/Greeting'
-import { RegisterTopic } from './RegisterTopic'
-import { UpdateTopic } from './UpdateTopic'
-import { DeleteTopic } from './DeleteTopic'
-import { Card } from '../../Teacher/Overview/Card'
-import img from '../../../assets/img/greetingTeacher.svg'
-import iconEdit from '../../../assets/img/edit.svg'
-import iconDelete from '../../../assets/img/delet.svg'
-import iconVisible from '../../../assets/img/visible.svg'
-import iconAdd from '../../../assets/img/addSmall.svg'
-import PostService from '../../../services/post.service'
+import { Button } from '../../../../components/Button'
+import { Modal } from '../../../../components/Modal'
+import { CardTopic } from '../CardTopic'
+import { SelectedTopic } from '../SelectedTopic'
+import { Greeting } from '../../../../components/Greeting'
+import { RegisterTopic } from '../RegisterTopic'
+import { UpdateTopic } from '../UpdateTopic'
+import { DeleteTopic } from '../DeleteTopic'
+import { Card } from '../../../Teacher/Overview/Card'
+import img from '../../../../assets/img/greetingTeacher.svg'
+// import iconEdit from '../../../assets/img/edit.svg'
+// import iconDelet from '../../../assets/img/delet.svg'
+import iconVisible from '../../../../assets/img/visible.svg'
+import iconAdd from '../../../../assets/img/addSmall.svg'
+import PostService from '../../../../services/post.service'
 
 export const Forum = () => {
   const [isAnswerModalVisible, setAnswerIsModalVisible] = useState(false)
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-  const [currentId, setCurrentId] = useState()
-
-  const handleEditClick = (id: any) => {
-    setIsEditModalVisible(true)
-    setCurrentId(id)
-  }
-
-  const handleDeleteClick = (id: any) => {
-    setIsDeleteModalVisible(true)
-    setCurrentId(id)
-  }
 
   const [topics, setTopics] = useState<any[]>([])
 
@@ -59,7 +49,7 @@ export const Forum = () => {
       }
     )
 
-    PostService.getTopic().then(
+    PostService.getAllTopics().then(
       (response: any) => {
         setTopics(response.data)
       },
@@ -90,7 +80,7 @@ export const Forum = () => {
           <Card
             className={style.cardVisible}
             img={iconVisible}
-            text={'Ver todos os tópicos'}
+            text="Ver meus tópicos"
           />
           <Card
             className={style.cardAdd}
@@ -112,16 +102,7 @@ export const Forum = () => {
                 // name={topic.usuario.nome}
                 // lastName={topic.usuario.sobrenome}
               >
-                <div className={style.col}>
-                  <img
-                    src={iconEdit}
-                    onClick={() => handleEditClick(topic.idTopico)}
-                  />
-                  <img
-                    src={iconDelete}
-                    onClick={() => handleDeleteClick(topic.idTopico)}
-                  />
-                </div>
+                <Button className={style.btn} title="Adicionar resposta" />
               </CardTopic>
               {isAnswerModalVisible && (
                 <Modal
@@ -155,10 +136,7 @@ export const Forum = () => {
                 isOpen={isEditModalVisible}
                 onClose={() => setIsEditModalVisible(false)}
               >
-                <UpdateTopic
-                  topicId={currentId}
-                  onClose={() => setIsEditModalVisible(false)}
-                />
+                <UpdateTopic onClose={() => setIsEditModalVisible(false)} />
               </Modal>
             </>
           ) : isDeleteModalVisible ? (
@@ -167,10 +145,7 @@ export const Forum = () => {
                 isOpen={isDeleteModalVisible}
                 onClose={() => setIsDeleteModalVisible(false)}
               >
-                <DeleteTopic
-                  topicId={currentId}
-                  onClose={() => setIsDeleteModalVisible(false)}
-                />
+                <DeleteTopic onClose={() => setIsDeleteModalVisible(false)} />
               </Modal>
             </>
           ) : null}
