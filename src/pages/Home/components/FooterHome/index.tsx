@@ -1,4 +1,4 @@
-import style from './footerHome.module.scss';
+import style from './footerHome.module.scss'
 
 export default function FooterHome() {
   return (
@@ -6,12 +6,11 @@ export default function FooterHome() {
       <div>
         <h4>Sobre nós</h4>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industrys standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book, Lorem Ipsum is simply dummy
-          text of the printing and typesetting industry. Lorem Ipsum has been
-          the industrys standard dummy text ever since the 1500s, when an
+          Com conteúdos especializados na área de exatas, a e-duca une
+          professores e estudantes do ensino médio em uma cadeia simbiótica de
+          ensinar e aprender. Damos suporte ao ensino acadêmico e solucionamos a
+          busca por materiais de qualidade reunindo-o todos em uma só
+          plataforma.
         </p>
       </div>
 
@@ -29,5 +28,5 @@ export default function FooterHome() {
         <p>(11) 99999-9999</p>
       </div>
     </div>
-  );
+  )
 }
