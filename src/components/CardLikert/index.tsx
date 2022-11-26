@@ -12,12 +12,10 @@ export const CardLikert = ({ onClick }: Props) => {
       <div>
         {ImageItems.map((item) => {
           return (
-            <>
-              <div className={style.col}>
-                <img key={item.id} src={item.src} onClick={onClick} />
-                <p>{item.text}</p>
-              </div>
-            </>
+            <div key={item.id} className={style.col}>
+              <img alt="emoji" src={item.src} onClick={onClick} />
+              <p>{item.text}</p>
+            </div>
           )
         })}
       </div>

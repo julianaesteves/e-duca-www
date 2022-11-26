@@ -59,7 +59,9 @@ export const Student = () => {
         handleChosenItem={handleChosenItem}
         selectedItem={chosenItem}
       />
-      <div className={style.innerContainer}>{chosenComponent}</div>
+      <div className={style.innerContainer}>
+        {chosenComponent}
+      </div>
     </div>
   )
 }
