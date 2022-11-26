@@ -14,21 +14,18 @@ export default function Intro() {
           <img src={iconMedal} alt="Medal star icon" />
           <h3> Benefícios para o estudante</h3>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy
+           Conteúdos focados na área de exatas e filtrados por professores
+           especializados.
           </li>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever the 1500s
+           Fácil comunicação entre professores e alunos.
           </li>
           <li>
-            when an unknown printer took a galley of type and scrambled it to
-            make a type specimen book.
+            Praticidade de escolher assuntos desejados para estudo.
           </li>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy
+            Consegue avaliar conteúdos postados pelos professores. Mostrando se o conteúdo esta relevante
+            ou não para o professor.
           </li>
         </div>
 
@@ -36,21 +33,16 @@ export default function Intro() {
           <img src={iconTrophy} alt="Trophy icon" />
           <h3>Benefícios para o professor </h3>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy
+           Consegue ver a qualidade e relevância de seus conteúdos.
           </li>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever the 1500s
+           Praticidade de subir conteúdos na plataforma.
           </li>
           <li>
-            when an unknown printer took a galley of type and scrambled it to
-            make a type specimen book.
+            Dashborads detalhando sobre seu conteúdo.
           </li>
           <li>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy
+            Praticidade de tirar dúvidas dos alunos.
           </li>
         </div>
         <img src={imgTeacher} alt="Teacher" className={style.image}/>
