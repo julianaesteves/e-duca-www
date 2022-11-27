@@ -19,7 +19,7 @@ export const FormStudent = () => {
 
   const handleNextStep = () => {
     if (state.email !== '' && state.password !== '') {
-      axios.post("http://localhost:8080/api/usuarios/estudantes/", data)
+      axios.post("http://educa-application-web.eastus.cloudapp.azure.com/api/usuarios/estudantes/", data)
         .then(function (response) {
           console.log(response.status)
         })

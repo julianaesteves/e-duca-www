@@ -24,12 +24,8 @@ export const Student = () => {
       },
       (error: any) => {
         console.log('ESTUDANTE/getUser: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('ESTUDANTE/getUser: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )

@@ -32,7 +32,7 @@ export const Forum = () => {
     setCurrentId(id)
   }
 
-  const [topics, setTopics] = useState<any[]>([])
+  const [topics, setTopics] = useState<any[]>([{}])
 
   const [student, setStudent] = useState({
     name: '',
@@ -49,28 +49,27 @@ export const Forum = () => {
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getUser: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('FORUM/ESTUDANTE/getUser: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
 
     PostService.getTopic().then(
       (response: any) => {
+        console.log("RESPOSTA DE GET TOPIC: " + response.data)
+        console.log("Response é igual a nulo ? " + response.data == null)
+        console.log("Response é igual a undefined ? " + response.data == undefined)
+        console.log("Response é igual a string vazia ? " + response.data == "")
+        
+        console.log(typeof response.data)
         setTopics(response.data)
+        
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('FORUM/ESTUDANTE/getTopic: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
@@ -108,7 +107,7 @@ export const Forum = () => {
                 title={topic.titulo}
                 description={topic.descricao}
                 date={topic.dataCriacao}
-                answers={topic.respostas.length}
+                answers={topic.respostas != null ? topic.respostas.length : ""}
                 // name={topic.usuario.nome}
                 // lastName={topic.usuario.sobrenome}
               >

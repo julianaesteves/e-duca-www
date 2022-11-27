@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:8080/'
+const API_URL = 'http://educa-application-web.eastus.cloudapp.azure.com/'
 
 const signup = (data) => {
   return axios
