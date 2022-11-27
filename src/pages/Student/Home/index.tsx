@@ -9,8 +9,6 @@ import { Button } from '../../../components/Button'
 
 export const Home = () => {
   const [search, setSearch] = useState('')
-  console.log(search)
-
   const [content, setContent] = useState<any[]>([])
   const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
   const [contentClicked, setContentClicked] = useState<any>({})

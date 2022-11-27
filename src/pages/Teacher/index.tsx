@@ -15,7 +15,7 @@ export const Teacher = () => {
   const [teacher, setTeacher] = useState({
     name: '',
     lastName: '',
-    carrerTime: '',
+    careerTime: '',
     occupation: ''
   })
 
@@ -25,7 +25,7 @@ export const Teacher = () => {
         setTeacher({
           name: response.data.nome,
           lastName: response.data.sobrenome,
-          carrerTime: response.data.inicioAtuacao,
+          careerTime: response.data.inicioAtuacao,
           occupation: response.data.areaAtuacao
         })
       },
@@ -50,7 +50,7 @@ export const Teacher = () => {
       case 'Meus conteúdos':
         setChosenComponent(<Home />)
         break
-      case 'Ver todos': // TODO: criar pagina de todos os conteúdos
+      case 'Ver todos':
         setChosenComponent(<Content />)
         break
       // case 'Avaliações': // TODO: redirecionar para gráfico do power BI
@@ -68,7 +68,7 @@ export const Teacher = () => {
         name={teacher.name}
         lastName={teacher.lastName}
         occupation={teacher.occupation}
-        carrerTime={teacher.carrerTime}
+        careerTime={teacher.careerTime}
         handleChosenItem={handleChosenItem}
         selectedItem={chosenItem}
       />

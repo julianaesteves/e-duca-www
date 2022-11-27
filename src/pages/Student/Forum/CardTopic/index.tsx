@@ -8,8 +8,8 @@ type Props = {
   date: string
   children?: ReactNode
   onClick?: () => void
-  // name: string 
-  // lastName: string 
+  name?: string 
+  lastName?: string 
 }
 
 export const CardTopic = ({
@@ -19,8 +19,8 @@ export const CardTopic = ({
   date,
   children,
   onClick,
-  // name,
-  // lastName
+  name,
+  lastName
 }: Props) => {
   return (
     <>
@@ -35,7 +35,7 @@ export const CardTopic = ({
           </div>
           <div className={style.date}>
             <p>Postada em {date} por </p> 
-            {/* TODO: ADICIONAR NOME E SOBRENOME */}
+            {name} {lastName}
             {children}
           </div>
         </div>
