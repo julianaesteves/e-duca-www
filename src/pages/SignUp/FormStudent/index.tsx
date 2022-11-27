@@ -42,8 +42,8 @@ export const FormStudent = () => {
           console.log(response.status)
           setSucessMessage(true)
 
-          setTimeout(() => { 
-            navigate("/login")
+          setTimeout(() => {
+            navigate('/login')
           }, 2000)
         })
         .catch(function (error) {
@@ -112,7 +112,7 @@ export const FormStudent = () => {
             {sucessMessage && <h3>Cadastro realizado com sucesso!</h3>}
           </div>
           <Input
-            text={'Nome:'}
+            text="Nome:"
             value={state.name}
             type="text"
             placeholder="Nome"
@@ -127,7 +127,7 @@ export const FormStudent = () => {
             {nameError && <p>Por favor, preencha o nome</p>}
           </div>
           <Input
-            text={'Sobrenome:'}
+            text="Sobrenome:"
             value={state.lastName}
             type="text"
             placeholder="Sobrenome"
@@ -142,7 +142,7 @@ export const FormStudent = () => {
             {lastNameError && <p>Por favor, preencha o sobrenome</p>}
           </div>
           <Input
-            text={'Data de Nascimento:'}
+            text="Data de Nascimento:"
             value={state.birthDate}
             type="date"
             onChange={handleBirthDateChange}
@@ -156,7 +156,7 @@ export const FormStudent = () => {
             {birthdateError && <p>Por favor, preencha a data de nascimento</p>}
           </div>
           <Input
-            text={'E-mail:'}
+            text="E-mail:"
             type="email"
             value={state.email}
             placeholder="exemplo@email.com"
@@ -171,7 +171,7 @@ export const FormStudent = () => {
             {emailError && <p>Por favor, preencha o email</p>}
           </div>
           <Input
-            text={'Senha:'}
+            text="Senha:"
             type="password"
             value={state.password}
             placeholder="Mínimo de 8 caracteres"
@@ -190,7 +190,7 @@ export const FormStudent = () => {
             {passwordError && <p>A senha deve ter 8 ou mais caracteres.</p>}
           </div>
           <Input
-            text={'Confirmar senha:'}
+            text="Confirmar senha:"
             type="password"
             value={state.confirmPassword}
             placeholder="8 caracteres (letras, números)"

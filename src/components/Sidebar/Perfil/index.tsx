@@ -4,7 +4,7 @@ type Props = {
   photo: any
   name: string
   userType: string
-  carrerTime?: string
+  careerTime?: string
   occupation?: string
   nivel?: number
   labOne?: String
@@ -15,7 +15,7 @@ export const Perfil = ({
   photo,
   name,
   userType,
-  carrerTime,
+  careerTime,
   occupation,
   nivel,
   labOne,
@@ -29,7 +29,7 @@ export const Perfil = ({
         <h4>{userType}</h4>
         <span className={style.info}>
           <p>{labOne}</p>
-          {carrerTime} {nivel}
+          {careerTime} {nivel}
           <p>{labtwo}</p>
           {occupation}
         </span>

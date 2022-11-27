@@ -20,16 +20,16 @@ export const Forum = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-  const [currentId, setCurrentId] = useState()
+  const [currentTopic, setCurrentTopic] = useState()
 
-  const handleEditClick = (id: any) => {
+  const handleEditClick = (topic: any) => {
     setIsEditModalVisible(true)
-    setCurrentId(id)
+    setCurrentTopic(topic)
   }
 
-  const handleDeleteClick = (id: any) => {
+  const handleDeleteClick = (topic: any) => {
     setIsDeleteModalVisible(true)
-    setCurrentId(id)
+    setCurrentTopic(topic)
   }
 
   const [topics, setTopics] = useState<any[]>([])
@@ -160,7 +160,7 @@ export const Forum = () => {
                 onClose={() => setIsEditModalVisible(false)}
               >
                 <UpdateTopic
-                  topicId={currentId}
+                  selectedTopic={currentTopic}
                   onClose={() => setIsEditModalVisible(false)}
                 />
               </Modal>
@@ -172,7 +172,7 @@ export const Forum = () => {
                 onClose={() => setIsDeleteModalVisible(false)}
               >
                 <DeleteTopic
-                  topicId={currentId}
+                  selectedTopic={currentTopic}
                   onClose={() => setIsDeleteModalVisible(false)}
                 />
               </Modal>

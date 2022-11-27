@@ -3,25 +3,21 @@ import { Button } from '../../../../components/Button';
 import PostService from '../../../../services/post.service'
 type Props = {
   onClose?: () => void;
-  topicId?: number
+  selectedTopic?: any
 };
 
-export const DeleteTopic = ({ onClose, topicId }: Props) => {
-  console.log(topicId)
+export const DeleteTopic = ({ onClose, selectedTopic }: Props) => {
+  console.log(selectedTopic)
   
   const deleteTopic = () => {
-    PostService.deleteTopic(topicId).then(
+    PostService.deleteTopic(selectedTopic.idTopico).then(
       (response: any) => {
         console.log(response.data)
       },
       (error: any) => {
         console.log('DELETE/STUDENT/deleteTopic: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('DELETE/STUDENT/deleteTopic: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )

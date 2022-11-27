@@ -3,7 +3,7 @@ import { ImageItems } from './ImageItems'
 import PostService from '../../services/post.service'
 
 type Props = {
-  contentId: number
+  contentId: any
 }
 
 const handleRating = (text: string, contentId: Props) => {
