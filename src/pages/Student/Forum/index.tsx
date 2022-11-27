@@ -20,16 +20,16 @@ export const Forum = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-  const [currentId, setCurrentId] = useState()
+  const [currentTopic, setCurrentTopic] = useState()
 
-  const handleEditClick = (id: any) => {
+  const handleEditClick = (topic: any) => {
     setIsEditModalVisible(true)
-    setCurrentId(id)
+    setCurrentTopic(topic)
   }
 
-  const handleDeleteClick = (id: any) => {
+  const handleDeleteClick = (topic: any) => {
     setIsDeleteModalVisible(true)
-    setCurrentId(id)
+    setCurrentTopic(topic)
   }
 
   const [topics, setTopics] = useState<any[]>([{}])
@@ -57,14 +57,15 @@ export const Forum = () => {
 
     PostService.getTopic().then(
       (response: any) => {
-        console.log("RESPOSTA DE GET TOPIC: " + response.data)
-        console.log("Response é igual a nulo ? " + response.data == null)
-        console.log("Response é igual a undefined ? " + response.data == undefined)
-        console.log("Response é igual a string vazia ? " + response.data == "")
-        
+        console.log('RESPOSTA DE GET TOPIC: ' + response.data)
+        console.log('Response é igual a nulo ? ' + response.data == null)
+        console.log(
+          'Response é igual a undefined ? ' + response.data == undefined
+        )
+        console.log('Response é igual a string vazia ? ' + response.data == '')
+
         console.log(typeof response.data)
         setTopics(response.data)
-        
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
@@ -107,18 +108,15 @@ export const Forum = () => {
                 title={topic.titulo}
                 description={topic.descricao}
                 date={topic.dataCriacao}
-                answers={topic.respostas != null ? topic.respostas.length : ""}
+                answers={topic.respostas != null ? topic.respostas.length : ''}
                 // name={topic.usuario.nome}
                 // lastName={topic.usuario.sobrenome}
               >
                 <div className={style.col}>
-                  <img
-                    src={iconEdit}
-                    onClick={() => handleEditClick(topic.idTopico)}
-                  />
+                  <img src={iconEdit} onClick={() => handleEditClick(topic)} />
                   <img
                     src={iconDelete}
-                    onClick={() => handleDeleteClick(topic.idTopico)}
+                    onClick={() => handleDeleteClick(topic)}
                   />
                 </div>
               </CardTopic>
@@ -155,7 +153,7 @@ export const Forum = () => {
                 onClose={() => setIsEditModalVisible(false)}
               >
                 <UpdateTopic
-                  topicId={currentId}
+                  selectedTopic={currentTopic}
                   onClose={() => setIsEditModalVisible(false)}
                 />
               </Modal>
@@ -167,7 +165,7 @@ export const Forum = () => {
                 onClose={() => setIsDeleteModalVisible(false)}
               >
                 <DeleteTopic
-                  topicId={currentId}
+                  selectedTopic={currentTopic}
                   onClose={() => setIsDeleteModalVisible(false)}
                 />
               </Modal>

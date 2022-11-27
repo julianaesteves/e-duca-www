@@ -22,7 +22,7 @@ export const Home = () => {
   const [teacher, setTeacher] = useState({
     name: '',
     lastName: '',
-    carrerTime: '',
+    careerTime: '',
     occupation: ''
   })
 
@@ -32,7 +32,7 @@ export const Home = () => {
         setTeacher({
           name: response.data.nome,
           lastName: response.data.sobrenome,
-          carrerTime: response.data.inicioAtuacao,
+          careerTime: response.data.inicioAtuacao,
           occupation: response.data.areaAtuacao
         })
       },
@@ -65,7 +65,6 @@ export const Home = () => {
     )
   }, [])
 
-  
   const handleEditClick = (id: any) => {
     setIsEditModalVisible(true)
     setCurrentId(id)
@@ -76,7 +75,6 @@ export const Home = () => {
     setCurrentId(id)
   }
 
-  
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>

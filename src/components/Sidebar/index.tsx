@@ -10,7 +10,7 @@ type Props = {
   isTeacher?: boolean
   name: string
   lastName: string
-  carrerTime?: string
+  careerTime?: string
   occupation?: string
   handleChosenItem: any
   selectedItem: any
@@ -20,7 +20,7 @@ export const Sidebar = ({
   isTeacher,
   name,
   occupation,
-  carrerTime,
+  careerTime,
   lastName,
   handleChosenItem
 }: // selectedItem
@@ -35,7 +35,7 @@ Props) => {
             name={`${name} ${lastName}`}
             userType="Professor(a)"
             labOne="Tempo de carreira:"
-            carrerTime={`${carrerTime} anos`}
+            careerTime={`${careerTime} anos`}
             labtwo="Área de atuação:"
             occupation={occupation}
           />
