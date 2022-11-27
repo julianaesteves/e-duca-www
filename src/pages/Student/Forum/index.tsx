@@ -20,7 +20,7 @@ export const Forum = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-  const [currentTopic, setCurrentTopic] = useState({})
+  const [currentTopic, setCurrentTopic] = useState()
 
   const handleEditClick = (topic: any) => {
     console.log(topic)
@@ -75,6 +75,13 @@ export const Forum = () => {
     )
   }, [])
 
+  const handleTopicClicked = (topic: any) => {
+    console.log(topic)
+    setCurrentTopic(topic)
+    setAnswerIsModalVisible(true)
+  }
+
+
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
@@ -103,44 +110,38 @@ export const Forum = () => {
             <h1>NADA A VER POR AQUI</h1>
           ) : (
             topics?.map((topic: any) => (
-              <>
-                <CardTopic
-                  // onClick={() => setAnswerIsModalVisible(true)}
-                  key={topic.idTopico}
-                  title={topic.titulo}
-                  description={topic.descricao}
-                  date={topic.dataCriacao}
-                  answers={topic.respostas.length}
-                  name={topic.usuario.nome}
-                  lastName={topic.usuario.sobrenome}
-                >
-                  <div className={style.col}>
-                    <img
-                      src={iconEdit}
-                      onClick={() => handleEditClick(topic)}
-                    />
-                    <img
-                      src={iconDelete}
-                      onClick={() => handleDeleteClick(topic)}
-                    />
-                  </div>
-                </CardTopic>
-                {isAnswerModalVisible && (
-                  <Modal
-                    isOpen={isAnswerModalVisible}
-                    onClose={() => setAnswerIsModalVisible(false)}
-                  >
-                    <SelectedTopic
-                      subject={topic.titulo}
-                      description={topic.descricao}
-                      // name={topic.usuario.nome}
-                      // lastName={topic.usuario.sobrenome}
-                      onClose={() => setAnswerIsModalVisible(false)}
-                    />
-                  </Modal>
-                )}
-              </>
+              <CardTopic
+                onClick={() => handleTopicClicked(topic)}
+                key={topic.idTopico}
+                title={topic.titulo}
+                description={topic.descricao}
+                date={topic.dataCriacao}
+                answers={topic.respostas.length}
+                name={topic.usuario.nome}
+                lastName={topic.usuario.sobrenome}
+              >
+                <div className={style.col}>
+                  <img src={iconEdit} onClick={() => handleEditClick(topic)} />
+                  <img
+                    src={iconDelete}
+                    onClick={() => handleDeleteClick(topic)}
+                  />
+                </div>
+              </CardTopic>
             ))
+          )}
+
+          {isAnswerModalVisible && (
+            <Modal
+              isOpen={isAnswerModalVisible}
+              onClose={() => setAnswerIsModalVisible(false)}
+            >
+              <SelectedTopic
+                student={student}
+                selectedTopic={currentTopic}
+                onClose={() => setAnswerIsModalVisible(false)}
+              />
+            </Modal>
           )}
 
           {isAddModalVisible ? (

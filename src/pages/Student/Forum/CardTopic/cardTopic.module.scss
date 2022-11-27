@@ -14,6 +14,12 @@
     padding: 10px 24px;
     border-left: grey 12px solid;
 
+    &:hover {
+      background-color: #e2e2e2;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
     .info {
       display: grid;
       grid-template-rows: 0fr 1fr;
@@ -58,6 +64,12 @@
     padding: 10px 24px;
     border-left: #ac0391 12px solid;
 
+    &:hover {
+      background-color: #f0d7ff;
+      transition: 0.5s;
+      cursor: pointer;
+    }
+
     .info {
       display: grid;
       grid-template-rows: 0fr 1fr;
@@ -79,7 +91,6 @@
         margin-left: 8px;
         font-weight: 700;
       }
-
     }
     .date {
       display: grid;
