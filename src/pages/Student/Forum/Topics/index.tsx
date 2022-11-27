@@ -1,6 +1,5 @@
 import style from './topics.module.scss'
 import { useEffect, useState } from 'react'
-import { Button } from '../../../../components/Button'
 import { Modal } from '../../../../components/Modal'
 import { CardTopic } from '../CardTopic'
 import { SelectedTopic } from '../SelectedTopic'
@@ -18,6 +17,7 @@ export const Topics = () => {
 
   const [topics, setTopics] = useState<any[]>([])
   const [isTopicsEmpty, setIsTopicEmpty] = useState<boolean>(false)
+  const [currentTopic, setCurrentTopic] = useState()
 
   const [student, setStudent] = useState({
     name: '',
@@ -34,12 +34,8 @@ export const Topics = () => {
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getUser: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('FORUM/ESTUDANTE/getUser: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
@@ -55,16 +51,18 @@ export const Topics = () => {
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('FORUM/ESTUDANTE/getTopic: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
   }, [])
+
+  const handleTopicClicked = (topic: any) => {
+    console.log(topic)
+    setCurrentTopic(topic)
+    setAnswerIsModalVisible(true)
+  }
 
   return (
     <div className={style.container}>
@@ -94,9 +92,8 @@ export const Topics = () => {
             <h1>NADA A VER POR AQUI</h1>
           ) : (
             topics?.map((topic: any) => (
-              <>
                 <CardTopic
-                  // onClick={() => setAnswerIsModalVisible(true)}
+                  onClick={() => handleTopicClicked(topic)}
                   key={topic.idTopico}
                   title={topic.titulo}
                   description={topic.descricao}
@@ -104,24 +101,7 @@ export const Topics = () => {
                   answers={topic.respostas.length}
                   // name={topic.usuario.nome}
                   // lastName={topic.usuario.sobrenome}
-                >
-                  <Button className={style.btn} title="Adicionar resposta" />
-                </CardTopic>
-                {isAnswerModalVisible && (
-                  <Modal
-                    isOpen={isAnswerModalVisible}
-                    onClose={() => setAnswerIsModalVisible(false)}
-                  >
-                    <SelectedTopic
-                      subject={topic.titulo}
-                      description={topic.descricao}
-                      // name={topic.usuario.nome}
-                      // lastName={topic.usuario.sobrenome}
-                      onClose={() => setAnswerIsModalVisible(false)}
-                    />
-                  </Modal>
-                )}
-              </>
+                ></CardTopic>
             ))
           )}
 
@@ -134,7 +114,18 @@ export const Topics = () => {
                 <RegisterTopic onClose={() => setIsAddModalVisible(false)} />
               </Modal>
             </>
-          ) :  null}
+          ) : isAnswerModalVisible ? (
+            <Modal
+              isOpen={isAnswerModalVisible}
+              onClose={() => setAnswerIsModalVisible(false)}
+            >
+              <SelectedTopic
+                student={student}
+                selectedTopic={currentTopic}
+                onClose={() => setAnswerIsModalVisible(false)}
+              />
+            </Modal>
+          ) : null}
         </div>
       </div>
     </div>
