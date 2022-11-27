@@ -8,6 +8,9 @@ import { Button } from '../../../components/Button'
 import { VideoClass } from '../../../components/VideoClass'
 
 export const Content = () => {
+  const [search, setSearch] = useState('')
+  console.log(search)
+
   const [content, setContent] = useState<any[]>([])
   const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
   const [contentClicked, setContentClicked] = useState<any>({})
@@ -77,18 +80,33 @@ export const Content = () => {
         </>
       ) : (
         <div className={style.innerContainer}>
-          <SearchBar placeholder="Buscar conteúdo" />
+          <SearchBar
+          placeholder="Buscar conteúdo"
+          value={search}
+          onChange={(e: any) => setSearch(e.target.value)}
+        />
           <div className={style.cards}>
-            {content?.map((post: any) => (
-              <ContentCard
-                contentId={post.idConteudo}
-                key={post.idConteudo}
-                title={post.titulo}
-                hability={post.habilidade.codigo}
-                date={post.dataCriacao}
+            {content &&
+            content
+              .filter((post) => {
+                if (search == '') {
+                  return post
+                } else if (
+                  post.titulo.toLowerCase().includes(search.toLowerCase())
+                ) {
+                  return post
+                }
+              })
+              .map((post: any) => (
+                  <ContentCard
+                    contentId={post.idConteudo}
+                    key={post.idConteudo}
+                    title={post.titulo}
+                    hability={post.habilidade.codigo}
+                    date={post.dataCriacao}
                 onClick={() => handleContentClick(post)}
-              />
-            ))}
+                  />
+                ))}
           </div>
         </div>
       )}
