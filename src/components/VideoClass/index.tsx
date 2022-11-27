@@ -9,9 +9,10 @@ type Props = {
   lastName: string
   category: string
   video: string
+  contentId: number
 }
 
-export const VideoClass = ({ title, name, category, video, lastName }: Props) => {
+export const VideoClass = ({ title, name, category, video, lastName, contentId }: Props) => {
   return (
     <>
       <div className={style.container}>
@@ -29,7 +30,7 @@ export const VideoClass = ({ title, name, category, video, lastName }: Props) =>
           </div>
         </div>
 
-        <CardLikert />
+        <CardLikert contentId={contentId}/>
       </div>
     </>
   )

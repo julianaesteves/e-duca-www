@@ -1,5 +1,4 @@
 import style from './login.module.scss'
-import { Link } from 'react-router-dom'
 import { ChangeEvent, useState } from 'react'
 import { FormActions, useForm } from '../../utils/contexts/FormContext'
 import img from '../../assets/img/image08.svg'
@@ -9,11 +8,15 @@ import { SignUp } from '../SignUp/components/SignUp'
 import { Button } from '../../components/Button'
 import AuthService from '../../services/auth.service'
 import { useNavigate } from 'react-router-dom'
+import { Input } from '../../components/Input'
 
 export const Login = () => {
   const { state, dispatch } = useForm()
   const [isModalVisible, setIsModalVisible] = useState(false)
   const navigate = useNavigate()
+  const [emailError, setEmailError] = useState(false)
+  const [senhaError, setSenhaError] = useState(false)
+  const [invalid, setInvalid] = useState(false)
 
   const data = {
     email: state.email,
@@ -22,6 +25,11 @@ export const Login = () => {
 
   const handleNextStep = async (e: any) => {
     e.preventDefault()
+    if (data.email == '' && data.senha == '') {
+      setInvalid(true)
+      return
+    }
+
     try {
       await AuthService.login(data).then(
         () => {
@@ -29,43 +37,22 @@ export const Login = () => {
           window.location.reload()
         },
         (error: any) => {
+          setInvalid(true)
           console.log(error)
         }
       )
     } catch (err) {
       console.log(err)
+      setInvalid(true)
     }
   }
-
-  // const apiUrl = 'http://localhost:8080/'
-
-  // const authAxios = axios.create({
-  //   baseURL: apiUrl,
-  //   headers: { Authorization: `Bearer ${acessToken}` }
-  // })
-
-  // const handleNextStep = async() => {
-  //   if (state.email !== '' && state.password !== '') {
-
-  //     try {
-  //       const response = await api.post("/auth", data);
-  //       login(response.data.token);
-
-  //     }  catch(error) {
-  //       console.log(error)
-  //     }
-
-  //     console.log(state)
-  //   } else {
-  //     alert(`Olá, Certifique se todos os campos estão preenchidos corretamente.`)
-  //   }
-  // }
 
   const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
     dispatch({
       type: FormActions.setEmail,
       payload: e.target.value
     })
+    setEmailError(false)
   }
 
   const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -73,6 +60,7 @@ export const Login = () => {
       type: FormActions.setPassword,
       payload: e.target.value
     })
+    setSenhaError(false)
   }
 
   return (
@@ -89,26 +77,37 @@ export const Login = () => {
         <div>
           <h1>Login</h1>
           <div className={style.containerForm}>
-            <label>E-mail:</label>
-            <input
+            <Input
+              text="E-mail"
               type="email"
               value={state.email}
               placeholder="exemplo@email.com"
               onChange={handleEmailChange}
+              onBlur={() => {
+                if (data.email === '') {
+                  setEmailError(true)
+                }
+              }}
             />
-            <label>Senha:</label>
-            <input
+            <div className={style.error}>
+              {emailError && <p>Por favor, preencha o email</p>}
+            </div>
+            <Input
+              text="Senha:"
               type="password"
               value={state.password}
               placeholder="*******************"
               onChange={handlePasswordChange}
+              onBlur={() => {
+                if (data.senha === '') {
+                  setSenhaError(true)
+                }
+              }}
             />
-            <span>
-              Problemas ao fazer login?
-              <Link to={'/'}>
-                <a>Recuperar senha</a>
-              </Link>
-            </span>
+            <div className={style.error}>
+              {senhaError && <p>Por favor, preencha a senha</p>}
+              {invalid && <p>Email ou senha inválidos. Tente novamente!</p>}
+            </div>
             <Button
               className={style.btnEnter}
               title="Entrar"
