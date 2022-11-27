@@ -17,24 +17,23 @@ export const ContentCard = ({
   date,
   img,
   children,
-  contentId, 
-  onClick,
+  contentId,
+  onClick
 }: Props) => {
-
-
   return (
     <div className={style.card} key={contentId} onClick={onClick}>
       <div className={style.circle}>
         <img src={img} />
       </div>
-
       <div className={style.content}>
-        <div className={style.title}>
+        <div className={style.text}>
           <h2>{title}</h2>
-          <span>Postada em {date}</span>
+          <span className={style.highlight}>{hability}</span>
+        </div>
+        <div className={style.date}>
+          <p>Postada em {date}</p>
           {children}
         </div>
-        <span className={style.highlight}>{hability}</span>
       </div>
     </div>
   )

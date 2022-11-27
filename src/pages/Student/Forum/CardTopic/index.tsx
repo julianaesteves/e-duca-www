@@ -25,7 +25,6 @@ export const CardTopic = ({
   return (
     <>
       <div className={style.container} onClick={onClick}>
-        <div className={style.cylinder} />
         <div className={answers > 0 ? `${style.card}` : `${style.unasweredCard}`}>
           <div className={style.info}>
             <h2>{title}</h2>
