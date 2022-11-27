@@ -6,7 +6,8 @@ import { FormActions, useForm } from '../../../utils/contexts/FormContext'
 import { CheckCircleOutline, RadioButtonUnchecked } from '@mui/icons-material'
 import img from '../../../assets/img/image11.svg'
 import { Button } from '../../../components/Button'
-import axios from 'axios'
+import PostService from '../../../services/post.service'
+import { Input } from '../../../components/Input'
 
 export const FormStep2 = () => {
   const { state, dispatch } = useForm()
@@ -29,15 +30,23 @@ export const FormStep2 = () => {
   }, [])
 
   const handleNextStep = () => {
-    if (state.email !== '' && state.password !== '') {
-      axios.post("http://educa-application-web.eastus.cloudapp.azure.com/api/usuarios/professores/", data)
-      .then(function (response) {
-        console.log(response.status);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-      console.log(state);
+    if (
+      data.nome != '' &&
+      data.sobrenome != '' &&
+      data.email != '' &&
+      data.dataNasc != '' &&
+      data.senha.length >= 8 &&
+      data.inicioAtuacao != '' &&
+      data.areaAtuacao != ''
+    ) {
+      PostService.registerTeacher(data)
+        .then(function (response) {
+          console.log(response.status)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      console.log(state)
     } else {
       alert(
         `${state.name}, Certifique se todos os campos estão preenchido corretamente`
@@ -68,22 +77,22 @@ export const FormStep2 = () => {
     <>
       <Theme img={img} isTeacher>
         <div className={style.container}>
-          <label>E-mail:</label>
-          <input
+          <Input
+            text="E-mail:"
             type="email"
             value={state.email}
             placeholder="exemplo@email.com"
             onChange={handleEmailChange}
           />
-          <label>Senha:</label>
-          <input
+          <Input
+            text="Senha:"
             type="password"
             value={state.password}
             placeholder="8 caracteres (letras, números)"
             onChange={handlePasswordChange}
           />
-          <label>Confirmar senha:</label>
-          <input
+          <Input
+            text="Confirmar senha"
             type="password"
             value={state.confirmPassword}
             placeholder="8 caracteres (letras, números)"

@@ -3,6 +3,14 @@ import authHeader from './auth-header'
 
 const API_URL = 'http://educa-application-web.eastus.cloudapp.azure.com/'
 
+const registerStudent = (data) => {
+  return axios.post(API_URL + 'api/usuarios/estudantes/', data)
+}
+
+const registerTeacher = (data) => {
+  return axios.post(API_URL + 'api/usuarios/estudantes/', data)
+}
+
 const getUser = () => {
   return axios.get(API_URL + 'auth/usuario-secao', {
     headers: authHeader()
@@ -80,7 +88,9 @@ const postService = {
   updateTopic,
   deleteTopic,
   registerRating,
-  getAllTopics
+  getAllTopics,
+  registerStudent,
+  registerTeacher
 }
 
 export default postService
