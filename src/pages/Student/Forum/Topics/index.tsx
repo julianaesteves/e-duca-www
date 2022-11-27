@@ -1,4 +1,4 @@
-import style from './forum.module.scss'
+import style from './topics.module.scss'
 import { useEffect, useState } from 'react'
 import { Button } from '../../../../components/Button'
 import { Modal } from '../../../../components/Modal'
@@ -6,23 +6,18 @@ import { CardTopic } from '../CardTopic'
 import { SelectedTopic } from '../SelectedTopic'
 import { Greeting } from '../../../../components/Greeting'
 import { RegisterTopic } from '../RegisterTopic'
-import { UpdateTopic } from '../UpdateTopic'
-import { DeleteTopic } from '../DeleteTopic'
 import { Card } from '../../../Teacher/Overview/Card'
 import img from '../../../../assets/img/greetingTeacher.svg'
-// import iconEdit from '../../../assets/img/edit.svg'
-// import iconDelet from '../../../assets/img/delet.svg'
 import iconVisible from '../../../../assets/img/visible.svg'
 import iconAdd from '../../../../assets/img/addSmall.svg'
 import PostService from '../../../../services/post.service'
 
-export const Forum = () => {
+export const Topics = () => {
   const [isAnswerModalVisible, setAnswerIsModalVisible] = useState(false)
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
 
   const [topics, setTopics] = useState<any[]>([])
+  const [isTopicsEmpty, setIsTopicEmpty] = useState<boolean>(false)
 
   const [student, setStudent] = useState({
     name: '',
@@ -51,7 +46,12 @@ export const Forum = () => {
 
     PostService.getAllTopics().then(
       (response: any) => {
-        setTopics(response.data)
+        if (response.status == 204) {
+          setIsTopicEmpty(true)
+          return
+        }
+
+        setTopics(response.data.content)
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
@@ -90,36 +90,40 @@ export const Forum = () => {
           />
         </div>
         <div className={style.cards}>
-          {topics?.map((topic: any) => (
-            <>
-              <CardTopic
-                // onClick={() => setAnswerIsModalVisible(true)}
-                key={topic.idTopico}
-                title={topic.titulo}
-                description={topic.descricao}
-                date={topic.dataCriacao}
-                answers={topic.respostas.length}
-                // name={topic.usuario.nome}
-                // lastName={topic.usuario.sobrenome}
-              >
-                <Button className={style.btn} title="Adicionar resposta" />
-              </CardTopic>
-              {isAnswerModalVisible && (
-                <Modal
-                  isOpen={isAnswerModalVisible}
-                  onClose={() => setAnswerIsModalVisible(false)}
+          {isTopicsEmpty ? (
+            <h1>NADA A VER POR AQUI</h1>
+          ) : (
+            topics?.map((topic: any) => (
+              <>
+                <CardTopic
+                  // onClick={() => setAnswerIsModalVisible(true)}
+                  key={topic.idTopico}
+                  title={topic.titulo}
+                  description={topic.descricao}
+                  date={topic.dataCriacao}
+                  answers={topic.respostas.length}
+                  // name={topic.usuario.nome}
+                  // lastName={topic.usuario.sobrenome}
                 >
-                  <SelectedTopic
-                    subject={topic.titulo}
-                    description={topic.descricao}
-                    // name={topic.usuario.nome}
-                    // lastName={topic.usuario.sobrenome}
+                  <Button className={style.btn} title="Adicionar resposta" />
+                </CardTopic>
+                {isAnswerModalVisible && (
+                  <Modal
+                    isOpen={isAnswerModalVisible}
                     onClose={() => setAnswerIsModalVisible(false)}
-                  />
-                </Modal>
-              )}
-            </>
-          ))}
+                  >
+                    <SelectedTopic
+                      subject={topic.titulo}
+                      description={topic.descricao}
+                      // name={topic.usuario.nome}
+                      // lastName={topic.usuario.sobrenome}
+                      onClose={() => setAnswerIsModalVisible(false)}
+                    />
+                  </Modal>
+                )}
+              </>
+            ))
+          )}
 
           {isAddModalVisible ? (
             <>
@@ -130,25 +134,7 @@ export const Forum = () => {
                 <RegisterTopic onClose={() => setIsAddModalVisible(false)} />
               </Modal>
             </>
-          ) : isEditModalVisible ? (
-            <>
-              <Modal
-                isOpen={isEditModalVisible}
-                onClose={() => setIsEditModalVisible(false)}
-              >
-                <UpdateTopic onClose={() => setIsEditModalVisible(false)} />
-              </Modal>
-            </>
-          ) : isDeleteModalVisible ? (
-            <>
-              <Modal
-                isOpen={isDeleteModalVisible}
-                onClose={() => setIsDeleteModalVisible(false)}
-              >
-                <DeleteTopic onClose={() => setIsDeleteModalVisible(false)} />
-              </Modal>
-            </>
-          ) : null}
+          ) :  null}
         </div>
       </div>
     </div>

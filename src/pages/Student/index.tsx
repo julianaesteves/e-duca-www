@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Sidebar } from '../../components/Sidebar'
 import { Forum } from './Forum'
+import { Topics } from './Forum/Topics'
 import { Home } from './Home'
 import PostService from '../../services/post.service'
 import style from './student.module.scss'
@@ -40,6 +41,9 @@ export const Student = () => {
         setChosenComponent(<Home />)
         break
       case 'Fórum de dúvidas':
+        setChosenComponent(<Topics />)
+        break
+      case 'Meus tópicos':
         setChosenComponent(<Forum />)
         break
       default:
@@ -55,9 +59,7 @@ export const Student = () => {
         handleChosenItem={handleChosenItem}
         selectedItem={chosenItem}
       />
-      <div className={style.innerContainer}>
-        {chosenComponent}
-      </div>
+      <div className={style.innerContainer}>{chosenComponent}</div>
     </div>
   )
 }

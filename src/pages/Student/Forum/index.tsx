@@ -20,9 +20,10 @@ export const Forum = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [isAddModalVisible, setIsAddModalVisible] = useState(false)
-  const [currentTopic, setCurrentTopic] = useState()
+  const [currentTopic, setCurrentTopic] = useState({})
 
   const handleEditClick = (topic: any) => {
+    console.log(topic)
     setIsEditModalVisible(true)
     setCurrentTopic(topic)
   }
@@ -109,20 +110,18 @@ export const Forum = () => {
                   title={topic.titulo}
                   description={topic.descricao}
                   date={topic.dataCriacao}
-                  answers={
-                    topic.respostas != null ? topic.respostas.length : ''
-                  }
-                  // name={topic.usuario.nome}
-                  // lastName={topic.usuario.sobrenome}
+                  answers={topic.respostas.length}
+                  name={topic.usuario.nome}
+                  lastName={topic.usuario.sobrenome}
                 >
                   <div className={style.col}>
                     <img
                       src={iconEdit}
-                      onClick={() => handleEditClick(topic.idTopico)}
+                      onClick={() => handleEditClick(topic)}
                     />
                     <img
                       src={iconDelete}
-                      onClick={() => handleDeleteClick(topic.idTopico)}
+                      onClick={() => handleDeleteClick(topic)}
                     />
                   </div>
                 </CardTopic>
