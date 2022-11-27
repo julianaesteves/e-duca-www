@@ -143,7 +143,7 @@ export const FormStep1 = () => {
             }}
           />
           <div className={style.error}>
-            {occupationError && <p>Por favor, preencha o sobrenome</p>}
+            {occupationError && <p>Por favor, preencha a área de atuação</p>}
           </div>
           <Input
             text="Atuando desde:"
@@ -157,7 +157,7 @@ export const FormStep1 = () => {
             }}
           />
           <div className={style.error}>
-            {careerTimeError && <p>Por favor, preencha o sobrenome</p>}
+            {careerTimeError && <p>Por favor, preencha o tempo de carreira</p>}
             {invalid && (
               <p>Por favor, preencha todos os campos corretamente.</p>
             )}
