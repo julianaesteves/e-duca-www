@@ -11,19 +11,19 @@ import { useNavigate } from 'react-router-dom'
 import { Input } from '../../components/Input'
 
 export const Login = () => {
-  const { state, dispatch } = useForm()
-  const [isModalVisible, setIsModalVisible] = useState(false)
   const navigate = useNavigate()
-  const [emailError, setEmailError] = useState(false)
-  const [senhaError, setSenhaError] = useState(false)
-  const [invalid, setInvalid] = useState(false)
+  const { state, dispatch } = useForm()
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false)
+  const [emailError, setEmailError] = useState<boolean>(false)
+  const [passwordError, setPasswordError] = useState<boolean>(false)
+  const [invalid, setInvalid] = useState<boolean>(false)
 
   const data = {
     email: state.email,
     senha: state.password
   }
 
-  const handleNextStep = async (e: any) => {
+  const handleNextStep = async (e: Event) => {
     e.preventDefault()
     if (data.email == '' && data.senha == '') {
       setInvalid(true)
@@ -60,7 +60,7 @@ export const Login = () => {
       type: FormActions.setPassword,
       payload: e.target.value
     })
-    setSenhaError(false)
+    setPasswordError(false)
   }
 
   return (
@@ -100,12 +100,12 @@ export const Login = () => {
               onChange={handlePasswordChange}
               onBlur={() => {
                 if (data.senha === '') {
-                  setSenhaError(true)
+                  setPasswordError(true)
                 }
               }}
             />
             <div className={style.error}>
-              {senhaError && <p>Por favor, preencha a senha</p>}
+              {passwordError && <p>Por favor, preencha a senha</p>}
               {invalid && <p>Email ou senha inválidos. Tente novamente!</p>}
             </div>
             <Button
