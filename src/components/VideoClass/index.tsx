@@ -12,25 +12,36 @@ type Props = {
   contentId: number
 }
 
-export const VideoClass = ({ title, name, category, video, lastName, contentId }: Props) => {
+export const VideoClass = ({
+  title,
+  name,
+  category,
+  video,
+  lastName,
+  contentId
+}: Props) => {
   return (
     <>
       <div className={style.container}>
         <div className={style.innerContainer}>
-          <Video video={video}/>
-          <div className={style.containerTitle}>
-            <div className={style.title}>
-              <img src={imgPlay} alt=" image Play video" />
-              <h1>{title}</h1>
+          <Video video={video} />
+          <div className={style.info}>
+            <div className={style.containerTitle}>
+              <div className={style.title}>
+                <img src={imgPlay} alt=" image Play video" />
+                <h1>{title}</h1>
+              </div>
+              <p>
+                Postado por{' '}
+                <span>
+                  Professor {name} {lastName}
+                </span>
+              </p>
+              <div className={style.category}>{category}</div>
             </div>
-            <p>
-              Postado por <span>Professor {name} {lastName}</span>
-            </p>
-            <div className={style.category}>{category}</div>
+            <CardLikert contentId={contentId} />
           </div>
         </div>
-
-        <CardLikert contentId={contentId}/>
       </div>
     </>
   )

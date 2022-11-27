@@ -28,7 +28,7 @@ const handleRating = (text: string, contentId: Props) => {
 export const CardLikert = ({ contentId }: Props) => {
   return (
     <div className={style.card}>
-      <h1>Gostou da aula? Nos dê sua opinião!</h1>
+      <h3>Gostou da aula? Nos dê sua opinião!</h3>
       <div>
         {ImageItems.map((item) => {
           return (
