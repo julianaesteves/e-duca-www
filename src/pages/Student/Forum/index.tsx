@@ -32,7 +32,8 @@ export const Forum = () => {
     setCurrentId(id)
   }
 
-  const [topics, setTopics] = useState<any[]>([{}])
+  const [topics, setTopics] = useState<any[]>([])
+  const [isTopicsEmpty, setIsTopicEmpty] = useState<boolean>(false)
 
   const [student, setStudent] = useState({
     name: '',
@@ -57,14 +58,12 @@ export const Forum = () => {
 
     PostService.getTopic().then(
       (response: any) => {
-        console.log("RESPOSTA DE GET TOPIC: " + response.data)
-        console.log("Response é igual a nulo ? " + response.data == null)
-        console.log("Response é igual a undefined ? " + response.data == undefined)
-        console.log("Response é igual a string vazia ? " + response.data == "")
-        
-        console.log(typeof response.data)
-        setTopics(response.data)
-        
+        if (response.status == 204) {
+          setIsTopicEmpty(true)
+          return
+        }
+
+        setTopics(response.data.content)
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
@@ -99,45 +98,51 @@ export const Forum = () => {
           />
         </div>
         <div className={style.cards}>
-          {topics?.map((topic: any) => (
-            <>
-              <CardTopic
-                // onClick={() => setAnswerIsModalVisible(true)}
-                key={topic.idTopico}
-                title={topic.titulo}
-                description={topic.descricao}
-                date={topic.dataCriacao}
-                answers={topic.respostas != null ? topic.respostas.length : ""}
-                // name={topic.usuario.nome}
-                // lastName={topic.usuario.sobrenome}
-              >
-                <div className={style.col}>
-                  <img
-                    src={iconEdit}
-                    onClick={() => handleEditClick(topic.idTopico)}
-                  />
-                  <img
-                    src={iconDelete}
-                    onClick={() => handleDeleteClick(topic.idTopico)}
-                  />
-                </div>
-              </CardTopic>
-              {isAnswerModalVisible && (
-                <Modal
-                  isOpen={isAnswerModalVisible}
-                  onClose={() => setAnswerIsModalVisible(false)}
+          {isTopicsEmpty ? (
+            <h1>NADA A VER POR AQUI</h1>
+          ) : (
+            topics?.map((topic: any) => (
+              <>
+                <CardTopic
+                  // onClick={() => setAnswerIsModalVisible(true)}
+                  key={topic.idTopico}
+                  title={topic.titulo}
+                  description={topic.descricao}
+                  date={topic.dataCriacao}
+                  answers={
+                    topic.respostas != null ? topic.respostas.length : ''
+                  }
+                  // name={topic.usuario.nome}
+                  // lastName={topic.usuario.sobrenome}
                 >
-                  <SelectedTopic
-                    subject={topic.titulo}
-                    description={topic.descricao}
-                    // name={topic.usuario.nome}
-                    // lastName={topic.usuario.sobrenome}
+                  <div className={style.col}>
+                    <img
+                      src={iconEdit}
+                      onClick={() => handleEditClick(topic.idTopico)}
+                    />
+                    <img
+                      src={iconDelete}
+                      onClick={() => handleDeleteClick(topic.idTopico)}
+                    />
+                  </div>
+                </CardTopic>
+                {isAnswerModalVisible && (
+                  <Modal
+                    isOpen={isAnswerModalVisible}
                     onClose={() => setAnswerIsModalVisible(false)}
-                  />
-                </Modal>
-              )}
-            </>
-          ))}
+                  >
+                    <SelectedTopic
+                      subject={topic.titulo}
+                      description={topic.descricao}
+                      // name={topic.usuario.nome}
+                      // lastName={topic.usuario.sobrenome}
+                      onClose={() => setAnswerIsModalVisible(false)}
+                    />
+                  </Modal>
+                )}
+              </>
+            ))
+          )}
 
           {isAddModalVisible ? (
             <>
