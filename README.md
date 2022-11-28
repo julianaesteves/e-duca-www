@@ -17,7 +17,7 @@ A e-duca é a aplicação de apoio no estudo de exatas para alunos no terceiro a
 ##
 ## 🛠 Funcionamento
 
-As aplicação é hospedada em _???????_. O front-end se comunica com a API das aplicação desenvolvida em _Java_ pelo time de back-end da e-duca.
+As aplicação é hospedada na Azure. O front-end se comunica com a API das aplicação desenvolvida em _Java_ pelo time de back-end da e-duca.
 
 ##
 ## 🔩 O que tem na aplicação
@@ -82,6 +82,5 @@ A aplicação estará disponível localmente em
 ## 🔗 Links úteis
 
 - [Repositório e-duca API](https://github.com/julianaesteves/e-duca-api)
-- [Figma](https://www.figma.com/file/IFa75b4b0aiR99MQm8oyyt/e-duca?node-id=0%3A1)
-- [Postman]()
+- [Figma](https://www.figma.com/file/IFa75b4b0aiR99MQm8oyyt/e-duca?node-id=0%3A1)\
 

@@ -4,6 +4,21 @@
   display: flex;
   background-color: $white;
 
+  .empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      margin-right: 56px;
+      max-width: 300px;
+    }
+
+    img {
+      height: 300px;
+    }
+  }
+
   .innerContainer {
     max-height: 100vh;
     margin: auto;

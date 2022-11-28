@@ -11,9 +11,16 @@
     width: 100%;
     height: 35px;
     font-size: $placeholder;
-    border: none;
+    border: 2px solid transparent;
     text-indent: 12px;
     margin-bottom: 30px;
+    font-family: Montserrat, sans-serif;
+
+    &:focus-within {
+      border: 1.5px solid $pink-300;
+      outline: none;
+      transition: ease-in 0.2s;
+    }
   }
 
   label {

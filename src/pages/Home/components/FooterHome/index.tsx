@@ -23,9 +23,8 @@ export default function FooterHome() {
 
       <div>
         <h4>Contatos</h4>
-        <p>educa@gmail.com.br</p>
-        <p>suport@gmail.com</p>
-        <p>(11) 99999-9999</p>
+        <p>educa.sptech@gmail.com.br</p>
+        <p>(11) 99123-8765</p>
       </div>
     </div>
   )
