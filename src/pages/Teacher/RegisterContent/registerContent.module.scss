@@ -9,6 +9,10 @@
   padding: 60px;
   cursor: auto;
 
+  input {
+    margin-bottom: 0;
+  }
+
   .cSelect {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -34,5 +38,11 @@
       border: solid 2px $purple-800;
       width: 310px;
     }
+  }
+  .error {
+    height: 20px;
+    color: rgb(255, 0, 255);
+    font-size: 13px;
+    margin-left: 10px;
   }
 }
