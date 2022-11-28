@@ -23,10 +23,10 @@ export default function Header() {
         <span className={clicked ? 'fas fa-bars' : 'fas fa-times'}></span>
       </div>
       <div className={clicked ? `${style.menu__closed}` : `${style.menu}`}>
-        {MenuItems.map((item, index) => {
+        {MenuItems.map((item) => {
           return (
-            <li key={index}>
-              {index === 3 ? (
+            <li key={item.id}>
+              {item.id === 3 ? (
                 <a onClick={() => setIsModalVisible(true)}>{item.title}</a>
               ) : (
                 <Link to={item.url}>{item.title}</Link>
