@@ -14,6 +14,7 @@ import iconDelete from '../../../assets/img/delet.svg'
 import iconVisible from '../../../assets/img/visible.svg'
 import iconAdd from '../../../assets/img/addSmall.svg'
 import PostService from '../../../services/post.service'
+import iconEmpty from '../../../assets/img/empty.svg'
 
 export const Forum = () => {
   const [isAnswerModalVisible, setAnswerIsModalVisible] = useState(false)
@@ -107,7 +108,12 @@ export const Forum = () => {
         </div>
         <div className={style.cards}>
           {isTopicsEmpty ? (
-            <h1>NADA A VER POR AQUI</h1>
+            <div className={style.empty}>
+              <h3>
+                Ops! Parece que ainda não há nada para ver por aqui.
+              </h3>
+              <img src={iconEmpty} alt="" />
+            </div>
           ) : (
             topics?.map((topic: any) => (
               <CardTopic
