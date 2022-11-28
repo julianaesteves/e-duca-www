@@ -6,6 +6,7 @@ import AuthService from "./services/auth.service";
 import { useEffect, useState } from 'react';
 
 function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
@@ -22,15 +23,7 @@ function App() {
 
   
   return (
-    <>
-    <div>
-
-        {currentUser && (
-          <h1>MUITA DOIDEIRA</h1>
-        )}
-      </div>
-   
-   
+    <> 
       <FormProvider>
         <RoutesApp />
       </FormProvider>
