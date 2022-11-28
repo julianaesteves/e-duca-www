@@ -23,7 +23,6 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
     resposta: newAnswer
   }
 
-
   const saveAnswer = () => {
     if (data.resposta !== '')
       PostService.registerAnswer(data).then(
@@ -83,7 +82,7 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
             <h1>{selectedTopic.titulo}</h1>
             <p>{selectedTopic.descricao}</p>
           </div>
-          <div>
+          <div className={style.cInfo}>
             <h6>
               Postada em 01/01/22 por {selectedTopic.nome}{' '}
               {selectedTopic.sobrenome}
@@ -101,25 +100,25 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
       <div className={style.col}>
         {answers.map((answer: any) => (
           <>
-            <div key={answer.idTopico}>
+            <div className={style.sAnswer} key={answer.idTopico}>
               <p>{answer.resposta}</p>
               Respondido em {answer.dataCriacao} por{' '}
               <span>
                 {answer.usuario.nome} {answer.usuario.sobrenome}
               </span>
+              {student.name == selectedTopic.usuario.nome && (
+                <div className={style.cEdit}>
+                  <img
+                    src={iconEdit}
+                    onClick={() => handleUpdateAnswer(answer.idResposta)}
+                  />
+                  <img
+                    src={iconDelete}
+                    onClick={() => handleDeleteAnswer(answer.idResposta)}
+                  />
+                </div>
+              )}
             </div>
-            {student.name == selectedTopic.usuario.nome && (
-              <div className={style.col}>
-                <img
-                  src={iconEdit}
-                  onClick={() => handleUpdateAnswer(answer.idResposta)}
-                />
-                <img
-                  src={iconDelete}
-                  onClick={() => handleDeleteAnswer(answer.idResposta)}
-                />
-              </div>
-            )}
           </>
         ))}
         {addNewAnswer && (
