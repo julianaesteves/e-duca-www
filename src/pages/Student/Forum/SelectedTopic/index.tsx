@@ -4,6 +4,8 @@ import { useState } from 'react'
 import PostService from '../../../../services/post.service'
 import iconEdit from '../../../../assets/img/edit.svg'
 import iconDelete from '../../../../assets/img/delet.svg'
+import { Modal } from '../../../../components/Modal'
+import { UpdateAnswer } from '../UpdateAnswer'
 
 type Props = {
   onClose?: () => void
@@ -16,7 +18,8 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
   const [newAnswer, setNewAnswer] = useState<string>('')
   const [addNewAnswer, setAddNewAnswer] = useState<boolean>(false)
   const [invalid, setInvalid] = useState<boolean>(false)
-  // const [currentAnswer, setCurrentAnswer] = useState<number>()
+  const [currentAnswer, setCurrentAnswer] = useState()
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false)
 
   const data = {
     idTopico: selectedTopic.idTopico,
@@ -44,31 +47,20 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
     setInvalid(true)
   }
 
-  const handleUpdateAnswer = (answer: number) => {
-    // setIsEditModalVisible(true)
-    PostService.updateAnswer(answer, data).then(
-      (response: any) => {
-        console.log(response.data)
-      },
-      (error: any) => {
-        console.log('STUDENT/FORUM/UpdateTopic: Erro', error.response)
-        if (error.response && error.response.status === 403) {
-          console.log('STUDENT/FORUM/UpdateTopic: Erro de autenticação')
-        }
-      }
-    )
+  const handleUpdateAnswer = (answer: any) => {
+    setCurrentAnswer(answer)
+    setIsEditModalVisible(true)
   }
 
-  const handleDeleteAnswer = (answer: number) => {
-    // setIsDeleteModalVisible(true)
-    PostService.deleteTopic(answer).then(
+  const handleDeleteAnswer = (answer: any) => {
+    PostService.deleteAnswer(answer.idResposta).then(
       (response: any) => {
         console.log(response.data)
       },
       (error: any) => {
-        console.log('DELETE/STUDENT/deleteTopic: Erro', error.response)
+        console.log('DELETE/STUDENT/FORUM/deleteAnswer: Erro', error.response)
         if (error.response && error.response.status === 403) {
-          console.log('DELETE/STUDENT/deleteTopic: Erro de autenticação')
+          console.log('DELETE/STUDENT/FORUM/deleteAnswer: Erro de autenticação')
         }
       }
     )
@@ -84,7 +76,7 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
           </div>
           <div className={style.cInfo}>
             <h6>
-              Postada em 01/01/22 por {selectedTopic.nome}{' '}
+              Postada em 01/01/22 por {selectedTopic.nome}
               {selectedTopic.sobrenome}
             </h6>
             <button
@@ -110,11 +102,11 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
                 <div className={style.cEdit}>
                   <img
                     src={iconEdit}
-                    onClick={() => handleUpdateAnswer(answer.idResposta)}
+                    onClick={() => handleUpdateAnswer(answer)}
                   />
                   <img
                     src={iconDelete}
-                    onClick={() => handleDeleteAnswer(answer.idResposta)}
+                    onClick={() => handleDeleteAnswer(answer)}
                   />
                 </div>
               )}
@@ -149,6 +141,20 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
           <Button className={style.btn} title="Fechar" onClick={onClose} />
         </div>
       </div>
+
+      {isEditModalVisible && (
+        <>
+          <Modal
+            isOpen={isEditModalVisible}
+            onClose={() => setIsEditModalVisible(false)}
+          >
+            <UpdateAnswer
+              selectedAnswer={currentAnswer}
+              onClose={() => setIsEditModalVisible(false)}
+            />
+          </Modal>
+        </>
+      )}
     </div>
   )
 }
