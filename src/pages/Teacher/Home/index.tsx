@@ -78,9 +78,10 @@ export const Home = () => {
       texto: post.texto
     })
 
-    if (post.urlVideo != null) {
+    if (post.urlVideo !== "https://www.youtube.com/embed/") {
       setIsVideo(true)
     }
+    console.log(isVideo)
     setIsContentClicked(true)
   }
 
