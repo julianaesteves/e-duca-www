@@ -7,17 +7,22 @@ import { SelectType } from './SelectType'
 import PostService from '../../../services/post.service'
 
 type Props = {
-  onClose?: () => void
+  onClose: () => void
 }
 
 export const RegisterContent = ({ onClose }: Props) => {
   const [habilities, setHabilities] = useState<any[]>([])
   const [hability, setHability] = useState()
   const [type, setType] = useState(0)
-  const [title, setTitle] = useState()
-  const [workload, setWorkload] = useState()
-  const [texto, setTexto] = useState()
-  const [videoId, setVideoId] = useState()
+  const [title, setTitle] = useState('')
+  const [titleError, setTitleError] = useState<boolean>(false)
+  const [workload, setWorkload] = useState('')
+  const [workloadError, setWorkloadError] = useState<boolean>(false)
+  const [texto, setTexto] = useState('')
+  const [textoError, setTextoError] = useState<boolean>(false)
+  const [videoId, setVideoId] = useState('')
+  const [videoIdError, setVideoIdError] = useState<boolean>(false)
+  const [invalid, setInvalid] = useState<boolean>(false)
 
   const data = {
     titulo: title,
@@ -46,22 +51,34 @@ export const RegisterContent = ({ onClose }: Props) => {
   }, [])
 
   const registerContent = () => {
-    PostService.registerContent(data).then(
-      (response: any) => {
-        console.log(response.data)
-      },
-      (error: any) => {
-        console.log(
-          'RegisterContent/TEACHER/registerContent: Erro',
-          error.response
-        )
-        if (error.response && error.response.status === 403) {
+    console.log(data)
+    if (
+      data.titulo !== '' &&
+      data.tempoEstimado !== '' &&
+      data.habilidade.codigo !== undefined &&
+      (data.texto !== '' ||
+      videoId !== '')
+    ) {
+      PostService.registerContent(data).then(
+        (response: any) => {
+          console.log(response.data)
+          onClose()
+        },
+        (error: any) => {
           console.log(
-            'RegisterContent/TEACHER/registerContent: Erro de autenticação'
+            'RegisterContent/TEACHER/registerContent: Erro',
+            error.response
           )
+          if (error.response && error.response.status === 403) {
+            console.log(
+              'RegisterContent/TEACHER/registerContent: Erro de autenticação'
+            )
+          }
         }
-      }
-    )
+      )
+    } else {
+      setInvalid(true)
+    }
   }
 
   return (
@@ -72,7 +89,15 @@ export const RegisterContent = ({ onClose }: Props) => {
         placeholder="Exemplo"
         value={title}
         onChange={(e: any) => setTitle(e.target.value)}
+        onBlur={() => {
+          if (data.titulo === '') {
+            setTitleError(true)
+          }
+        }}
       />
+      <div className={style.error}>
+        {titleError && <p>Título não pode ser vazio.</p>}
+      </div>
       <div className={style.cSelect}>
         <Select
           placeholder="Selecione uma habilidade"
@@ -106,21 +131,41 @@ export const RegisterContent = ({ onClose }: Props) => {
         </Select>
       </div>
       {type === 1 ? (
-        <Input
-          text="Id do vídeo:"
-          type="url"
-          placeholder="https://www.youtube.com/IdVideo"
-          value={videoId}
-          onChange={(e: any) => setVideoId(e.target.value)}
-        />
+        <>
+          <Input
+            text="Id do vídeo:"
+            type="url"
+            placeholder="https://www.youtube.com/IdVideo"
+            value={videoId}
+            onChange={(e: any) => setVideoId(e.target.value)}
+            onBlur={() => {
+              if (videoId === '') {
+                setVideoIdError(true)
+              }
+            }}
+          />
+          <div className={style.error}>
+            {videoIdError && <p>Id do vídeo não pode ser vazio.</p>}
+          </div>
+        </>
       ) : type === 2 ? (
-        <Input
-          text="Texto:"
-          type="text"
-          placeholder="Exemplo"
-          value={texto}
-          onChange={(e: any) => setTexto(e.target.value)}
-        />
+        <>
+          <Input
+            text="Texto:"
+            type="text"
+            placeholder="Exemplo"
+            value={texto}
+            onChange={(e: any) => setTexto(e.target.value)}
+            onBlur={() => {
+              if (data.texto === '') {
+                setTextoError(true)
+              }
+            }}
+          />
+          <div className={style.error}>
+            {textoError && <p>Texto deve estar entre 1 e 5000 caracteres.</p>}
+          </div>
+        </>
       ) : null}
 
       <Input
@@ -129,13 +174,22 @@ export const RegisterContent = ({ onClose }: Props) => {
         placeholder="10"
         value={workload}
         onChange={(e: any) => setWorkload(e.target.value)}
+        onBlur={() => {
+          if (data.tempoEstimado === '') {
+            setWorkloadError(true)
+          }
+        }}
       />
+      <div className={style.error}>
+        {workloadError && <>Carga horária não pode ser vazia.</>}
+        {invalid && <p>Por favor, preencha todos os campos corretamente.</p>}
+      </div>
       <div className={style.cBtn}>
         <Button className={style.btnBack} title="Voltar" onClick={onClose} />
         <Button
           className={style.btnRegister}
           title="Cadastrar"
-          onClick={registerContent}
+          onClick={() => registerContent()}
         />
       </div>
     </div>
