@@ -50,7 +50,7 @@ export const Teacher = () => {
       case 'Meus conteúdos':
         setChosenComponent(<Home />)
         break
-      case 'Ver todos': // TODO: criar pagina de todos os conteúdos
+      case 'Ver todos':
         setChosenComponent(<Content />)
         break
       // case 'Avaliações': // TODO: redirecionar para gráfico do power BI

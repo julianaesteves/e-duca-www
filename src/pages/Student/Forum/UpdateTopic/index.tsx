@@ -6,14 +6,15 @@ import PostService from '../../../../services/post.service'
 
 type Props = {
   onClose?: () => void
-  // TODO: Tornar obrigatório
-  selectedTopic?: any
+  selectedTopic: any
 }
 
 export const UpdateTopic = ({ onClose, selectedTopic }: Props) => {
   const [subject, setSubject] = useState(selectedTopic.titulo)
   const [description, setDescription] = useState(selectedTopic.descricao)
   const [errorMessage, setErrorMessage] = useState<boolean>(false)
+
+  console.log(selectedTopic.titulo)
 
   const data = {
     titulo: subject,
@@ -58,7 +59,12 @@ export const UpdateTopic = ({ onClose, selectedTopic }: Props) => {
         onChange={(e: any) => setDescription(e.target.value)}
       />
       <div className={style.error}>
-        {errorMessage && <p>Assunto e/ou descrição não podem ser vazios e devem ser diferentes dos valores iniciais.</p>}
+        {errorMessage && (
+          <p>
+            Assunto e/ou descrição não podem ser vazios e devem ser diferentes
+            dos valores iniciais.
+          </p>
+        )}
       </div>
       <div className={style.cBtn}>
         <Button className={style.btnBack} title="Voltar" onClick={onClose} />

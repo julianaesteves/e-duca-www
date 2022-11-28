@@ -8,8 +8,8 @@ type Props = {
   date: string
   children?: ReactNode
   onClick?: () => void
-  // name: string 
-  // lastName: string 
+  name?: string 
+  lastName?: string 
 }
 
 export const CardTopic = ({
@@ -19,13 +19,12 @@ export const CardTopic = ({
   date,
   children,
   onClick,
-  // name,
-  // lastName
+  name,
+  lastName
 }: Props) => {
   return (
     <>
       <div className={style.container} onClick={onClick}>
-        <div className={style.cylinder} />
         <div className={answers > 0 ? `${style.card}` : `${style.unasweredCard}`}>
           <div className={style.info}>
             <h2>{title}</h2>
@@ -36,7 +35,7 @@ export const CardTopic = ({
           </div>
           <div className={style.date}>
             <p>Postada em {date} por </p> 
-            {/* TODO: ADICIONAR NOME E SOBRENOME */}
+            {name} {lastName}
             {children}
           </div>
         </div>

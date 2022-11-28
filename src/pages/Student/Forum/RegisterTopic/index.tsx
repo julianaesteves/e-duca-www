@@ -9,8 +9,8 @@ type Props = {
 }
 
 export const RegisterTopic = ({ onClose }: Props) => {
-  const [subject, setSubject] = useState<string>()
-  const [description, setDescription] = useState<string>()
+  const [subject, setSubject] = useState<string>("")
+  const [description, setDescription] = useState<string>("")
   const [errorMessage, setErrorMessage] = useState<boolean>(false)
 
   const data = {

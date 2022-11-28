@@ -5,6 +5,10 @@ export const MenuItemsStudent = [
   },
   {
     id: 2,
+    title: 'Meus tópicos'
+  },
+  {
+    id: 3,
     title: 'Fórum de dúvidas'
   }
 ]

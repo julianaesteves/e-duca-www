@@ -1,17 +1,16 @@
 @import '../../styles/sass/main.scss';
 
 .card {
+  display: grid;
+  grid-template-columns: 0fr 1fr;
   gap: 16px;
-  padding: 9px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
   width: 800px;
-  margin-left: 24px;
-  height: 93px;
+  height: 96px;
+  padding: 9px 23px;
   border-radius: 20px;
   border: #0019fd 2px solid;
   border-left: #0019fd 12px solid;
+  align-items: center;
 
   &:hover {
     background-color: #d7e9ff;
@@ -22,34 +21,43 @@
   .circle {
     background: #dededf;
     border-radius: 50%;
-    width: 63px;
-    height: 63px;
+    width: 70px;
+    height: 70px;
   }
-
   .content {
-    .highlight {
-      font-size: $text;
-      color: $blue-300;
-      font-weight: bold;
-    }
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 
-    .title {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 650px;
+    .text {
+      display: grid;
+      grid-template-rows: 0fr 1fr;
+
+      .highlight {
+        font-size: $text;
+        color: $blue-300;
+        font-weight: bold;
+      }
+
+      span {
+        font-size: $text;
+        color: grey;
+        font-weight: 700;
+      }
 
       h2 {
         font-size: $bigText;
-        font-weight: bolder;
-        margin: 0;
+        font-weight: 700;
+        line-height: 0.1;
       }
-      span {
-        font-size: 10px;
-        color: #b1b1b1;
-        font-weight: bold;
+    }
+    .date {
+      display: grid;
+      align-content: space-between;
+      justify-items: end;
+
+      p {
+        font-size: $x_small_label;
+        font-weight: 300;
       }
     }
   }

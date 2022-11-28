@@ -23,6 +23,7 @@ export const Forum = () => {
   const [currentTopic, setCurrentTopic] = useState()
 
   const handleEditClick = (topic: any) => {
+    console.log(topic)
     setIsEditModalVisible(true)
     setCurrentTopic(topic)
   }
@@ -32,7 +33,8 @@ export const Forum = () => {
     setCurrentTopic(topic)
   }
 
-  const [topics, setTopics] = useState<any[]>([{}])
+  const [topics, setTopics] = useState<any[]>([])
+  const [isTopicsEmpty, setIsTopicEmpty] = useState<boolean>(false)
 
   const [student, setStudent] = useState({
     name: '',
@@ -57,15 +59,12 @@ export const Forum = () => {
 
     PostService.getTopic().then(
       (response: any) => {
-        console.log('RESPOSTA DE GET TOPIC: ' + response.data)
-        console.log('Response é igual a nulo ? ' + response.data == null)
-        console.log(
-          'Response é igual a undefined ? ' + response.data == undefined
-        )
-        console.log('Response é igual a string vazia ? ' + response.data == '')
+        if (response.status == 204) {
+          setIsTopicEmpty(true)
+          return
+        }
 
-        console.log(typeof response.data)
-        setTopics(response.data)
+        setTopics(response.data.content)
       },
       (error: any) => {
         console.log('FORUM/ESTUDANTE/getTopic: Erro', error.response)
@@ -75,6 +74,13 @@ export const Forum = () => {
       }
     )
   }, [])
+
+  const handleTopicClicked = (topic: any) => {
+    console.log(topic)
+    setCurrentTopic(topic)
+    setAnswerIsModalVisible(true)
+  }
+
 
   return (
     <div className={style.container}>
@@ -100,17 +106,19 @@ export const Forum = () => {
           />
         </div>
         <div className={style.cards}>
-          {topics?.map((topic: any) => (
-            <>
+          {isTopicsEmpty ? (
+            <h1>NADA A VER POR AQUI</h1>
+          ) : (
+            topics?.map((topic: any) => (
               <CardTopic
-                // onClick={() => setAnswerIsModalVisible(true)}
+                onClick={() => handleTopicClicked(topic)}
                 key={topic.idTopico}
                 title={topic.titulo}
                 description={topic.descricao}
                 date={topic.dataCriacao}
-                answers={topic.respostas != null ? topic.respostas.length : ''}
-                // name={topic.usuario.nome}
-                // lastName={topic.usuario.sobrenome}
+                answers={topic.respostas.length}
+                name={topic.usuario.nome}
+                lastName={topic.usuario.sobrenome}
               >
                 <div className={style.col}>
                   <img src={iconEdit} onClick={() => handleEditClick(topic)} />
@@ -120,22 +128,21 @@ export const Forum = () => {
                   />
                 </div>
               </CardTopic>
-              {isAnswerModalVisible && (
-                <Modal
-                  isOpen={isAnswerModalVisible}
-                  onClose={() => setAnswerIsModalVisible(false)}
-                >
-                  <SelectedTopic
-                    subject={topic.titulo}
-                    description={topic.descricao}
-                    // name={topic.usuario.nome}
-                    // lastName={topic.usuario.sobrenome}
-                    onClose={() => setAnswerIsModalVisible(false)}
-                  />
-                </Modal>
-              )}
-            </>
-          ))}
+            ))
+          )}
+
+          {isAnswerModalVisible && (
+            <Modal
+              isOpen={isAnswerModalVisible}
+              onClose={() => setAnswerIsModalVisible(false)}
+            >
+              <SelectedTopic
+                student={student}
+                selectedTopic={currentTopic}
+                onClose={() => setAnswerIsModalVisible(false)}
+              />
+            </Modal>
+          )}
 
           {isAddModalVisible ? (
             <>

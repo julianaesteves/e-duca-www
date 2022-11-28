@@ -75,6 +75,22 @@ const deleteTopic = (id) => {
   })
 }
 
+const deleteAnswer = (id) => {
+  return axios.delete(API_URL + `api/topicos/respostas/${id}`, {
+    headers: authHeader()
+  })
+}
+
+const updateAnswer = (id, data) => {
+  return axios.put(API_URL + `api/topicos/respostas/${id}`, data, {
+    headers: authHeader()
+  })
+}
+
+const registerAnswer = (data) => {
+  return axios.post(API_URL + 'api/topicos/respostas', data, { headers: authHeader() })
+}
+
 const postService = {
   getUser,
   getAllContent,
@@ -90,7 +106,10 @@ const postService = {
   registerRating,
   getAllTopics,
   registerStudent,
-  registerTeacher
+  registerTeacher,
+  registerAnswer,
+  deleteAnswer,
+  updateAnswer
 }
 
 export default postService
