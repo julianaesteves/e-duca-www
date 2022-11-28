@@ -6,8 +6,11 @@
 }
 
 .innerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
   max-height: 100vh;
-  margin: 0 161px;
   overflow: scroll;
 
   &::-webkit-scrollbar {

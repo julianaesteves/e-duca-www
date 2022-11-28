@@ -3,7 +3,7 @@ import { Button } from '../../../components/Button'
 import PostService from '../../../services/post.service'
 
 type Props = {
-  onClose?: () => void
+  onClose: () => void
   contentId?: number
 }
 
@@ -14,6 +14,7 @@ export const DeleteContent = ({ onClose, contentId }: Props) => {
     PostService.deleteContent(contentId).then(
       (response: any) => {
         console.log(response.data)
+        onClose()
       },
       (error: any) => {
         console.log('DELETE/TEACHER/deleteContent: Erro', error.response)

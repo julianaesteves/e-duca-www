@@ -9,7 +9,7 @@ import { Modal } from '../../../components/Modal'
 import PostService from '../../../services/post.service'
 
 type Props = {
-  onClose?: () => void
+  onClose: () => void
   contentId?: number
 }
 
@@ -29,6 +29,7 @@ export const UpdateContent = ({ onClose, contentId }: Props) => {
     PostService.getHability().then(
       (response: any) => {
         setHabilities(response.data)
+        onClose()
       },
       (error: any) => {
         console.log('TEACHER/UpdateContent/getHability: Erro', error.response)

@@ -7,8 +7,4 @@ export const MenuItemsTeacher = [
     id: 2,
     title: 'Ver todos',
   },
-  {
-    id: 3,
-    title: 'Avaliações',
-  },
 ];
