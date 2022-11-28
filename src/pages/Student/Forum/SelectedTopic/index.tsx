@@ -27,7 +27,7 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
   }
 
   const saveAnswer = () => {
-    if (data.resposta !== '')
+    if (data.resposta !== '') {
       PostService.registerAnswer(data).then(
         (response: any) => {
           console.log(response.data)
@@ -44,6 +44,7 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
           }
         }
       )
+    }
     setInvalid(true)
   }
 
@@ -90,19 +91,19 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
       </div>
 
       <div className={style.col}>
-        {answers.map((answer: any) => (
+        {answers.map((answer: any, index: number) => (
           <div key={answer.idTopico} className={style.sAnswer}>
             <div className={style.info}>
               <p>{answer.resposta}</p>
             </div>
             <div className={style.date}>
               <div>
-                Respondido em <span> {answer.dataCriacao} </span> por{' '}
+                Respondido em <span> {answer.dataCriacao} </span> por
                 <span>
-                  {answer.usuario.nome} {answer.usuario.sobrenome}
+                   {" "}{answer.usuario.nome} {answer.usuario.sobrenome}
                 </span>
               </div>
-              {student.name == selectedTopic.usuario.nome && (
+              {student.name == selectedTopic.respostas[index].usuario.nome && (
                 <div>
                   <img
                     src={iconEdit}
