@@ -2,7 +2,7 @@ import style from './deleteTopic.module.scss';
 import { Button } from '../../../../components/Button';
 import PostService from '../../../../services/post.service'
 type Props = {
-  onClose?: () => void;
+  onClose: () => void;
   selectedTopic?: any
 };
 
@@ -13,6 +13,7 @@ export const DeleteTopic = ({ onClose, selectedTopic }: Props) => {
     PostService.deleteTopic(selectedTopic.idTopico).then(
       (response: any) => {
         console.log(response.data)
+        onClose()
       },
       (error: any) => {
         console.log('DELETE/STUDENT/deleteTopic: Erro', error.response)

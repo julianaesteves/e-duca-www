@@ -41,6 +41,28 @@
     }
   }
 
+  .cOverviem {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 40px 0;
+    font-weight: 500;
+
+    img {
+      height: 32px;
+    }
+
+    .cardVisible {
+      height: 58px;
+      cursor: pointer;
+    }
+    .cardAdd {
+      background-color: $yellow-400;
+      color: $black;
+      height: 58px;
+      cursor: pointer;
+    }
+  }
+
   .text {
     display: flex;
     justify-content: space-between;

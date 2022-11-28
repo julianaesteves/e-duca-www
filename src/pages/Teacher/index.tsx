@@ -53,9 +53,6 @@ export const Teacher = () => {
       case 'Ver todos':
         setChosenComponent(<Content />)
         break
-      // case 'Avaliações': // TODO: redirecionar para gráfico do power BI
-      //   setChosenComponent(<Configuracoes />)
-      //   break
       default:
         setChosenComponent(<Home />)
     }
@@ -72,7 +69,7 @@ export const Teacher = () => {
         handleChosenItem={handleChosenItem}
         selectedItem={chosenItem}
       />
-      {chosenComponent}
+      <div className={style.innerContainer}>{chosenComponent}</div>
     </div>
   )
 }

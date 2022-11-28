@@ -6,6 +6,9 @@ import style from './content.module.scss'
 import { Reading } from '../../../components/Reading'
 import { Button } from '../../../components/Button'
 import { VideoClass } from '../../../components/VideoClass'
+import { Card } from '../Overview/Card'
+import iconImport from '../../../assets/img/box.png'
+import iconExport from '../../../assets/img/uploading.png'
 
 export const Content = () => {
   const [search, setSearch] = useState('')
@@ -80,30 +83,42 @@ export const Content = () => {
       ) : (
         <div className={style.innerContainer}>
           <SearchBar
-          placeholder="Buscar conteúdo"
-          value={search}
-          onChange={(e: any) => setSearch(e.target.value)}
-        />
+            placeholder="Buscar conteúdo"
+            value={search}
+            onChange={(e: any) => setSearch(e.target.value)}
+          />
+          <div className={style.cOverviem}>
+            <Card
+              className={style.cardVisible}
+              img={iconExport}
+              text={'Exportar conteúdo'}
+            />
+            <Card
+              className={style.cardAdd}
+              img={iconImport}
+              text="Importar conteúdo"
+            />
+          </div>
           <div className={style.cards}>
             {content &&
-            content
-              .filter((post) => {
-                if (search == '') {
-                  return post
-                } else if (
-                  post.titulo.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return post
-                }
-              })
-              .map((post: any) => (
+              content
+                .filter((post) => {
+                  if (search == '') {
+                    return post
+                  } else if (
+                    post.titulo.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return post
+                  }
+                })
+                .map((post: any) => (
                   <ContentCard
                     contentId={post.idConteudo}
                     key={post.idConteudo}
                     title={post.titulo}
                     hability={post.habilidade.codigo}
                     date={post.dataCriacao}
-                onClick={() => handleContentClick(post)}
+                    onClick={() => handleContentClick(post)}
                   />
                 ))}
           </div>
