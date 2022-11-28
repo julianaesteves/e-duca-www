@@ -34,8 +34,7 @@ export const CardTopic = ({
             }`}</span>
           </div>
           <div className={style.date}>
-            <p>Postada em {date} por </p> 
-            {name} {lastName}
+            <p>Postada em {date} por {name} {lastName}</p> 
             {children}
           </div>
         </div>

@@ -105,8 +105,8 @@ export const Topics = () => {
                   description={topic.descricao}
                   date={topic.dataCriacao}
                   answers={topic.respostas.length}
-                  // name={topic.usuario.nome}
-                  // lastName={topic.usuario.sobrenome}
+                  name={topic.usuario.nome}
+                  lastName={topic.usuario.sobrenome}
                 ></CardTopic>
             ))
           )}
