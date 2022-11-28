@@ -76,7 +76,7 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
           </div>
           <div className={style.cInfo}>
             <h6>
-              Postada em 01/01/22 por {selectedTopic.nome}
+              Postada em {selectedTopic.dataCriacao} por {selectedTopic.nome}
               {selectedTopic.sobrenome}
             </h6>
             <button
@@ -91,15 +91,19 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
 
       <div className={style.col}>
         {answers.map((answer: any) => (
-          <>
-            <div className={style.sAnswer} key={answer.idTopico}>
+          <div key={answer.idTopico} className={style.sAnswer}>
+            <div className={style.info}>
               <p>{answer.resposta}</p>
-              Respondido em {answer.dataCriacao} por{' '}
-              <span>
-                {answer.usuario.nome} {answer.usuario.sobrenome}
-              </span>
+            </div>
+            <div className={style.date}>
+              <div>
+                Respondido em <span> {answer.dataCriacao} </span> por{' '}
+                <span>
+                  {answer.usuario.nome} {answer.usuario.sobrenome}
+                </span>
+              </div>
               {student.name == selectedTopic.usuario.nome && (
-                <div className={style.cEdit}>
+                <div>
                   <img
                     src={iconEdit}
                     onClick={() => handleUpdateAnswer(answer)}
@@ -111,10 +115,10 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
                 </div>
               )}
             </div>
-          </>
+          </div>
         ))}
         {addNewAnswer && (
-          <>
+          <div className={style.saveAnswer}>
             <textarea
               placeholder="Corpo da resposta"
               value={newAnswer}
@@ -126,14 +130,14 @@ export const SelectedTopic = ({ onClose, selectedTopic, student }: Props) => {
               }}
             />
             <Button
-              className={style.btn}
+              className={style.save}
               title="Salvar resposta"
               onClick={saveAnswer}
             />
             <div className={style.error}>
               {invalid && <p>Resposta não pode ser vazia.</p>}
             </div>
-          </>
+          </div>
         )}
       </div>
       <div className={style.footer}>

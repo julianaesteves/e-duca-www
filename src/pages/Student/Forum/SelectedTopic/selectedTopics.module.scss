@@ -60,14 +60,30 @@
     padding: 30px 60px;
 
     .sAnswer {
-      p {
-        font-size: $text;
-      }
+      display: grid;
+      grid-template-columns: 2fr 0.5fr;
+      margin-bottom: 30px;
 
-      span {
-      }
+      .info {
+        display: grid;
+        grid-template-rows: 0fr 1fr;
 
-      .cEdit {
+        span {
+          font-size: 13px;
+          color: $pink-600;
+          margin-left: 8px;
+          font-weight: 700;
+        }
+      }
+      .date {
+        display: grid;
+        justify-items: end;
+        font-size: 8px;
+        font-weight: 300;
+
+        span {
+          color: grey;
+        }
       }
     }
 
@@ -112,6 +128,20 @@
       margin: 19px 73px;
       font-size: 18px;
       border: solid 2px $purple-800;
+    }
+  }
+
+  .saveAnswer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+    .save {
+      margin: 0 16px;
+      width: 200px;
+      padding: 20px;
+      font-size: 18px;
+      background-color: $yellow-500;
     }
   }
 
