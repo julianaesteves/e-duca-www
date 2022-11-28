@@ -3,10 +3,10 @@ import search from '../../assets/img/search.svg'
 type Props = {
   placeholder?: string
   value: any
-  onChange: any;
+  onChange: any
 }
 
-export const SearchBar = ({ placeholder, value, onChange}: Props) => {
+export const SearchBar = ({ placeholder, value, onChange }: Props) => {
   return (
     <div className={style.container}>
       <img src={search} />

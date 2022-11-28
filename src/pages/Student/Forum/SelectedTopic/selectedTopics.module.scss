@@ -14,30 +14,24 @@
       background-color: $pink-200;
       border: solid 2px $pink-550;
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-gap: 230px;
+      grid-template-columns: 4fr 1fr;
+      gap: 20px;
       padding: 40px 60px;
 
       h1 {
         font-size: $subtitle;
         font-weight: 600;
-        line-height: 0;
-      }
-
-      h6 {
-        font-size: $x_small_label;
-        font-weight: 300;
       }
 
       p {
         font-size: $text;
         font-weight: 300;
-        margin-bottom: 60px;
       }
 
-      div {
+      .cInfo {
         display: grid;
-        align-content: space-between;
+        justify-items: center;
+
         .btnAdd {
           color: $white;
           background-color: $pink-550;
@@ -47,7 +41,13 @@
           width: 200px;
           font-size: $text;
           font-weight: 600;
+          margin-top: 50px;
           cursor: pointer;
+        }
+
+        h6 {
+          font-size: $x_small_label;
+          font-weight: 300;
         }
       }
     }
@@ -58,6 +58,18 @@
     height: 330px;
     overflow-x: hidden;
     padding: 30px 60px;
+
+    .sAnswer {
+      p {
+        font-size: $text;
+      }
+
+      span {
+      }
+
+      .cEdit {
+      }
+    }
 
     textarea {
       background-color: $white;
