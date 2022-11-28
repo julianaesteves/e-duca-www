@@ -4,10 +4,6 @@ export const MenuItems = [
     url: '/',
   },
   {
-    title: 'Colabore aqui',
-    url: '/colabore',
-  },
-  {
     title: 'Login',
     url: '/login',
   },
