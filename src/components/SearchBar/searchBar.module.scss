@@ -7,11 +7,11 @@
   padding: 10px;
   border: groove 2px;
   margin: 40px 0;
+  display: flex;
 
   input {
     border: none;
     background: none;
-    float: right;
     padding: 0;
     font-size: $text;
     line-height: 22px;
