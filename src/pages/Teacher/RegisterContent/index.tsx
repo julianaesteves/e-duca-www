@@ -181,7 +181,7 @@ export const RegisterContent = ({ onClose }: Props) => {
         }}
       />
       <div className={style.error}>
-        {workloadError && <>Carga horária não pode ser vazia.</>}
+        {workloadError && <p>Carga horária não pode ser vazia.</p>}
         {invalid && <p>Por favor, preencha todos os campos corretamente.</p>}
       </div>
       <div className={style.cBtn}>
