@@ -30,7 +30,7 @@ export const Home = () => {
 
   function handleContentClick(post: any) {
     console.log(post)
-    
+
     setContentClicked({
       id: post.idConteudo,
       titulo: post.titulo,
@@ -46,7 +46,6 @@ export const Home = () => {
     }
     setIsContentClicked(true)
   }
-
 
   return (
     <div className={style.container}>
@@ -68,47 +67,48 @@ export const Home = () => {
               text={contentClicked.texto}
             />
           )}
-          <Button
-            title="Voltar"
-            // TODO: arrumar a estilização do botão
-            className={'batatinha'}
-            onClick={() => {
-              setIsContentClicked(false)
-              setIsVideo(false)
-            }}
-          />
+          <div className={style.cBtn}>
+            <Button
+              className={style.btn}
+              title="<< Voltar"
+              onClick={() => {
+                setIsContentClicked(false)
+                setIsVideo(false)
+              }}
+            />
+          </div>
         </>
       ) : (
-      <div className={style.innerContainer}>
-        <SearchBar
-          placeholder="O que você deseja estudar hoje?"
-          value={search}
-          onChange={(e: any) => setSearch(e.target.value)}
-        />
-        <div className={style.cards}>
-          {content &&
-            content
-              .filter((post) => {
-                if (search == '') {
-                  return post
-                } else if (
-                  post.titulo.toLowerCase().includes(search.toLowerCase())
-                ) {
-                  return post
-                }
-              })
-              .map((post: any) => (
-                <ContentCard
-                  contentId={post.idConteudo}
-                  key={post.idConteudo}
-                  title={post.titulo}
-                  hability={post.habilidade.codigo}
-                  date={post.dataCriacao}
-                  onClick={() => handleContentClick(post)}
-                />
-              ))}
+        <div className={style.innerContainer}>
+          <SearchBar
+            placeholder="O que você deseja estudar hoje?"
+            value={search}
+            onChange={(e: any) => setSearch(e.target.value)}
+          />
+          <div className={style.cards}>
+            {content &&
+              content
+                .filter((post) => {
+                  if (search == '') {
+                    return post
+                  } else if (
+                    post.titulo.toLowerCase().includes(search.toLowerCase())
+                  ) {
+                    return post
+                  }
+                })
+                .map((post: any) => (
+                  <ContentCard
+                    contentId={post.idConteudo}
+                    key={post.idConteudo}
+                    title={post.titulo}
+                    hability={post.habilidade.codigo}
+                    date={post.dataCriacao}
+                    onClick={() => handleContentClick(post)}
+                  />
+                ))}
+          </div>
         </div>
-      </div>
       )}
     </div>
   )

@@ -66,15 +66,16 @@ export const Content = () => {
               text={contentClicked.texto}
             />
           )}
-          <Button
-            title="Voltar"
-            // TODO: arrumar a estilização do botão
-            className={'batatinha'}
-            onClick={() => {
-              setIsContentClicked(false)
-              setIsVideo(false)
-            }}
-          />
+          <div className={style.cBtn}>
+            <Button
+              className={style.btn}
+              title="<< Voltar"
+              onClick={() => {
+                setIsContentClicked(false)
+                setIsVideo(false)
+              }}
+            />
+          </div>
         </>
       ) : (
         <div className={style.innerContainer}>
