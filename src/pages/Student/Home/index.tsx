@@ -6,6 +6,7 @@ import PostService from '../../../services/post.service'
 import { VideoClass } from '../../../components/VideoClass'
 import { Reading } from '../../../components/Reading'
 import { Button } from '../../../components/Button'
+import iconDocument from '../../../assets/img/documents.png'
 
 export const Home = () => {
   const [search, setSearch] = useState('')
@@ -41,7 +42,10 @@ export const Home = () => {
       texto: post.texto
     })
     console.log(contentClicked.id)
-    if (post.urlVideo != "https://www.youtube.com/embed/") {
+    if (
+      post.urlVideo != 'https://www.youtube.com/embed/undefined' &&
+      post.urlVideo != null
+    ) {
       setIsVideo(true)
     }
     setIsContentClicked(true)
@@ -99,6 +103,7 @@ export const Home = () => {
                 })
                 .map((post: any) => (
                   <ContentCard
+                    img={iconDocument}
                     contentId={post.idConteudo}
                     key={post.idConteudo}
                     title={post.titulo}

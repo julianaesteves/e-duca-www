@@ -14,6 +14,7 @@ import iconEmpty from '../../../assets/img/empty.svg'
 import { Button } from '../../../components/Button'
 import { Reading } from '../../../components/Reading'
 import { VideoClass } from '../../../components/VideoClass'
+import iconDocument from '../../../assets/img/documents.png'
 
 export const Home = () => {
   const [currentId, setCurrentId] = useState()
@@ -78,7 +79,10 @@ export const Home = () => {
       texto: post.texto
     })
 
-    if (post.urlVideo !== "https://www.youtube.com/embed/") {
+    if (
+      post.urlVideo !== 'https://www.youtube.com/embed/undefined' &&
+      post.urlVideo !== null
+    ) {
       setIsVideo(true)
     }
     console.log(isVideo)
@@ -147,6 +151,7 @@ export const Home = () => {
             ) : (
               teacherContent?.map((post: any) => (
                 <ContentCard
+                  img={iconDocument}
                   key={post.idConteudo}
                   contentId={post.idConteudo}
                   title={post.titulo}

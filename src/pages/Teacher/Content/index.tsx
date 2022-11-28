@@ -9,6 +9,7 @@ import { VideoClass } from '../../../components/VideoClass'
 import { Card } from '../Overview/Card'
 import iconImport from '../../../assets/img/box.png'
 import iconExport from '../../../assets/img/uploading.png'
+import iconDocument from '../../../assets/img/documents.png'
 
 export const Content = () => {
   const [search, setSearch] = useState('')
@@ -43,7 +44,7 @@ export const Content = () => {
       texto: post.texto
     })
 
-    if (post.urlVideo != "https://www.youtube.com/embed/") {
+    if (post.urlVideo != "https://www.youtube.com/embed/undefined" && post.urlVideo != null) {
       setIsVideo(true)
     }
     setIsContentClicked(true)
@@ -113,6 +114,7 @@ export const Content = () => {
                 })
                 .map((post: any) => (
                   <ContentCard
+                    img={iconDocument}
                     contentId={post.idConteudo}
                     key={post.idConteudo}
                     title={post.titulo}
