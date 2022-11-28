@@ -8,7 +8,7 @@ const registerStudent = (data) => {
 }
 
 const registerTeacher = (data) => {
-  return axios.post(API_URL + 'api/usuarios/estudantes/', data)
+  return axios.post(API_URL + 'api/usuarios/professores/', data)
 }
 
 const getUser = () => {

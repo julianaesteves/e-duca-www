@@ -12,6 +12,28 @@
   }
 }
 
+.cBtn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  left: -182px;
+
+  .btn {
+    width: 136px;
+    color: #f5f5f5;
+    margin: 40px 0;
+    border: $purple-100 2px solid;
+    background: $purple-100;
+
+    &:hover {
+      border: $purple-800 2px solid;
+      background: $purple-800;
+      transition: 2s;
+    }
+  }
+}
 .text {
   display: flex;
   justify-content: space-between;

@@ -82,7 +82,6 @@ export const Forum = () => {
     setAnswerIsModalVisible(true)
   }
 
-
   return (
     <div className={style.container}>
       <div className={style.innerContainer}>
@@ -109,9 +108,7 @@ export const Forum = () => {
         <div className={style.cards}>
           {isTopicsEmpty ? (
             <div className={style.empty}>
-              <h3>
-                Ops! Parece que ainda não há nada para ver por aqui.
-              </h3>
+              <h3>Ops! Parece que ainda não há nada para ver por aqui.</h3>
               <img src={iconEmpty} alt="" />
             </div>
           ) : (

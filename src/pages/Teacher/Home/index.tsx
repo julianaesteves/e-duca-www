@@ -6,16 +6,21 @@ import { Modal } from '../../../components/Modal'
 import iconEdit from '../../../assets/img/edit.svg'
 import iconDelete from '../../../assets/img/delet.svg'
 import { useEffect, useState } from 'react'
-// import AuthService from '../../services/auth.service'
 import PostService from '../../../services/post.service'
-// import { useNavigate } from 'react-router-dom'
 import style from './home.module.scss'
 import { DeleteContent } from '../DeleteContent'
 import { UpdateContent } from '../UpdateContent'
+import iconEmpty from '../../../assets/img/empty.svg'
+import { Button } from '../../../components/Button'
+import { Reading } from '../../../components/Reading'
+import { VideoClass } from '../../../components/VideoClass'
 
 export const Home = () => {
-  // const navigate = useNavigate();
   const [currentId, setCurrentId] = useState()
+  const [isContentClicked, setIsContentClicked] = useState<boolean>(false)
+  const [contentClicked, setContentClicked] = useState<any>({})
+  const [isVideo, setIsVideo] = useState<boolean>(false)
+  const [isUserContentEmpty, setIsUserContentEmpty] = useState<boolean>(false)
   const [isEditModalVisible, setIsEditModalVisible] = useState(false)
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false)
   const [teacherContent, setTeacherContent] = useState<any[]>([])
@@ -38,32 +43,46 @@ export const Home = () => {
       },
       (error: any) => {
         console.log('HOME/Professor/getUser: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('HOME/Professor/getUser: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
 
     PostService.getUserContent().then(
       (response: any) => {
+        if (response.status == 204) {
+          setIsUserContentEmpty(true)
+          return
+        }
+
         setTeacherContent(response.data.content)
       },
       (error: any) => {
         console.log('HOME/Professor/getUserContent: Erro', error.response)
-        // Invalid token
         if (error.response && error.response.status === 403) {
           console.log('HOME/Professor/getUserContent: Erro de autenticação')
-          // AuthService.logout();
-          // navigate("/login");
-          // window.location.reload();
         }
       }
     )
   }, [])
+
+  function handleContentClick(post: any) {
+    console.log(post)
+    setContentClicked({
+      titulo: post.titulo,
+      video: post.urlVideo,
+      nome: post.usuario.nome,
+      sobrenome: post.usuario.sobrenome,
+      categoria: post.habilidade.codigo,
+      texto: post.texto
+    })
+
+    if (post.urlVideo != null) {
+      setIsVideo(true)
+    }
+    setIsContentClicked(true)
+  }
 
   const handleEditClick = (id: any) => {
     setIsEditModalVisible(true)
@@ -77,40 +96,79 @@ export const Home = () => {
 
   return (
     <div className={style.container}>
-      <div className={style.innerContainer}>
-        <Greeting
-          name={teacher.name}
-          img={img}
-          text={'Pronto para começar uma nova aula?'}
-        />
-        <Overview conteudos={teacherContent.length} avaliacoes={0} />
-        <div className={style.text}>
-          <h2>Meus conteúdos</h2>
-          <span>Ver todos</span>
-        </div>
-        <div className={style.cards}>
-          {teacherContent?.map((post: any) => (
-            <ContentCard
-              key={post.idConteudo}
-              contentId={post.idConteudo}
-              title={post.titulo}
-              hability={post.habilidade.codigo}
-              date={post.dataCriacao}
-            >
-              <div className={style.col}>
-                <img
-                  src={iconEdit}
-                  onClick={() => handleEditClick(post.idConteudo)}
-                />
-                <img
-                  src={iconDelete}
-                  onClick={() => handleDeleteClick(post.idConteudo)}
-                />
+      {isContentClicked ? (
+        <>
+          {isVideo ? (
+            <VideoClass
+              contentId={contentClicked.id}
+              name={contentClicked.nome}
+              lastName={contentClicked.sobrenome}
+              category={contentClicked.categoria}
+              video={contentClicked.video}
+              title={contentClicked.titulo}
+            />
+          ) : (
+            <Reading
+              contentId={contentClicked.id}
+              title={contentClicked.titulo}
+              text={contentClicked.texto}
+            />
+          )}
+          <div className={style.cBtn}>
+            <Button
+              className={style.btn}
+              title="<< Voltar"
+              onClick={() => {
+                setIsContentClicked(false)
+                setIsVideo(false)
+              }}
+            />
+          </div>
+        </>
+      ) : (
+        <div className={style.innerContainer}>
+          <Greeting
+            name={teacher.name}
+            img={img}
+            text={'Pronto para começar uma nova aula?'}
+          />
+          <Overview conteudos={teacherContent.length} avaliacoes={0} />
+          <div className={style.text}>
+            <h2>Meus conteúdos</h2>
+            <span>Ver todos</span>
+          </div>
+          <div className={style.cards}>
+            {isUserContentEmpty ? (
+              <div className={style.empty}>
+                <h3>Ops! Parece que ainda não há nada para ver por aqui.</h3>
+                <img src={iconEmpty} alt="" />
               </div>
-            </ContentCard>
-          ))}
+            ) : (
+              teacherContent?.map((post: any) => (
+                <ContentCard
+                  key={post.idConteudo}
+                  contentId={post.idConteudo}
+                  title={post.titulo}
+                  hability={post.habilidade.codigo}
+                  date={post.dataCriacao}
+                  onClick={() => handleContentClick(post)}
+                >
+                  <div className={style.col}>
+                    <img
+                      src={iconEdit}
+                      onClick={() => handleEditClick(post.idConteudo)}
+                    />
+                    <img
+                      src={iconDelete}
+                      onClick={() => handleDeleteClick(post.idConteudo)}
+                    />
+                  </div>
+                </ContentCard>
+              ))
+            )}
+          </div>
         </div>
-      </div>
+      )}
       {isDeleteModalVisible && (
         <Modal
           isOpen={isDeleteModalVisible}
