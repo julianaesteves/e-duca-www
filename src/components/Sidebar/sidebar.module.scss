@@ -9,6 +9,11 @@
   justify-items: center;
   align-items: center;
 
+  .btn {
+    width: 150px;
+    background-color: $blue-300;
+  }
+
   .logo {
     height: auto;
     width: 170px;

@@ -5,6 +5,9 @@ import perfilTeacher from '../../assets/img/perfilTeacher.svg'
 import perfilStudent from '../../assets/img/perfilStudent.svg'
 import { MenuItemsTeacher } from './MenuItemsTeacher'
 import { MenuItemsStudent } from './MenuItemsStudent'
+import { Button } from '../Button'
+import AuthService from '../../services/auth.service'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {
   isTeacher?: boolean
@@ -25,6 +28,14 @@ export const Sidebar = ({
   handleChosenItem
 }: // selectedItem
 Props) => {
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    AuthService.logout()
+    navigate('/login')
+    window.location.reload()
+  }
+
   return (
     <>
       <div className={style.container}>
@@ -72,6 +83,7 @@ Props) => {
             </>
           )}
         </div>
+        <Button onClick={handleLogout} className={style.btn} title="Sair" />
       </div>
     </>
   )
