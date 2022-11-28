@@ -43,8 +43,9 @@ export const Home = () => {
     })
     console.log(contentClicked.id)
     if (
-      post.urlVideo != 'https://www.youtube.com/embed/undefined' &&
-      post.urlVideo != null
+      post.urlVideo !== 'https://www.youtube.com/embed/undefined' &&
+      post.urlVideo !== null &&
+      post.urlVideo !== 'https://www.youtube.com/embed/'
     ) {
       setIsVideo(true)
     }

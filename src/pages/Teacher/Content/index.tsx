@@ -44,7 +44,11 @@ export const Content = () => {
       texto: post.texto
     })
 
-    if (post.urlVideo != "https://www.youtube.com/embed/undefined" && post.urlVideo != null) {
+    if (
+      post.urlVideo !== 'https://www.youtube.com/embed/undefined' &&
+      post.urlVideo !== null &&
+      post.urlVideo !== 'https://www.youtube.com/embed/'
+    ) {
       setIsVideo(true)
     }
     setIsContentClicked(true)
